@@ -11,20 +11,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LogDatePipe } from "./logs/LogDate.pipe";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    LogsComponent,
-    ChartComponent,
-    HTTP404Component,
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		LogsComponent,
+		ChartComponent,
+		HTTP404Component,
 		LogDatePipe
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

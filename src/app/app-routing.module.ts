@@ -8,7 +8,7 @@ import { HTTP404Component } from "./http404/http404.component";
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "logs", component: LogsComponent },
-  { path: "chart", component: ChartComponent },
+  { path: "chart/:crn", component: ChartComponent },
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "**", component: HTTP404Component },
 ];
