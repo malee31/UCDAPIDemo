@@ -6,5 +6,12 @@ import { Component } from "@angular/core";
   styleUrls: ["./logs.component.scss"]
 })
 export class LogsComponent {
-
+	logs = [
+		{
+			timestamp: 1684479600000,
+			log_type: "demo",
+			message: "Hi",
+			related_data: "None"
+		}
+	]
 }

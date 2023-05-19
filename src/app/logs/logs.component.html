@@ -1,1 +1,18 @@
-<p>logs works!</p>
+<table class="log-table">
+	<thead>
+		<tr>
+			<td>Time</td>
+			<td>Type</td>
+			<td>Message</td>
+			<td>Extra Data</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let log of logs">
+			<td  class="log-table-column-0">{{log.timestamp | logdate }}</td>
+			<td class="log-table-column-0">{{log.log_type}}</td>
+			<td>{{log.message}}</td>
+			<td>{{log.related_data}}</td>
+		</tr>
+	</tbody>
+</table>

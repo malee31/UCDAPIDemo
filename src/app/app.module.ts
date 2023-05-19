@@ -8,6 +8,7 @@ import { LogsComponent } from "./logs/logs.component";
 import { ChartComponent } from "./chart/chart.component";
 import { HTTP404Component } from "./http404/http404.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LogDatePipe } from "./logs/LogDate.pipe";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     LogsComponent,
     ChartComponent,
-    HTTP404Component
+    HTTP404Component,
+		LogDatePipe
   ],
   imports: [
     BrowserModule,

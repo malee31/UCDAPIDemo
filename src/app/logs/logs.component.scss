@@ -1,0 +1,15 @@
+.log-table {
+	width: 100%;
+	border-collapse: collapse;
+	overflow: auto;
+}
+
+.log-table td {
+	border: 1px solid black;
+	padding: 4px 8px;
+}
+
+.log-table-column-0 {
+	width: 0;
+	white-space: nowrap;
+}
