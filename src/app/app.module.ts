@@ -9,12 +9,14 @@ import { ChartComponent } from "./chart/chart.component";
 import { HTTP404Component } from "./http404/http404.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LogDatePipe } from "./logs/LogDate.pipe";
+import { ChartSearchComponent } from "./chartSearch/chartSearch.component";
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		HomeComponent,
 		LogsComponent,
+		ChartSearchComponent,
 		ChartComponent,
 		HTTP404Component,
 		LogDatePipe
