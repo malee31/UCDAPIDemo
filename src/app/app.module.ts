@@ -9,7 +9,8 @@ import { ChartComponent } from "./chart/chart.component";
 import { HTTP404Component } from "./http404/http404.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LogDatePipe } from "./logs/LogDate.pipe";
-import { ChartSearchComponent } from "./chartSearch/chartSearch.component";
+import { ChartSearchComponent } from "./chart-search/chartSearch.component";
+import { APILogLoaderService } from "./api-services/apilog-loader.service";
 
 @NgModule({
 	declarations: [
@@ -26,7 +27,7 @@ import { ChartSearchComponent } from "./chartSearch/chartSearch.component";
 		AppRoutingModule,
 		BrowserAnimationsModule
 	],
-	providers: [],
+	providers: [APILogLoaderService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}

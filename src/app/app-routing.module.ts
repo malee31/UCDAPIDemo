@@ -3,7 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { HTTP404Component } from "./http404/http404.component";
 import { HomeComponent } from "./home/home.component";
 import { LogsComponent } from "./logs/logs.component";
-import { ChartSearchComponent } from "./chartSearch/chartSearch.component";
+import { ChartSearchComponent } from "./chart-search/chartSearch.component";
 import { ChartComponent } from "./chart/chart.component";
 
 const routes: Routes = [
