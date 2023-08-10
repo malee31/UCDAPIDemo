@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { APILog } from "./api-types";
 
+const SERVER_URL = "";
 @Injectable({
 	providedIn: "root"
 })
@@ -9,14 +10,12 @@ export class APILogLoaderService {
 
 	fetchLogs = async (): Promise<APILog[]> => {
 		// TODO: Add interaction with server
-		return Promise.resolve([
-			{
-				timestamp: 1684479600000,
-				log_type: "Mocked",
-				message: "Loaded in Logs",
-				related_data: "None"
-			}
-		]);
+		const apiRes = await fetch(`${SERVER_URL}/logs/raw`, {
+			headers: {}
+		});
+		if(apiRes.status !== 200) throw new RangeError(`Logs responded with HTTP ${apiRes.status}`);
+		const logResponse = await apiRes.json();
+		return logResponse.logs;
 	};
 
 	constructor() {
