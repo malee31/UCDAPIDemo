@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LogDatePipe } from "./logs/LogDate.pipe";
 import { ChartSearchComponent } from "./chart-search/chartSearch.component";
 import { APILogLoaderService } from "./api-services/apilog-loader.service";
+import { ConstantsService } from "./config/constants.service";
 
 @NgModule({
 	declarations: [
@@ -27,7 +28,7 @@ import { APILogLoaderService } from "./api-services/apilog-loader.service";
 		AppRoutingModule,
 		BrowserAnimationsModule
 	],
-	providers: [APILogLoaderService],
+	providers: [ConstantsService, APILogLoaderService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}
