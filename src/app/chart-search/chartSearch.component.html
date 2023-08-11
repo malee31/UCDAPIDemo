@@ -1,1 +1,5 @@
 <p>chart search works!</p>
+<input #crnSearch type="text" (keyup)="crn= (crnSearch.value)" />
+<p *ngIf="!crnValid">"{{crn}}" is not a valid CRN</p>
+<br/>
+<a routerLink="/home">Back</a>
