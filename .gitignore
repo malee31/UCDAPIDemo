@@ -1,4 +1,5 @@
 private/
+src/environments/environment.development.ts
 
 # Compiled output
 /dist
