@@ -1,1 +1,9 @@
-<p>chart works!</p>
+<p *ngIf="loading">Loading...</p>
+<canvas
+	*ngIf="!loading"
+	baseChart
+	class="chart"
+	[data]="generatedData"
+	[options]="generatedOptions"
+	type="line"
+></canvas>

@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-
+import { NgChartsModule } from "ng2-charts";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
@@ -10,8 +10,9 @@ import { HTTP404Component } from "./http404/http404.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LogDatePipe } from "./logs/LogDate.pipe";
 import { ChartSearchComponent } from "./chart-search/chartSearch.component";
-import { APILogLoaderService } from "./api-services/apilog-loader.service";
+import { ApiService } from "./api-services/api.service";
 import { ConstantsService } from "./config/constants.service";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
 	declarations: [
@@ -26,9 +27,11 @@ import { ConstantsService } from "./config/constants.service";
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
-		BrowserAnimationsModule
+		BrowserAnimationsModule,
+		CommonModule,
+		NgChartsModule
 	],
-	providers: [ConstantsService, APILogLoaderService],
+	providers: [ConstantsService, ApiService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}
