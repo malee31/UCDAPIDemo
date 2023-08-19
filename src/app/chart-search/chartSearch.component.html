@@ -1,9 +1,30 @@
 <section class="chart-search-main">
 	<label class="crn-search">
+		<span class="crn-search-label">Subject Code Filter</span>
+		<input
+			#subjectCodeSearch
+			type="text"
+			(keyup)="updateSubjectCodeFilter(subjectCodeSearch.value)"
+			(focusout)="searchCRN()"
+		/>
+	</label>
+	<ul *ngIf="results.length !== 0">
+		<li
+			*ngFor="let result of results"
+			(click)="crnSearch.value = result.crn; crn = result.crn"
+		>
+			{{result.crn}} - {{result.subject_code}} {{result.subject_number}}
+		</li>
+	</ul>
+
+
+	<h1>Jump to Chart</h1>
+	<label class="crn-search">
 		<span class="crn-search-label">CRN Lookup</span>
-		<input #crnSearch type="text" (keyup)="crn= (crnSearch.value)" />
+		<input #crnSearch type="text" (keyup)="crn=(crnSearch.value)"/>
 	</label>
 	<p *ngIf="!crnValid">"{{crn}}" is not a valid CRN</p>
+	<a routerLink="/chart/crn/{{crn}}">View Chart</a>
 	<br/>
 	<a routerLink="/home">Back</a>
 </section>

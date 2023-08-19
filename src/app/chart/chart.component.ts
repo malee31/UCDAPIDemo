@@ -1,8 +1,10 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { Chart, ChartConfiguration } from "chart.js";
 import { Plugin } from "chart.js/dist/types";
 import { BaseChartDirective } from "ng2-charts";
 import * as moment from "moment";
+import { ApiService } from "../api-services/api.service";
+import { APICourse } from "../api-services/api-types";
 
 const tooltipPlugin: Plugin = {
 	id: "trace-tooltip",
@@ -27,9 +29,10 @@ const tooltipPlugin: Plugin = {
 @Component({
 	selector: "app-chart",
 	templateUrl: "./chart.component.html",
-	styleUrls: ["./chart.component.scss"]
+	styleUrls: ["./chart.component.scss"],
+	providers: [ApiService]
 })
-export class ChartComponent {
+export class ChartComponent implements OnInit {
 	public loading = false;
 	public crnData: any[] = [
 		{
@@ -71,9 +74,14 @@ export class ChartComponent {
 	public generatedOptions: ChartConfiguration['options'];
 	public generatedPlugins: ChartConfiguration['plugins'];
 
+	public _crn: string = "";
+	@Input()
+	set crn(crn: string) {
+		this._crn = crn;
+	}
+
 	@ViewChild(BaseChartDirective) chart?: BaseChartDirective;
-	constructor() {
-		// Chart.register(Annotation);
+	constructor(private api: ApiService) {
 		Chart.register(tooltipPlugin);
 		const labels = this.crnData.map(e => moment(new Date(Number(e.timestamp_local))).format("M/D h:mm a"));
 		// @ts-ignore
@@ -137,5 +145,11 @@ export class ChartComponent {
 				}
 			}
 		};
+	}
+
+	ngOnInit() {
+		if(this._crn.length !== 6) {
+			throw new Error("CRN must be 5 characters");
+		}
 	}
 }

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { APILog } from "./api-types";
+import { APICourse, APILog } from "./api-types";
 import { ConstantsService } from "../config/constants.service";
 
 @Injectable({
@@ -14,12 +14,13 @@ export class ApiService {
 		return logResponse.logs;
 	}
 
-	constructor(private CONSTANTS: ConstantsService) {
-		this.fetchLogs()
-			.then(() => console.log("Logs Fetched"))
-			.catch(err => {
-				console.warn("Failed to Fetch Logs");
-				console.error(err);
-			});
+	fetchCRNsBySubjectCode = async (subjectCode: string): Promise<APICourse[]> => {
+		// TODO: Add interaction with server
+		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/courses/${subjectCode}`);
+		if(apiRes.status !== 200) throw new RangeError(`Course by Subject Code responded with HTTP ${apiRes.status}`);
+		const coursesResponse: { ok: boolean, courses: APICourse[] } = await apiRes.json();
+		return coursesResponse.courses;
 	}
+
+	constructor(private CONSTANTS: ConstantsService) {}
 }
