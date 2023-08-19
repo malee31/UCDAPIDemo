@@ -11,3 +11,16 @@ export interface APICourse {
 	subject_number: string,
 	reserved: boolean
 }
+
+export interface APISeats {
+	crn: string,
+	seats_available: number,
+	seats_reserved: number,
+	waitlist: number,
+	timestamp_local: string,
+	// TODO: Remove extra data
+	"id": number,
+	"batch_timestamp": string
+	"createdAt": string,
+	"updatedAt": string
+}

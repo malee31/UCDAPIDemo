@@ -4,7 +4,7 @@ import { Plugin } from "chart.js/dist/types";
 import { BaseChartDirective } from "ng2-charts";
 import * as moment from "moment";
 import { ApiService } from "../api-services/api.service";
-import { APICourse } from "../api-services/api-types";
+import { APICourse, APISeats } from "../api-services/api-types";
 
 const tooltipPlugin: Plugin = {
 	id: "trace-tooltip",
@@ -33,46 +33,12 @@ const tooltipPlugin: Plugin = {
 	providers: [ApiService]
 })
 export class ChartComponent implements OnInit {
-	public loading = false;
-	public crnData: any[] = [
-		{
-			"id": 5970509,
-			"batch_timestamp": "1689199203238",
-			"timestamp_local": "1689199250423",
-			"crn": "26765",
-			"seats_available": 7,
-			"seats_reserved": 4,
-			"waitlist": 0,
-			"createdAt": "2023-07-12T22:00:50.424Z",
-			"updatedAt": "2023-07-12T22:00:50.424Z"
-		},
-		{
-			"id": 5974801,
-			"batch_timestamp": "1689202803340",
-			"timestamp_local": "1689202851630",
-			"crn": "26765",
-			"seats_available": 7,
-			"seats_reserved": 4,
-			"waitlist": 0,
-			"createdAt": "2023-07-12T23:00:51.631Z",
-			"updatedAt": "2023-07-12T23:00:51.631Z"
-		},
-		{
-			"id": 7699749,
-			"batch_timestamp": "1692248404712",
-			"timestamp_local": "1692248437114",
-			"crn": "26765",
-			"seats_available": 0,
-			"seats_reserved": 1,
-			"waitlist": 0,
-			"createdAt": "2023-08-17T05:00:37.114Z",
-			"updatedAt": "2023-08-17T05:00:37.114Z"
-		}
-	];
+	public loading = true;
+	public crnData: APISeats[] = [];
 
-	public generatedData: ChartConfiguration['data'];
-	public generatedOptions: ChartConfiguration['options'];
-	public generatedPlugins: ChartConfiguration['plugins'];
+	public generatedData: ChartConfiguration['data'] | undefined;
+	public generatedOptions: ChartConfiguration['options'] | undefined;
+	public generatedPlugins: ChartConfiguration['plugins'] | undefined;
 
 	public _crn: string = "";
 	@Input()
@@ -83,73 +49,82 @@ export class ChartComponent implements OnInit {
 	@ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 	constructor(private api: ApiService) {
 		Chart.register(tooltipPlugin);
-		const labels = this.crnData.map(e => moment(new Date(Number(e.timestamp_local))).format("M/D h:mm a"));
-		// @ts-ignore
-		this.generatedData = {
-			labels: labels,
-			datasets: [
-				{
-					label: "Net Seats",
-					data: this.crnData.map(e => e.seats_available + e.seats_reserved - e.waitlist),
-					fill: true,
-					borderColor: "rgb(91,194,38)",
-					backgroundColor: "rgba(91,194,38, 0.5)",
-					tension: 0.05
-				},
-				{
-					label: "Reserved Seats",
-					data: this.crnData.map(e => e.seats_reserved),
-					fill: true,
-					borderColor: "rgb(20,121,189)",
-					backgroundColor: "rgba(20,121,189,0.5)",
-					tension: 0.05
-				},
-				{
-					label: "Waitlist Seats",
-					data: this.crnData.map(e => e.waitlist),
-					fill: true,
-					borderColor: "rgb(159,11,31)",
-					backgroundColor: "rgba(159,11,31, 0.5)",
-					tension: 0.05
-				},
-				{
+	}
+
+	ngOnInit() {
+		if(this._crn.length !== 5) {
+			throw new Error("CRN must be 5 characters");
+		}
+
+		this.api.fetchSeatHistoryByCRN(this._crn)
+			.then((seats: APISeats[]) => {
+				this.crnData = seats;
+
+				const labels = this.crnData.map(e => moment(new Date(Number(e.timestamp_local))).format("M/D h:mm a"));
+				// @ts-ignore
+				this.generatedData = {
+					labels: labels,
+					datasets: [
+						{
+							label: "Net Seats",
+							data: this.crnData.map(e => e.seats_available + e.seats_reserved - e.waitlist),
+							fill: true,
+							borderColor: "rgb(91,194,38)",
+							backgroundColor: "rgba(91,194,38, 0.5)",
+							tension: 0.05
+						},
+						{
+							label: "Reserved Seats",
+							data: this.crnData.map(e => e.seats_reserved),
+							fill: true,
+							borderColor: "rgb(20,121,189)",
+							backgroundColor: "rgba(20,121,189,0.5)",
+							tension: 0.05
+						},
+						{
+							label: "Waitlist Seats",
+							data: this.crnData.map(e => e.waitlist),
+							fill: true,
+							borderColor: "rgb(159,11,31)",
+							backgroundColor: "rgba(159,11,31, 0.5)",
+							tension: 0.05
+						},
+						{
+							label: "Linear Trend Line",
+							data: [],
+							fill: false,
+							borderColor: "rgb(200,100,30)",
+							tension: 0.05
+						}
+					]
+				};
+
+				// @ts-ignore
+				this.generatedData.datasets.push({
 					label: "Linear Trend Line",
 					data: [],
 					fill: false,
 					borderColor: "rgb(200,100,30)",
 					tension: 0.05
-				}
-			]
-		};
+				})
 
-		// @ts-ignore
-		this.generatedData.datasets.push({
-			label: "Linear Trend Line",
-			data: [],
-			fill: false,
-			borderColor: "rgb(200,100,30)",
-			tension: 0.05
-		})
+				this.generatedPlugins = [tooltipPlugin];
 
-		this.generatedPlugins = [tooltipPlugin];
+				this.generatedOptions = {
+					interaction: {
+						intersect: false,
+						mode: "index"
+					},
+					plugins: {
+						tooltip: {
+							enabled: true,
+							position: "average"
+						}
+					}
+				};
 
-		this.generatedOptions = {
-			interaction: {
-				intersect: false,
-				mode: "index"
-			},
-			plugins: {
-				tooltip: {
-					enabled: true,
-					position: "average"
-				}
-			}
-		};
-	}
-
-	ngOnInit() {
-		if(this._crn.length !== 6) {
-			throw new Error("CRN must be 5 characters");
-		}
+				this.loading = false;
+			})
+			.catch(alert);
 	}
 }

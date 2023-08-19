@@ -13,7 +13,9 @@
 			*ngFor="let result of results"
 			(click)="crnSearch.value = result.crn; crn = result.crn"
 		>
-			{{result.crn}} - {{result.subject_code}} {{result.subject_number}}
+			<a routerLink="/chart/crn/{{result.crn}}">
+				{{result.crn}} - {{result.subject_code}} {{result.subject_number}}
+			</a>
 		</li>
 	</ul>
 
