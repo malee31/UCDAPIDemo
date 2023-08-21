@@ -1,15 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { initFlowbite } from "flowbite";
+import { Component } from "@angular/core";
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+	selector: "app-root",
+	templateUrl: "./app.component.html",
+	styleUrls: ["./app.component.scss"]
 })
-export class AppComponent implements OnInit {
-  title = "UCDAPIDemo";
+export class AppComponent {
+	title = "UCDAPIDemo";
 
-	ngOnInit(): void {
-		initFlowbite();
-	}
+
 }

@@ -12,6 +12,7 @@ import { ChartSearchComponent } from "./chart-search/chartSearch.component";
 import { ApiService } from "./api-services/api.service";
 import { ConstantsService } from "./config/constants.service";
 import { CommonModule } from "@angular/common";
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
 	declarations: [
@@ -19,7 +20,8 @@ import { CommonModule } from "@angular/common";
 		HomeComponent,
 		ChartSearchComponent,
 		ChartComponent,
-		HTTP404Component
+		HTTP404Component,
+		NavbarComponent
 	],
 	imports: [
 		BrowserModule,
