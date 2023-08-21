@@ -8,7 +8,6 @@ import { LogsComponent } from "./logs/logs.component";
 import { ChartComponent } from "./chart/chart.component";
 import { HTTP404Component } from "./http404/http404.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LogDatePipe } from "./logs/LogDate.pipe";
 import { ChartSearchComponent } from "./chart-search/chartSearch.component";
 import { ApiService } from "./api-services/api.service";
 import { ConstantsService } from "./config/constants.service";
@@ -18,18 +17,17 @@ import { CommonModule } from "@angular/common";
 	declarations: [
 		AppComponent,
 		HomeComponent,
-		LogsComponent,
 		ChartSearchComponent,
 		ChartComponent,
-		HTTP404Component,
-		LogDatePipe
+		HTTP404Component
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		CommonModule,
-		NgChartsModule
+		NgChartsModule,
+		LogsComponent,
 	],
 	providers: [ConstantsService, ApiService],
 	bootstrap: [AppComponent]

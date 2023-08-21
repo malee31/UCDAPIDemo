@@ -4,7 +4,7 @@ import { Plugin } from "chart.js/dist/types";
 import { BaseChartDirective } from "ng2-charts";
 import * as moment from "moment";
 import { ApiService } from "../api-services/api.service";
-import { APICourse, APISeats } from "../api-services/api-types";
+import { APISeats } from "../api-services/api-types";
 
 const tooltipPlugin: Plugin = {
 	id: "trace-tooltip",
@@ -88,13 +88,6 @@ export class ChartComponent implements OnInit {
 							borderColor: "rgb(159,11,31)",
 							backgroundColor: "rgba(159,11,31, 0.5)",
 							tension: 0.05
-						},
-						{
-							label: "Linear Trend Line",
-							data: [],
-							fill: false,
-							borderColor: "rgb(200,100,30)",
-							tension: 0.05
 						}
 					]
 				};
@@ -107,6 +100,9 @@ export class ChartComponent implements OnInit {
 					borderColor: "rgb(200,100,30)",
 					tension: 0.05
 				})
+
+				// TODO: Re-add trend line feature
+				this.generatedData.datasets.pop()
 
 				this.generatedPlugins = [tooltipPlugin];
 

@@ -1,3 +1,8 @@
+.log-table-section {
+	width: 100%;
+	padding: 0 8px;
+}
+
 .log-table {
 	width: 100%;
 	border-collapse: collapse;
@@ -5,7 +10,6 @@
 }
 
 .log-table td {
-	border: 1px solid black;
 	padding: 4px 8px;
 }
 

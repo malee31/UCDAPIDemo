@@ -1,18 +1,38 @@
-<table class="log-table">
-	<thead>
-		<tr>
-			<td>Time</td>
-			<td>Type</td>
-			<td>Message</td>
-			<td>Extra Data</td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let log of logs">
-			<td  class="log-table-column-0">{{log.timestamp | logdate }}</td>
-			<td class="log-table-column-0">{{log.log_type}}</td>
-			<td>{{log.message}}</td>
-			<td>{{log.related_data}}</td>
-		</tr>
-	</tbody>
-</table>
+<section class="log-table-section">
+	<table mat-table [dataSource]="logs" class="mat-elevation-z8 log-table">
+		<thead>
+			<tr>
+				<td>Time</td>
+				<td>Type</td>
+				<td>Message</td>
+				<td>Extra Data</td>
+			</tr>
+		</thead>
+		<tbody>
+			<ng-container matColumnDef="timestamp">
+				<th mat-header-cell *matHeaderCellDef>Time</th>
+				<td mat-cell class="log-table-column-0" *matCellDef="let log"> {{log.timestamp | logdate}} </td>
+			</ng-container>
+			<ng-container matColumnDef="log_type">
+				<th mat-header-cell *matHeaderCellDef>Type</th>
+				<td mat-cell class="log-table-column-0" *matCellDef="let log"> {{log.log_type}} </td>
+			</ng-container>
+			<ng-container matColumnDef="message">
+				<th mat-header-cell *matHeaderCellDef>Message</th>
+				<td mat-cell *matCellDef="let log"> {{log.message}} </td>
+			</ng-container>
+			<ng-container matColumnDef="related_data">
+				<th mat-header-cell *matHeaderCellDef>Extra Data</th>
+				<td mat-cell *matCellDef="let log"> {{log.related_data}} </td>
+			</ng-container>
+			<!--		<tr *ngFor="let log of logs">-->
+			<!--			<td  class="log-table-column-0">{{log.timestamp | logdate }}</td>-->
+			<!--			<td class="log-table-column-0">{{log.log_type}}</td>-->
+			<!--			<td>{{log.message}}</td>-->
+			<!--			<td>{{log.related_data}}</td>-->
+			<!--		</tr>-->
+			<tr mat-header-row *matHeaderRowDef="columns"></tr>
+			<tr mat-row *matRowDef="let row; columns: columns;"></tr>
+		</tbody>
+	</table>
+</section>
