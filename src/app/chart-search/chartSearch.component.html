@@ -13,7 +13,7 @@
 			*ngFor="let result of results"
 			(click)="crnSearch.value = result.crn; crn = result.crn"
 		>
-			<a routerLink="chart/crn/{{result.crn}}">
+			<a routerLink="/chart/crn/{{result.crn}}">
 				{{result.crn}} - {{result.subject_code}} {{result.subject_number}}
 			</a>
 		</li>
@@ -26,7 +26,7 @@
 		<input #crnSearch type="text" (keyup)="crn=(crnSearch.value)"/>
 	</label>
 	<p *ngIf="!crnValid">"{{crn}}" is not a valid CRN</p>
-	<a routerLink="chart/crn/{{crn}}">View Chart</a>
+	<a routerLink="/chart/crn/{{crn}}">View Chart</a>
 	<br/>
-	<a routerLink="home">Back</a>
+	<a routerLink="/home">Back</a>
 </section>
