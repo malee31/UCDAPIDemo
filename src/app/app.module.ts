@@ -14,6 +14,7 @@ import { ConstantsService } from "./config/constants.service";
 import { CommonModule } from "@angular/common";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GraphComponent } from './components/graph/graph.component';
+import { CrnGraphComponent } from './components/crn-graph/crn-graph.component';
 
 @NgModule({
 	declarations: [
@@ -23,7 +24,8 @@ import { GraphComponent } from './components/graph/graph.component';
 		ChartComponent,
 		HTTP404Component,
 		NavbarComponent,
-		GraphComponent
+		GraphComponent,
+		CrnGraphComponent
 	],
 	imports: [
 		BrowserModule,
