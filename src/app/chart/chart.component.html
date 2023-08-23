@@ -1,10 +1,6 @@
 <p *ngIf="loading">Loading...</p>
 <div *ngIf="!loading">
-	<canvas
-		baseChart
-		class="chart"
-		[data]="generatedData"
-		[options]="generatedOptions"
-		type="line"
-	></canvas>
+	<app-graph
+		[crnData]="crnData"
+	></app-graph>
 </div>

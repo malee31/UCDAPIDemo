@@ -13,6 +13,7 @@ import { ApiService } from "./api-services/api.service";
 import { ConstantsService } from "./config/constants.service";
 import { CommonModule } from "@angular/common";
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { GraphComponent } from './components/graph/graph.component';
 
 @NgModule({
 	declarations: [
@@ -21,7 +22,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 		ChartSearchComponent,
 		ChartComponent,
 		HTTP404Component,
-		NavbarComponent
+		NavbarComponent,
+		GraphComponent
 	],
 	imports: [
 		BrowserModule,
