@@ -17,7 +17,7 @@ export class CrnGraphComponent implements OnInit {
 
 	constructor(private api: ApiService) {}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		if(this.crn.length !== 5) {
 			throw new Error(`CRN must be 5 characters: "${this.crn}"`);
 		}

@@ -54,7 +54,7 @@ export class GraphComponent implements OnInit {
 		Chart.register(tooltipPlugin);
 	}
 
-	ngOnInit() {
+	ngOnInit(): void {
 		if(!this.crnData.length) {
 			throw new Error("CRN data must not be empty");
 		}
