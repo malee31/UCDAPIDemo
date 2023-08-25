@@ -11,25 +11,30 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartSearchComponent } from "./chart-search/chartSearch.component";
 import { ApiService } from "./api-services/api.service";
 import { ConstantsService } from "./config/constants.service";
-import { CommonModule } from "@angular/common";
+import { CommonModule, AsyncPipe } from "@angular/common";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GraphComponent } from './components/graph/graph.component';
 import { CrnGraphComponent } from './components/crn-graph/crn-graph.component';
 import { CourseNameGraphComponent } from './components/course-name-graph/course-name-graph.component';
 import { MultiChartComponent } from './multichart/multi-chart.component';
 
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
+
 @NgModule({
 	declarations: [
 		AppComponent,
 		HomeComponent,
-		ChartSearchComponent,
 		ChartComponent,
 		HTTP404Component,
 		NavbarComponent,
 		GraphComponent,
 		CrnGraphComponent,
-  CourseNameGraphComponent,
-  MultiChartComponent
+		ChartSearchComponent,
+		CourseNameGraphComponent,
+		MultiChartComponent
 	],
 	imports: [
 		BrowserModule,
@@ -38,6 +43,12 @@ import { MultiChartComponent } from './multichart/multi-chart.component';
 		CommonModule,
 		NgChartsModule,
 		LogsComponent,
+		FormsModule,
+		MatFormFieldModule,
+		MatInputModule,
+		MatAutocompleteModule,
+		ReactiveFormsModule,
+		AsyncPipe,
 	],
 	providers: [ConstantsService, ApiService],
 	bootstrap: [AppComponent]

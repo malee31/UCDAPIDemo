@@ -1,32 +1,75 @@
 <section class="chart-search-main">
-	<label class="crn-search">
-		<span class="crn-search-label">Subject Code Filter</span>
-		<input
-			#subjectCodeSearch
+	<h1
+		class="text-2xl"
+	>
+		CRN Lookup Tool
+	</h1>
+
+	<mat-form-field>
+		<mat-label>Subject Code Filter</mat-label>
+		<input #input
 			type="text"
-			(keyup)="updateSubjectCodeFilter(subjectCodeSearch.value)"
-			(focusout)="searchCRN()"
-		/>
-	</label>
-	<ul *ngIf="results.length !== 0">
-		<li
-			*ngFor="let result of results"
-			(click)="crnSearch.value = result.crn; crn = result.crn"
+			placeholder="Select Subject Code"
+			matInput
+			[formControl]="subjectCodeControl"
+			[matAutocomplete]="auto"
+			(input)="filter()"
+			(focus)="filter()"
 		>
-			<a routerLink="/chart/crn/{{result.crn}}">
-				{{result.crn}} - {{result.subject_code}} {{result.subject_number}}
-			</a>
-		</li>
-	</ul>
+		<mat-autocomplete
+			requireSelection
+			#auto="matAutocomplete"
+			(optionSelected)="searchCRN($event)"
+		>
+			<mat-option
+				*ngFor="let option of filteredOptions"
+				[value]="option"
+			>
+				{{option}}
+			</mat-option>
+		</mat-autocomplete>
+	</mat-form-field>
 
 
-	<h1>Jump to Chart</h1>
-	<label class="crn-search">
-		<span class="crn-search-label">CRN Lookup</span>
-		<input #crnSearch type="text" (keyup)="crn=(crnSearch.value)"/>
-	</label>
-	<p *ngIf="!crnValid">"{{crn}}" is not a valid CRN</p>
-	<a routerLink="/chart/crn/{{crn}}">View Chart</a>
-	<br/>
-	<a routerLink="/home">Back</a>
+	<mat-form-field *ngIf="results.length !== 0">
+		<mat-label>CRN Selection</mat-label>
+		<input #crnInput
+			type="text"
+			placeholder="Select Subject Code"
+			matInput
+			[formControl]="crnControl"
+			[matAutocomplete]="auto"
+			(input)="filterCRN()"
+			(focus)="filterCRN()"
+		>
+		<mat-autocomplete
+			requireSelection
+			#auto="matAutocomplete"
+			(optionSelected)="crn=$event.option.value"
+		>
+			<mat-option
+				*ngFor="let option of filteredCRNOptions"
+				[value]="option"
+			>
+				{{option}}
+			</mat-option>
+		</mat-autocomplete>
+	</mat-form-field>
+
+	<div class="flex flex-col gap-4">
+		<a
+			class="block text-blue-500"
+			*ngIf="chosenCourse"
+			routerLink="/chart/crn/{{chosenCourse.crn}}"
+		>
+			View Chart for {{chosenCourse.crn}} - {{chosenCourse.subject_code}} {{chosenCourse.subject_number}}
+		</a>
+
+		<a
+			class="block text-blue-500"
+			routerLink="/home"
+		>
+			Back
+		</a>
+	</div>
 </section>
