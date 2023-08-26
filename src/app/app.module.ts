@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { AboutUsComponent } from './components/home/about-us/about-us.component';
 
 @NgModule({
 	declarations: [
@@ -34,7 +35,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 		CrnGraphComponent,
 		ChartSearchComponent,
 		CourseNameGraphComponent,
-		MultiChartComponent
+		MultiChartComponent,
+		AboutUsComponent
 	],
 	imports: [
 		BrowserModule,
