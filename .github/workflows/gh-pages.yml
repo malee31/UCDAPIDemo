@@ -16,12 +16,6 @@ jobs:
         env:
           API_URL: ${{secrets.API_URL}}
 
-      - name: Check Files
-        run: 'cat src/environments/environment.ts && ls src/environments'
-        shell: bash
-        env:
-          API_URL: ${{secrets.API_URL}}
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
