@@ -14,7 +14,7 @@ jobs:
         run: 'echo "environment.SERVER_URL = \"$API_URL\";" >> src/environments/environment.ts'
         shell: bash
         env:
-          SSH_KEY: ${{secrets.API_URL}}
+          API_URL: ${{secrets.API_URL}}
 
       - name: Setup Node
         uses: actions/setup-node@v3
