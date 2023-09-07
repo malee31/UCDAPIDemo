@@ -1,6 +1,9 @@
 <p *ngIf="loading">Loading...</p>
 <p *ngIf="failed">Failed to load data for CRN #{{crn}}...</p>
-<div *ngIf="!loading && !failed">
+<div
+	*ngIf="!loading && !failed"
+	class="w-full"
+>
 	<app-graph
 		[crnData]="crnData"
 	></app-graph>
