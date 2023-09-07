@@ -49,9 +49,9 @@
 		>
 			<mat-option
 				*ngFor="let option of filteredCRNOptions"
-				[value]="option"
+				[value]="option.crn"
 			>
-				{{option}}
+				{{option.subject_code}} {{option.subject_number}} - {{option.crn}}
 			</mat-option>
 		</mat-autocomplete>
 	</mat-form-field>

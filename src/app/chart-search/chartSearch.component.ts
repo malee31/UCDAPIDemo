@@ -18,7 +18,7 @@ export class ChartSearchComponent {
 	subjectCodeControl = new FormControl("");
 	crnControl = new FormControl("");
 	filteredOptions: string[];
-	filteredCRNOptions: string[];
+	filteredCRNOptions: APICourse[];
 
 	chosenSubjectCode: string = "";
 	results: APICourse[] = [];
@@ -40,7 +40,7 @@ export class ChartSearchComponent {
 
 	filterCRN(): void {
 		const filterValue = this.crnInput.nativeElement.value.toLowerCase();
-		this.filteredCRNOptions = this.results.map(course => course.crn).filter(o => o.toLowerCase().includes(filterValue));
+		this.filteredCRNOptions = this.results.filter(course => course.crn.toLowerCase().includes(filterValue));
 	}
 
 	@Input()
