@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { APICourse, APILog, APISeats } from "./api-types";
+import { APICrn, APILog, APISeats } from "./api-types";
 import { ConstantsService } from "../config/constants.service";
 
 @Injectable({
@@ -13,18 +13,18 @@ export class ApiService {
 		return logResponse.logs;
 	}
 
-	fetchCRNsBySubjectCode = async (subjectCode: string): Promise<APICourse[]> => {
+	fetchCRNsBySubjectCode = async (subjectCode: string): Promise<APICrn[]> => {
 		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/courses/crns/${subjectCode}`);
 		if(apiRes.status !== 200) throw new RangeError(`Course by Subject Code responded with HTTP ${apiRes.status}`);
-		const coursesResponse: { ok: boolean, courses: APICourse[] } = await apiRes.json();
-		return coursesResponse.courses;
+		const coursesResponse: { ok: boolean, crns: APICrn[] } = await apiRes.json();
+		return coursesResponse.crns;
 	}
 
-	fetchCRNsBySubjectCodeAndNumber = async (subjectCode: string, subjectNumber: string): Promise<APICourse[]> => {
+	fetchCRNsBySubjectCodeAndNumber = async (subjectCode: string, subjectNumber: string): Promise<APICrn[]> => {
 		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/courses/crns/${subjectCode}/${subjectNumber}`);
 		if(apiRes.status !== 200) throw new RangeError(`Course by Subject Code responded with HTTP ${apiRes.status}`);
-		const coursesResponse: { ok: boolean, courses: APICourse[] } = await apiRes.json();
-		return coursesResponse.courses;
+		const coursesResponse: { ok: boolean, crns: APICrn[] } = await apiRes.json();
+		return coursesResponse.crns;
 	}
 
 	fetchSeatHistoryByCRN = async (crn: string): Promise<APISeats[]> => {

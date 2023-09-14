@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild, ElementRef } from "@angular/core";
 import { ApiService } from "../api-services/api.service";
-import { APICourse } from "../api-services/api-types";
+import { APICrn } from "../api-services/api-types";
 
 import { SUBJECT_CODE_LIST } from "../../temp/subjectCodes";
 
@@ -18,11 +18,11 @@ export class ChartSearchComponent {
 	subjectCodeControl = new FormControl("");
 	crnControl = new FormControl("");
 	filteredOptions: string[];
-	filteredCRNOptions: APICourse[];
+	filteredCRNOptions: APICrn[];
 
 	chosenSubjectCode: string = "";
-	results: APICourse[] = [];
-	chosenCourse: APICourse | null = null;
+	results: APICrn[] = [];
+	chosenCourse: APICrn | null = null;
 
 	@ViewChild("input") input!: ElementRef<HTMLInputElement>;
 	@ViewChild("crnInput") crnInput!: ElementRef<HTMLInputElement>;

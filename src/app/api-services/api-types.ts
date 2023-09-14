@@ -5,7 +5,7 @@ export interface APILog {
 	related_data: string
 }
 
-export interface APICourse {
+export interface APICrn {
 	crn: string,
 	subject_code: string,
 	subject_number: string,

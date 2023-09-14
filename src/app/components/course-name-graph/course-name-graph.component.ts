@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from "../../api-services/api.service";
-import { APICourse } from "../../api-services/api-types";
+import { APICrn } from "../../api-services/api-types";
 
 @Component({
 	selector: 'app-course-name-graph',
@@ -12,13 +12,13 @@ export class CourseNameGraphComponent implements OnInit {
 	@Input({ required: true }) subject_code: string = "";
 	@Input({ required: true }) subject_number: string = "";
 
-	courses: APICourse[] = [];
+	courses: APICrn[] = [];
 
 	constructor(private api: ApiService) {}
 
 	ngOnInit(): void {
 		this.api.fetchCRNsBySubjectCodeAndNumber(this.subject_code, this.subject_number)
-			.then((courses: APICourse[]) => {
+			.then((courses: APICrn[]) => {
 				this.courses = courses;
 			})
 			.catch(err => {
