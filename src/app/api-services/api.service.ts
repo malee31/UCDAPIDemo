@@ -14,14 +14,14 @@ export class ApiService {
 	}
 
 	fetchCRNsBySubjectCode = async (subjectCode: string): Promise<APICourse[]> => {
-		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/courses/${subjectCode}`);
+		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/courses/crns/${subjectCode}`);
 		if(apiRes.status !== 200) throw new RangeError(`Course by Subject Code responded with HTTP ${apiRes.status}`);
 		const coursesResponse: { ok: boolean, courses: APICourse[] } = await apiRes.json();
 		return coursesResponse.courses;
 	}
 
 	fetchCRNsBySubjectCodeAndNumber = async (subjectCode: string, subjectNumber: string): Promise<APICourse[]> => {
-		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/courses/${subjectCode}/${subjectNumber}`);
+		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/courses/crns/${subjectCode}/${subjectNumber}`);
 		if(apiRes.status !== 200) throw new RangeError(`Course by Subject Code responded with HTTP ${apiRes.status}`);
 		const coursesResponse: { ok: boolean, courses: APICourse[] } = await apiRes.json();
 		return coursesResponse.courses;
