@@ -23,6 +23,10 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { AboutUsComponent } from './components/home/about-us/about-us.component';
+import { DegreesComponent } from './degrees/degrees.component';
+import { SeatsComponent } from './seats/seats.component';
+import { CoursesComponent } from './courses/courses.component';
+import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 
 @NgModule({
 	declarations: [
@@ -36,7 +40,11 @@ import { AboutUsComponent } from './components/home/about-us/about-us.component'
 		ChartSearchComponent,
 		CourseNameGraphComponent,
 		MultiChartComponent,
-		AboutUsComponent
+		AboutUsComponent,
+  DegreesComponent,
+  SeatsComponent,
+  CoursesComponent,
+  ComingSoonComponent
 	],
 	imports: [
 		BrowserModule,
