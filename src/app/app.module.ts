@@ -28,6 +28,8 @@ import { SeatsComponent } from './seats/seats.component';
 import { CoursesComponent } from './courses/courses.component';
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { CloseSidebarButtonComponent } from './components/sidebar/close-sidebar-button/close-sidebar-button.component';
+import { OpenSidebarButtonComponent } from './components/sidebar/open-sidebar-button/open-sidebar-button.component';
 
 @NgModule({
 	declarations: [
@@ -42,11 +44,13 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 		CourseNameGraphComponent,
 		MultiChartComponent,
 		AboutUsComponent,
-  DegreesComponent,
-  SeatsComponent,
-  CoursesComponent,
-  ComingSoonComponent,
-  SidebarComponent
+		DegreesComponent,
+		SeatsComponent,
+		CoursesComponent,
+		ComingSoonComponent,
+		SidebarComponent,
+		CloseSidebarButtonComponent,
+		OpenSidebarButtonComponent
 	],
 	imports: [
 		BrowserModule,
