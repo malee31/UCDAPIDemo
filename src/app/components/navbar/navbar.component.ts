@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { initFlowbite } from "flowbite";
 
 @Component({
@@ -7,7 +7,7 @@ import { initFlowbite } from "flowbite";
 	styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
+	@Output() showOverlayEvent = new EventEmitter<boolean>();
 	ngOnInit(): void {
 		initFlowbite();
 	}

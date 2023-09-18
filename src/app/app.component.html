@@ -1,4 +1,5 @@
-<app-navbar></app-navbar>
+<app-navbar (showOverlayEvent)="showOverlay = true"></app-navbar>
+<app-sidebar [(showOverlay)]="showOverlay"></app-sidebar>
 <main>
 	<router-outlet></router-outlet>
 </main>

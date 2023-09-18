@@ -27,6 +27,7 @@ import { DegreesComponent } from './degrees/degrees.component';
 import { SeatsComponent } from './seats/seats.component';
 import { CoursesComponent } from './courses/courses.component';
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
 	declarations: [
@@ -44,7 +45,8 @@ import { ComingSoonComponent } from './components/coming-soon/coming-soon.compon
   DegreesComponent,
   SeatsComponent,
   CoursesComponent,
-  ComingSoonComponent
+  ComingSoonComponent,
+  SidebarComponent
 	],
 	imports: [
 		BrowserModule,
