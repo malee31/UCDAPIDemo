@@ -1,5 +1,7 @@
-<app-navbar (showOverlayEvent)="showOverlay = true"></app-navbar>
-<app-sidebar [(showOverlay)]="showOverlay"></app-sidebar>
-<main>
-	<router-outlet></router-outlet>
-</main>
+<div class="h-full overflow-y-auto">
+	<app-navbar (showOverlayEvent)="showOverlay = true"></app-navbar>
+	<app-sidebar [(showOverlay)]="showOverlay"></app-sidebar>
+	<main>
+		<router-outlet></router-outlet>
+	</main>
+</div>
