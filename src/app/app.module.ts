@@ -30,6 +30,7 @@ import { ComingSoonComponent } from './components/coming-soon/coming-soon.compon
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CloseSidebarButtonComponent } from './components/sidebar/close-sidebar-button/close-sidebar-button.component';
 import { OpenSidebarButtonComponent } from './components/sidebar/open-sidebar-button/open-sidebar-button.component';
+import { OverviewComponent } from './docs/overview/overview.component';
 
 @NgModule({
 	declarations: [
@@ -50,7 +51,8 @@ import { OpenSidebarButtonComponent } from './components/sidebar/open-sidebar-bu
 		ComingSoonComponent,
 		SidebarComponent,
 		CloseSidebarButtonComponent,
-		OpenSidebarButtonComponent
+		OpenSidebarButtonComponent,
+  OverviewComponent
 	],
 	imports: [
 		BrowserModule,
