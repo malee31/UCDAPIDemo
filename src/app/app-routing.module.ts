@@ -9,7 +9,6 @@ import { MultiChartComponent } from "./multichart/multi-chart.component";
 import { CoursesComponent } from "./courses/courses.component";
 import { DegreesComponent } from "./degrees/degrees.component";
 import { SeatsComponent } from "./seats/seats.component";
-import { OverviewComponent } from "./docs/overview/overview.component";
 import { DegreesDocsComponent } from "./docs/degrees-docs/degrees-docs.component";
 import { CoursesDocsComponent } from "./docs/courses-docs/courses-docs.component";
 import { SeatsDocsComponent } from "./docs/seats-docs/seats-docs.component";
