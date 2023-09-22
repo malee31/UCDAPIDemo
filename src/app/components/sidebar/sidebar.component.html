@@ -51,8 +51,10 @@
 					class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
 				>
 					<svg aria-hidden="true" class="w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-						<path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-						<path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+						<g transform="translate(1,0)">
+							<path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+							<path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+						</g>
 					</svg>
 					<span class="ml-3">Charts</span>
 				</a>
@@ -64,60 +66,86 @@
 					(click)="hideSidebar()"
 					class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
 				>
-					<svg class="w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-						<path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
-						<path d="M14.067 0H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.933-2ZM6.709 13.809a1 1 0 1 1-1.418 1.409l-2-2.013a1 1 0 0 1 0-1.412l2-2a1 1 0 0 1 1.414 1.414L5.412 12.5l1.297 1.309Zm6-.6-2 2.013a1 1 0 1 1-1.418-1.409l1.3-1.307-1.295-1.295a1 1 0 0 1 1.414-1.414l2 2a1 1 0 0 1-.001 1.408v.004Z"/>
+					<svg
+						class="w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+						fill="currentColor"
+						viewBox="0 0 20 20"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<g transform="translate(3,0)">
+							<path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
+							<path d="M14.067 0H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.933-2ZM6.709 13.809a1 1 0 1 1-1.418 1.409l-2-2.013a1 1 0 0 1 0-1.412l2-2a1 1 0 0 1 1.414 1.414L5.412 12.5l1.297 1.309Zm6-.6-2 2.013a1 1 0 1 1-1.418-1.409l1.3-1.307-1.295-1.295a1 1 0 0 1 1.414-1.414l2 2a1 1 0 0 1-.001 1.408v.004Z"/>
+						</g>
 					</svg>
 					<span class="ml-3">Logs</span>
 				</a>
 			</li>
 			<li>
-				<button
-					type="button"
-					class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-					aria-controls="dropdown-pages"
-					data-collapse-toggle="dropdown-pages"
+				<app-collapsible-sidebar-link
+					controlId="dropdown-find-pages"
+					collapsibleTitle="Pages"
 				>
-					<svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+					<svg
+						data-ng-slot="icon"
+						aria-hidden="true"
+						class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+						fill="currentColor"
+						viewBox="0 0 16 20"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2Zm-3 15H4.828a1 1 0 0 1 0-2h6.238a1 1 0 0 1 0 2Zm0-4H4.828a1 1 0 0 1 0-2h6.238a1 1 0 1 1 0 2Z"/>
+						<path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z"/>
 					</svg>
-					<span class="flex-1 ml-3 text-left whitespace-nowrap">Pages</span>
-					<svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-					</svg>
-				</button>
-				<ul id="dropdown-pages" class="hidden py-2 space-y-2">
-					<li>
-						<a
-							routerLink="/degrees"
-							data-drawer-hide="sidebar"
-							(click)="hideSidebar()"
-							class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-						>
+
+					<ul
+						data-ng-slot="links"
+						id="dropdown-find-pages"
+						class="hidden py-2 space-y-2"
+					>
+						<app-collapsible-sidebar-link-item routerLink="/degrees" [onclick]="hideSidebar">
 							Find Degrees
-						</a>
-					</li>
-					<li>
-						<a
-							routerLink="/courses"
-							data-drawer-hide="sidebar"
-							(click)="hideSidebar()"
-							class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-						>
+						</app-collapsible-sidebar-link-item>
+						<app-collapsible-sidebar-link-item routerLink="/courses" [onclick]="hideSidebar">
 							Find Courses
-						</a>
-					</li>
-					<li>
-						<a
-							routerLink="/seats"
-							data-drawer-hide="sidebar"
-							(click)="hideSidebar()"
-							class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-						>
+						</app-collapsible-sidebar-link-item>
+						<app-collapsible-sidebar-link-item routerLink="/seats" [onclick]="hideSidebar">
 							Find Seats
-						</a>
-					</li>
-				</ul>
+						</app-collapsible-sidebar-link-item>
+					</ul>
+				</app-collapsible-sidebar-link>
+			</li>
+			<li>
+				<app-collapsible-sidebar-link
+					controlId="dropdown-docs"
+					collapsibleTitle="Docs"
+				>
+					<svg
+						data-ng-slot="icon"
+						aria-hidden="true"
+						class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 20 16"
+					>
+						<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15"/>
+					</svg>
+
+					<ul
+						data-ng-slot="links"
+						id="dropdown-docs"
+						class="hidden py-2 space-y-2"
+					>
+						<app-collapsible-sidebar-link-item routerLink="/docs/degrees" [onclick]="hideSidebar">
+							Degrees API
+						</app-collapsible-sidebar-link-item>
+						<app-collapsible-sidebar-link-item routerLink="/docs/courses" [onclick]="hideSidebar">
+							Courses API
+						</app-collapsible-sidebar-link-item>
+						<app-collapsible-sidebar-link-item routerLink="/docs/seats" [onclick]="hideSidebar">
+							Seats API
+						</app-collapsible-sidebar-link-item>
+					</ul>
+				</app-collapsible-sidebar-link>
 			</li>
 		</ul>
 	</div>

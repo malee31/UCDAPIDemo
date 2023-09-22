@@ -13,8 +13,9 @@ export class SidebarComponent implements OnInit {
 		initFlowbite();
 	}
 
-	hideSidebar() {
+	// Arrow function required to bind to `this`
+	hideSidebar = () => {
 		this.showOverlay = false;
 		this.showOverlayChange.emit(false);
-	}
+	};
 }

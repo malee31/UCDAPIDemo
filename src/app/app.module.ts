@@ -37,6 +37,8 @@ import { SeatsDocsComponent } from "./docs/seats-docs/seats-docs.component";
 import { DegreesDocsComponent } from "./docs/degrees-docs/degrees-docs.component";
 import { CoursesDocsComponent } from "./docs/courses-docs/courses-docs.component";
 import { DocsOverviewComponent } from "./docs/docs-overview/docs-overview.component";
+import { CollapsibleSidebarLinkComponent } from './components/sidebar/collapsible-sidebar-link/collapsible-sidebar-link.component';
+import { CollapsibleSidebarLinkItemComponent } from './components/sidebar/collapsible-sidebar-link-item/collapsible-sidebar-link-item.component';
 
 @NgModule({
 	declarations: [
@@ -61,7 +63,9 @@ import { DocsOverviewComponent } from "./docs/docs-overview/docs-overview.compon
 		SeatsDocsComponent,
 		DegreesDocsComponent,
 		CoursesDocsComponent,
-		DocsOverviewComponent
+		DocsOverviewComponent,
+		CollapsibleSidebarLinkComponent,
+  CollapsibleSidebarLinkItemComponent
 	],
 	imports: [
 		BrowserModule,
