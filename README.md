@@ -6,7 +6,9 @@ Enjoy the demo!
 
 ## Upcoming Features
 * API Documentation
-  * Include live demo and the data converted into table form for viewing
-  * Include source code for replicating the call
-  * Linked from search pages and sidebar
+  * Include live demos and a table form of the resulting for viewing
+  * Include source code for replicating certain API calls
+  * Link from search pages
 * Better UI/UX for viewing information
+* Repackage the API calls into a reusable file for easy import and use
+  * This should replace the Angular service and be downloadable
