@@ -25,7 +25,7 @@ export class CrnGraphComponent implements OnInit {
 
 		this.route.queryParams.subscribe(params => {
 			console.log(params)
-			const optimized: boolean = params["optimized"] === "true" || params["optimized"] === "0";
+			const optimized: boolean = params["optimized"] === "true" || params["optimized"] === "1";
 			this.api.fetchSeatHistoryByCRN(this.crn, optimized)
 				.then((seats: APISeats[]) => {
 					this.crnData = seats;
