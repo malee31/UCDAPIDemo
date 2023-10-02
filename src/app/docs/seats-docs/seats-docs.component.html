@@ -1,1 +1,29 @@
-<app-coming-soon></app-coming-soon>
+<div class="w-full px-6">
+	<app-doc-header
+		title="Seats API"
+		description="Retrieve the seat history of one or more courses over time as JSON"
+	></app-doc-header>
+
+	<hr class="my-2"/>
+
+	<app-doc-meta
+		endpoint="/v1/seats/history/:crn"
+	></app-doc-meta>
+
+	<app-doc-params>
+		<app-doc-params-table>
+			<app-doc-params-table-row
+				paramType="url"
+				param=":crn"
+				[required]=true
+				description="The CRN of the course to fetch seat data from"
+			></app-doc-params-table-row>
+			<app-doc-params-table-row
+				paramType="query"
+				param="?optimized"
+				description="When set to 1, all nearby points in between two unchanging seat counts are discarded"
+				default="0"
+			></app-doc-params-table-row>
+		</app-doc-params-table>
+	</app-doc-params>
+</div>

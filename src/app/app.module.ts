@@ -39,6 +39,11 @@ import { CoursesDocsComponent } from "./docs/courses-docs/courses-docs.component
 import { DocsOverviewComponent } from "./docs/docs-overview/docs-overview.component";
 import { CollapsibleSidebarLinkComponent } from './components/sidebar/collapsible-sidebar-link/collapsible-sidebar-link.component';
 import { CollapsibleSidebarLinkItemComponent } from './components/sidebar/collapsible-sidebar-link-item/collapsible-sidebar-link-item.component';
+import { DocHeaderComponent } from './components/docs/doc-header/doc-header.component';
+import { DocMetaComponent } from './components/docs/doc-meta/doc-meta.component';
+import { DocParamsComponent } from './components/docs/doc-params/doc-params.component';
+import { DocParamsTableComponent } from './components/docs/doc-params/doc-params-table/doc-params-table.component';
+import { DocParamsTableRowComponent } from './components/docs/doc-params/doc-params-table/doc-params-table-row/doc-params-table-row.component';
 
 @NgModule({
 	declarations: [
@@ -65,7 +70,12 @@ import { CollapsibleSidebarLinkItemComponent } from './components/sidebar/collap
 		CoursesDocsComponent,
 		DocsOverviewComponent,
 		CollapsibleSidebarLinkComponent,
-  CollapsibleSidebarLinkItemComponent
+		CollapsibleSidebarLinkItemComponent,
+		DocHeaderComponent,
+		DocMetaComponent,
+		DocParamsComponent,
+		DocParamsTableComponent,
+  DocParamsTableRowComponent
 	],
 	imports: [
 		BrowserModule,
