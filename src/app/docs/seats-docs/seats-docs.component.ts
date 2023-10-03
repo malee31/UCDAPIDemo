@@ -30,14 +30,12 @@ export class SeatsDocsComponent {
 			"----- 198 more results -----",
 			{
 				"id": 10825650,
-				"batch_timestamp": "1696366801536",
-				"timestamp_local": "1696366814073",
+				"refresh_cycle_timestamp": "1696366801536",
+				"timestamp": "1696366814073",
 				"crn": "30459",
 				"seats_available": 0,
 				"seats_reserved": 0,
-				"waitlist": 15,
-				"createdAt": "2023-10-03T21:00:14.073Z",
-				"updatedAt": "2023-10-03T21:00:14.073Z"
+				"waitlist": 15
 			}
 		]
 	}, null, "\t");
