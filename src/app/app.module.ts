@@ -44,6 +44,11 @@ import { DocMetaComponent } from './components/docs/doc-meta/doc-meta.component'
 import { DocParamsComponent } from './components/docs/doc-params/doc-params.component';
 import { DocParamsTableComponent } from './components/docs/doc-params/doc-params-table/doc-params-table.component';
 import { DocParamsTableRowComponent } from './components/docs/doc-params/doc-params-table/doc-params-table-row/doc-params-table-row.component';
+import { DocResponseComponent } from './components/docs/doc-response/doc-response.component';
+import { DocWarningsComponent } from './components/docs/doc-response/doc-warnings/doc-warnings.component';
+import { DocErrorsComponent } from './components/docs/doc-response/doc-errors/doc-errors.component';
+import { DocCodeBlockComponent } from './components/docs/doc-code-block/doc-code-block.component';
+import { DocFooterComponent } from './components/docs/doc-footer/doc-footer.component';
 
 @NgModule({
 	declarations: [
@@ -75,7 +80,12 @@ import { DocParamsTableRowComponent } from './components/docs/doc-params/doc-par
 		DocMetaComponent,
 		DocParamsComponent,
 		DocParamsTableComponent,
-  DocParamsTableRowComponent
+  DocParamsTableRowComponent,
+  DocResponseComponent,
+  DocWarningsComponent,
+  DocErrorsComponent,
+  DocCodeBlockComponent,
+  DocFooterComponent
 	],
 	imports: [
 		BrowserModule,
