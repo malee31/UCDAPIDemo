@@ -8,6 +8,7 @@ type HTTP_METHODS = "GET" | "POST";
 	styleUrls: ['./doc-meta.component.scss']
 })
 export class DocMetaComponent {
+	@Input({ required: true }) anchorId: string = "";
 	@Input({ required: true }) endpoint: string = "";
 	@Input({ required: false }) methods: HTTP_METHODS[] = ["GET"];
 }

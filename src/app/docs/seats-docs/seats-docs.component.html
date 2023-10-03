@@ -1,4 +1,7 @@
-<div class="w-full px-6">
+<div
+	[id]="docSlug"
+	class="w-full px-6"
+>
 	<app-doc-header
 		title="Seats API"
 		description="Retrieve the seat history of one or more courses over time as JSON"
@@ -7,10 +10,13 @@
 	<hr class="my-2"/>
 
 	<app-doc-meta
+		[anchorId]="slugs.details"
 		endpoint="/v1/seats/history/:crn"
 	></app-doc-meta>
 
-	<app-doc-params>
+	<app-doc-params
+		[anchorId]="slugs.params"
+	>
 		<app-doc-params-table>
 			<app-doc-params-table-row
 				paramType="url"
