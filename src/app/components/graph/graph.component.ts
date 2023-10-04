@@ -59,7 +59,7 @@ export class GraphComponent implements OnInit {
 			throw new Error("CRN data must not be empty");
 		}
 
-		const labels = this.crnData.map(e => moment(new Date(Number(e.timestamp_local))).format("M/D h:mm a"));
+		const labels = this.crnData.map(e => moment(new Date(Number(e.timestamp))).format("M/D h:mm a"));
 		// @ts-ignore
 		this.generatedData = {
 			labels: labels,
