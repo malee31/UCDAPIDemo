@@ -7,4 +7,8 @@
 	<app-graph
 		[crnData]="crnData"
 	></app-graph>
+	<label>
+		<span>Optimize Data Points? &nbsp;</span>
+		<input type="checkbox" [checked]="optimized" (click)="toggleOptimized()">
+	</label>
 </div>

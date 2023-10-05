@@ -30,7 +30,7 @@ const tooltipPlugin: Plugin = {
 	templateUrl: './graph.component.html',
 	styleUrls: ['./graph.component.scss']
 })
-export class GraphComponent implements OnInit {
+export class GraphComponent {
 	@ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 	@Input({ required: true }) crnData!: APISeats[];
 
@@ -54,7 +54,7 @@ export class GraphComponent implements OnInit {
 		Chart.register(tooltipPlugin);
 	}
 
-	ngOnInit(): void {
+	ngOnChanges(): void {
 		if(!this.crnData.length) {
 			throw new Error("CRN data must not be empty");
 		}

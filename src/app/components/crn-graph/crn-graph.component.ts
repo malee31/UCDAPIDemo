@@ -2,7 +2,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ApiService } from "../../api-services/api.service";
 import { APISeats } from "../../api-services/api-types";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
 	selector: "app-crn-graph",
@@ -14,9 +14,10 @@ export class CrnGraphComponent implements OnInit {
 	public loading: boolean = true;
 	public failed: boolean = false;
 	public crnData: APISeats[] = [];
+	public optimized: boolean = false;
 	@Input({ required: true }) crn: string = "";
 
-	constructor(private api: ApiService, private route: ActivatedRoute) {}
+	constructor(private api: ApiService, private router: Router, private route: ActivatedRoute) {}
 
 	ngOnInit(): void {
 		if(this.crn.length !== 5) {
@@ -24,9 +25,8 @@ export class CrnGraphComponent implements OnInit {
 		}
 
 		this.route.queryParams.subscribe(params => {
-			console.log(params)
-			const optimized: boolean = params["optimized"] === "true" || params["optimized"] === "1";
-			this.api.fetchSeatHistoryByCRN(this.crn, optimized)
+			this.optimized = params["optimized"] === "true" || params["optimized"] === "1";
+			this.api.fetchSeatHistoryByCRN(this.crn, this.optimized)
 				.then((seats: APISeats[]) => {
 					this.crnData = seats;
 				})
@@ -38,7 +38,13 @@ export class CrnGraphComponent implements OnInit {
 					this.loading = false;
 				});
 		});
+	}
 
-
+	async toggleOptimized() {
+		await this.router.navigate([], {
+			relativeTo: this.route,
+			queryParams: { optimized: this.optimized ? "0" : "1" },
+			queryParamsHandling: "merge"
+		});
 	}
 }
