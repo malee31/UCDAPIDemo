@@ -69,6 +69,7 @@ export class GraphComponent {
 					data: this.crnData.map(e => e.seats_available + e.seats_reserved - e.waitlist),
 					fill: true,
 					borderColor: "rgb(91,194,38)",
+					pointBackgroundColor: "rgb(91,194,38)",
 					backgroundColor: "rgba(91,194,38, 0.5)",
 					tension: 0.05
 				},
@@ -76,8 +77,9 @@ export class GraphComponent {
 					label: "Reserved Seats",
 					data: this.crnData.map(e => e.seats_reserved),
 					fill: true,
-					borderColor: "rgb(20,121,189)",
-					backgroundColor: "rgba(20,121,189,0.5)",
+					borderColor: "rgb(72,152,30)",
+					pointBackgroundColor: "rgb(72,152,30)",
+					backgroundColor: "rgba(91,194,38,0.7)",
 					tension: 0.05
 				},
 				{
@@ -85,6 +87,7 @@ export class GraphComponent {
 					data: this.crnData.map(e => e.waitlist),
 					fill: true,
 					borderColor: "rgb(159,11,31)",
+					pointBackgroundColor: "rgb(159,11,31)",
 					backgroundColor: "rgba(159,11,31, 0.5)",
 					tension: 0.05
 				}
