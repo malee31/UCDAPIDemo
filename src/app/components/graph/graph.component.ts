@@ -1,10 +1,11 @@
-import { Component, Input, OnInit, ViewChild } from "@angular/core";
+import { ChangeDetectorRef, Component, Input, ViewChild } from "@angular/core";
 import { Chart, ChartConfiguration } from "chart.js";
 import { Plugin } from "chart.js/dist/types";
 import { BaseChartDirective } from "ng2-charts";
 import * as moment from "moment";
 import { APISeats } from "../../api-services/api-types";
 
+const DEFAULT_POINT_COUNT: number = 50;
 const tooltipPlugin: Plugin = {
 	id: "trace-tooltip",
 	afterDraw: chart => {
@@ -25,6 +26,12 @@ const tooltipPlugin: Plugin = {
 	}
 };
 
+function epochToDateTime(timestamp: number): string {
+	const date = new Date(timestamp);
+	date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+	return date.toISOString().slice(0, 16);
+}
+
 @Component({
 	selector: 'app-graph',
 	templateUrl: './graph.component.html',
@@ -34,9 +41,22 @@ export class GraphComponent {
 	@ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 	@Input({ required: true }) crnData!: APISeats[];
 
+	public pointIndexRange!: [number, number];
+	public datePointRangeLimits!: [string, string];
+	public datePointRangeLabels!: [string, string];
+
 	public generatedData: ChartConfiguration['data'] | undefined;
 
 	public generatedOptions: ChartConfiguration['options'] = {
+		responsive: true,
+		scales: {
+			x: {
+				type: "linear",
+				ticks: {
+					callback: (xVal) => moment(new Date(Number(xVal))).format("M/D h:mm a")
+				}
+			}
+		},
 		interaction: {
 			intersect: false,
 			mode: "index"
@@ -44,13 +64,18 @@ export class GraphComponent {
 		plugins: {
 			tooltip: {
 				enabled: true,
-				position: "average"
+				position: "average",
+				callbacks: {
+					title: (context) => {
+						return moment(new Date(Number(context[0].parsed.x))).format("M/D h:mm a");
+					}
+				}
 			}
 		}
 	};
 	public generatedPlugins: ChartConfiguration['plugins'] = [tooltipPlugin];
 
-	constructor() {
+	constructor(private cd: ChangeDetectorRef) {
 		Chart.register(tooltipPlugin);
 	}
 
@@ -59,14 +84,39 @@ export class GraphComponent {
 			throw new Error("CRN data must not be empty");
 		}
 
-		const labels = this.crnData.map(e => moment(new Date(Number(e.timestamp))).format("M/D h:mm a"));
+		if(!this.pointIndexRange) {
+			this.pointIndexRange = [
+				Number(this.crnData[this.crnData.length - DEFAULT_POINT_COUNT - 1].timestamp),
+				Number(this.crnData[this.crnData.length - 1].timestamp)
+			];
+		}
+
+		this.datePointRangeLabels = this.pointIndexRange.map(ts => epochToDateTime(ts)) as [string, string];
+		this.datePointRangeLimits = [
+			epochToDateTime(Number(this.crnData[0].timestamp)),
+			epochToDateTime(Number(this.crnData[this.crnData.length - 1].timestamp)),
+		];
+
+		const renderCrnData = this.crnData
+			.filter(c => Number(c.timestamp) >= this.pointIndexRange[0] && Number(c.timestamp) <= this.pointIndexRange[1]);
+
+		// Fix edge case in which there are no points to render by rendering the first point
+		// TODO: Locate nearest points instead
+		if(renderCrnData.length === 0) renderCrnData.push(this.crnData[0]);
+
+		const labels = renderCrnData.map(e => {
+			return moment(new Date(Number(e.timestamp))).format("M/D h:mm a")
+		});
 		// @ts-ignore
 		this.generatedData = {
 			labels: labels,
 			datasets: [
 				{
 					label: "Net Seats",
-					data: this.crnData.map(e => e.seats_available + e.seats_reserved - e.waitlist),
+					data: renderCrnData.map(e => ({
+						x: Number(e.timestamp),
+						y: e.seats_available + e.seats_reserved - e.waitlist
+					})),
 					fill: true,
 					borderColor: "rgb(91,194,38)",
 					pointBackgroundColor: "rgb(91,194,38)",
@@ -75,7 +125,10 @@ export class GraphComponent {
 				},
 				{
 					label: "Reserved Seats",
-					data: this.crnData.map(e => e.seats_reserved),
+					data: renderCrnData.map(e => ({
+						x: Number(e.timestamp),
+						y: e.seats_reserved
+					})),
 					fill: true,
 					borderColor: "rgb(72,152,30)",
 					pointBackgroundColor: "rgb(72,152,30)",
@@ -84,7 +137,10 @@ export class GraphComponent {
 				},
 				{
 					label: "Waitlist Seats",
-					data: this.crnData.map(e => e.waitlist),
+					data: renderCrnData.map(e => ({
+						x: Number(e.timestamp),
+						y: e.waitlist
+					})),
 					fill: true,
 					borderColor: "rgb(159,11,31)",
 					pointBackgroundColor: "rgb(159,11,31)",
@@ -105,5 +161,18 @@ export class GraphComponent {
 
 		// TODO: Re-add trend line feature
 		this.generatedData.datasets.pop();
+
+		// Modify scale start and end
+		// @ts-ignore
+		this.generatedOptions.scales.x.min = Number(renderCrnData[0].timestamp);
+		// @ts-ignore
+		this.generatedOptions.scales.x.max = Number(renderCrnData[renderCrnData.length - 1].timestamp);
+	}
+
+	setRange(index: number, event: Event) {
+		const newPointIndex: [number, number] = [...this.pointIndexRange];
+		newPointIndex[index] = (new Date((event.target as HTMLInputElement).value)).getTime();
+		this.pointIndexRange = newPointIndex;
+		this.ngOnChanges();
 	}
 }

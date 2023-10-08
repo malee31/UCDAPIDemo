@@ -5,3 +5,20 @@
 	[options]="generatedOptions"
 	type="line"
 ></canvas>
+<label class="block">
+	<span class="inline-block mr-2">Start and End Ranges</span>
+	<input
+		type="datetime-local"
+		[value]="datePointRangeLabels[0]"
+		[min]="datePointRangeLimits[0]"
+		[max]="datePointRangeLabels[1]"
+		(change)="setRange(0, $event)"
+	/>
+	<input
+		type="datetime-local"
+		[value]="datePointRangeLabels[1]"
+		[min]="datePointRangeLabels[0]"
+		[max]="datePointRangeLimits[1]"
+		(change)="setRange(1, $event)"
+	/>
+</label>
