@@ -18,6 +18,5 @@ export interface APISeats {
 	seats_reserved: number,
 	waitlist: number,
 	timestamp: string,
-	// TODO: Remove extra data
-	"refresh_cycle_timestamp": string
+	refresh_cycle_timestamp: string
 }

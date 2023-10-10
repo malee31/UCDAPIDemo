@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, ViewChild } from "@angular/core";
+import { Component, Input, ViewChild } from "@angular/core";
 import { Chart, ChartConfiguration } from "chart.js";
 import { Plugin } from "chart.js/dist/types";
 import { BaseChartDirective } from "ng2-charts";
@@ -73,9 +73,8 @@ export class GraphComponent {
 			}
 		}
 	};
-	public generatedPlugins: ChartConfiguration['plugins'] = [tooltipPlugin];
 
-	constructor(private cd: ChangeDetectorRef) {
+	constructor() {
 		Chart.register(tooltipPlugin);
 	}
 
