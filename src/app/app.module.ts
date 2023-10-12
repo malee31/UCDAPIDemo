@@ -49,6 +49,7 @@ import { DocWarningsComponent } from './components/docs/doc-response/doc-warning
 import { DocErrorsComponent } from './components/docs/doc-response/doc-errors/doc-errors.component';
 import { DocCodeBlockComponent } from './components/docs/doc-code-block/doc-code-block.component';
 import { DocFooterComponent } from './components/docs/doc-footer/doc-footer.component';
+import { SeatHistoryDocChunkComponent } from './docs/chunks/seat-history-doc-chunk/seat-history-doc-chunk.component';
 
 @NgModule({
 	declarations: [
@@ -80,12 +81,13 @@ import { DocFooterComponent } from './components/docs/doc-footer/doc-footer.comp
 		DocMetaComponent,
 		DocParamsComponent,
 		DocParamsTableComponent,
-  DocParamsTableRowComponent,
-  DocResponseComponent,
-  DocWarningsComponent,
-  DocErrorsComponent,
-  DocCodeBlockComponent,
-  DocFooterComponent
+		DocParamsTableRowComponent,
+		DocResponseComponent,
+		DocWarningsComponent,
+		DocErrorsComponent,
+		DocCodeBlockComponent,
+		DocFooterComponent,
+		SeatHistoryDocChunkComponent
 	],
 	imports: [
 		BrowserModule,
