@@ -50,6 +50,7 @@ import { DocErrorsComponent } from './components/docs/doc-response/doc-errors/do
 import { DocCodeBlockComponent } from './components/docs/doc-code-block/doc-code-block.component';
 import { DocFooterComponent } from './components/docs/doc-footer/doc-footer.component';
 import { SeatHistoryDocChunkComponent } from './docs/chunks/seat-history-doc-chunk/seat-history-doc-chunk.component';
+import { SeatsCurrentDocChunkComponent } from './docs/chunks/seats-current-doc-chunk/seats-current-doc-chunk.component';
 
 @NgModule({
 	declarations: [
@@ -87,7 +88,8 @@ import { SeatHistoryDocChunkComponent } from './docs/chunks/seat-history-doc-chu
 		DocErrorsComponent,
 		DocCodeBlockComponent,
 		DocFooterComponent,
-		SeatHistoryDocChunkComponent
+		SeatHistoryDocChunkComponent,
+  SeatsCurrentDocChunkComponent
 	],
 	imports: [
 		BrowserModule,

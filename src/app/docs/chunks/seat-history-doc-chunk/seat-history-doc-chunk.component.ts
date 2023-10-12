@@ -1,20 +1,16 @@
 import { Component } from '@angular/core';
+import { ChunkInterface } from "../chunk-interface";
 
-type DOC_SLUGS = {
-	details: string,
-	params: string,
-	response: string,
-	warnings: string,
-	errors: string,
-}
 @Component({
 	selector: 'app-seat-history-doc-chunk',
 	templateUrl: './seat-history-doc-chunk.component.html',
 	styleUrls: ['./seat-history-doc-chunk.component.scss']
 })
-export class SeatHistoryDocChunkComponent {
-	docSlug: string = "seats";
-	slugs!: DOC_SLUGS;
+export class SeatHistoryDocChunkComponent extends ChunkInterface {
+	constructor() {
+		super("seat-history");
+	}
+
 	exampleResponse: string = JSON.stringify({
 		ok: true,
 		history: [
@@ -39,13 +35,4 @@ export class SeatHistoryDocChunkComponent {
 			}
 		]
 	}, null, "\t");
-	constructor() {
-		this.slugs = {
-			details: `${this.docSlug}-details`,
-			params: `${this.docSlug}-params`,
-			response: `${this.docSlug}-response`,
-			warnings: `${this.docSlug}-warnings`,
-			errors: `${this.docSlug}-errors`
-		};
-	}
 }
