@@ -13,6 +13,13 @@ export class SeatsCurrentDocChunkComponent extends ChunkInterface {
 
 	exampleResponse = JSON.stringify({
 		ok: true,
-
+		seats: {
+			crn: "30457",
+			seats_available: 0,
+			seats_reserved: 0,
+			waitlist: 32,
+			refresh_cycle_timestamp: "1697130001943",
+			timestamp: "1697130014116"
+		}
 	}, null, "\t");
 }
