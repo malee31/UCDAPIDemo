@@ -4,6 +4,12 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgChartsModule } from "ng2-charts";
+import { PrismComponent } from './components/prism-highlight';
+import "prismjs/components/prism-css";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-json";
+import "prismjs/components/prism-scss";
 
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatInputModule } from "@angular/material/input";
@@ -89,7 +95,8 @@ import { SeatsCurrentDocChunkComponent } from './docs/chunks/seats-current-doc-c
 		DocCodeBlockComponent,
 		DocFooterComponent,
 		SeatHistoryDocChunkComponent,
-  SeatsCurrentDocChunkComponent
+  	SeatsCurrentDocChunkComponent,
+		PrismComponent
 	],
 	imports: [
 		BrowserModule,

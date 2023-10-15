@@ -32,7 +32,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+							"node_modules/prismjs/prism.js"
+						]
           },
           "configurations": {
             "production": {
@@ -101,7 +103,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+							"node_modules/prismjs/prism.js"
+						]
           }
         }
       }
