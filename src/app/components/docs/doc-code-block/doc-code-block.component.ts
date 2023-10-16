@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
 	selector: 'app-doc-code-block',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
 	styleUrls: ['./doc-code-block.component.scss']
 })
 export class DocCodeBlockComponent {
-
+	@Input({required: false}) code:string = "";
 }
