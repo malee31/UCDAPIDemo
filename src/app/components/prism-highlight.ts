@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input } from '@angular/core';
 import Prism from 'prismjs';
-import 'clipboard';
-import 'prismjs/plugins/toolbar/prism-toolbar';
-import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
+import "clipboard";
+import "prismjs/plugins/toolbar/prism-toolbar";
+import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard";
 
 @Component({
 	selector: 'prism, [prism]',
@@ -10,18 +10,15 @@ import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
 		<div>
 			<span>Example</span>
 		</div>
-		<pre data-src="assets/examples/seat-history.json"></pre>
+		<!--	MUST be one-lined due to the quirks of <pre>	-->
+		<pre class="whitespace-pre-wrap"><code class="language-{{language}}">{{code}}</code></pre>
 	`
 })
 export class PrismComponent implements AfterViewInit {
 	@Input() code: string = "";
-	@Input() language = 'javascript';
-	@ViewChild("container") container!: ElementRef<HTMLSpanElement>;
+	@Input() language = "javascript";
 	constructor(private el: ElementRef) {}
 	ngAfterViewInit() {
-		const code = (this.code || this.el.nativeElement.innerText)
-		const grammar = Prism.languages[this.language];
-		// this.container.nativeElement.innerHTML = Prism.highlight(code, grammar, this.language);
-		console.log(Prism.plugins["toolbar"])
+		Prism.highlightAll();
 	}
 }

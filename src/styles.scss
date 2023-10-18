@@ -34,7 +34,7 @@ $UCDAPIDemo-theme: mat.define-light-theme((
 
 // Include Prism syntax highlighting
 @import "prismjs/plugins/toolbar/prism-toolbar.css";
-@import "prismjs/themes/prism-coy";
+@import "prismjs/themes/prism";
 
 /* You can add global styles to this file, and also import other style files */
 @tailwind base;
