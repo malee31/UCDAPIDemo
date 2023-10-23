@@ -90,7 +90,7 @@ import { SeatsCurrentDocChunkComponent } from './docs/chunks/seats-current-doc-c
 		DocCodeBlockComponent,
 		DocFooterComponent,
 		SeatHistoryDocChunkComponent,
-  	SeatsCurrentDocChunkComponent,
+		SeatsCurrentDocChunkComponent,
 		PrismComponent
 	],
 	imports: [
