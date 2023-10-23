@@ -20,11 +20,11 @@ $UCDAPIDemo-warn: mat.define-palette(mat.$red-palette);
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
 $UCDAPIDemo-theme: mat.define-light-theme((
-  color: (
-    primary: $UCDAPIDemo-primary,
-    accent: $UCDAPIDemo-accent,
-    warn: $UCDAPIDemo-warn,
-  )
+	color: (
+		primary: $UCDAPIDemo-primary,
+		accent: $UCDAPIDemo-accent,
+		warn: $UCDAPIDemo-warn,
+	)
 ));
 
 // Include theme styles for core and each component used in your app.
@@ -41,7 +41,10 @@ $UCDAPIDemo-theme: mat.define-light-theme((
 @tailwind components;
 @tailwind utilities;
 
-html, body { height: 100%; }
+html, body {
+	height: 100%;
+}
+
 body {
 	margin: 0;
 	font-family: Roboto, "Helvetica Neue", sans-serif;
