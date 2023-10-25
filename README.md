@@ -12,3 +12,4 @@ Enjoy the demo!
 * Better UI/UX for viewing information
 * Repackage the API calls into a reusable file for easy import and use
   * This should replace the Angular service and be downloadable
+	* Simple library interface!
