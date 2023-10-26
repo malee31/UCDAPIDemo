@@ -28,7 +28,6 @@ export class PrismComponent implements AfterViewInit {
 	}
 
 	ngOnChanges(diff: SimpleChanges): void {
-		console.log(diff)
 		if(diff["code"] && !diff["code"].firstChange) {
 			this.highlightCode();
 		}

@@ -16,7 +16,7 @@ export class LogsComponent implements OnInit {
 	columns: string[] = ["timestamp", "log_type", "message", "related_data"];
 	logs: APILog[] = [
 		{
-			timestamp: 1690873200000,
+			timestamp: Date.now(),
 			log_type: "Loading",
 			message: "Logs are Loading",
 			related_data: "..."
