@@ -1,4 +1,5 @@
 export type DOC_SLUGS = {
+	title: string,
 	details: string,
 	params: string,
 	response: string,
@@ -15,6 +16,7 @@ export class ChunkInterface {
 	generateSlugs(newDocSlug: string) {
 		this.docSlug = newDocSlug;
 		this.slugs = {
+			title: `${this.docSlug}`,
 			details: `${this.docSlug}-details`,
 			params: `${this.docSlug}-params`,
 			response: `${this.docSlug}-response`,

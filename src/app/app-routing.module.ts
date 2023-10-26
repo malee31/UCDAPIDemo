@@ -33,7 +33,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-		bindToComponentInputs: true
+		bindToComponentInputs: true,
+		anchorScrolling: "enabled"
 	})],
   exports: [RouterModule]
 })
