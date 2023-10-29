@@ -1,79 +1,114 @@
-<section class="chart-search-main">
-	<h1 class="text-2xl">
-		CRN Lookup Tool
-	</h1>
+<div class="flex-grow flex flex-row relative">
+	<!-- Filter Sidebar -->
+	<aside class="w-64 px-3 py-4 flex-shrink-0 flex-grow-0 bg-slate-100 border-r border-slate-50">
+		<h2 class="text-xl">Filter by</h2>
+		<hr class="my-2 border-t-2" />
 
-	<div>
-		<h2 class="text-lg">Choose a Subject Code to begin:</h2>
-		<mat-form-field>
-			<mat-label>Subject Code Filter</mat-label>
-			<input #input
-				type="text"
-				placeholder="Select Subject Code"
-				matInput
-				[formControl]="subjectCodeControl"
-				[matAutocomplete]="auto"
-				(input)="filter()"
-				(focus)="filter()"
-			>
-			<mat-autocomplete
-				requireSelection
-				#auto="matAutocomplete"
-				(optionSelected)="searchCRN($event)"
-			>
-				<mat-option
-					*ngFor="let option of filteredOptions"
-					[value]="option"
-				>
-					{{option}}
-				</mat-option>
-			</mat-autocomplete>
-		</mat-form-field>
-	</div>
+		<!-- Filter Options -->
+		<ul class="pt-2">
+			<li>
+				<div>
+					<h3 class="text-base">Subject Code</h3>
+					<div>
 
-	<ng-container *ngIf="results.length !== 0">
-		<mat-form-field>
-			<mat-label>CRN Selection</mat-label>
-			<input #crnInput
-				type="text"
-				placeholder="Select a CRN"
-				matInput
-				[formControl]="crnControl"
-				[matAutocomplete]="auto"
-				(input)="filterCRN()"
-				(focus)="filterCRN()"
-			>
-			<mat-autocomplete
-				requireSelection
-				#auto="matAutocomplete"
-				(optionSelected)="crn=$event.option.value"
-			>
-				<mat-option
-					*ngFor="let option of results"
-					[value]="option.crn"
-				>
-					{{option.subject_code}} {{option.subject_number}} - {{option.crn}}
-				</mat-option>
-			</mat-autocomplete>
-		</mat-form-field>
+						<mat-form-field class="w-full">
+							<mat-label>Subject Code Filter</mat-label>
+							<input #input
+								type="text"
+								placeholder="Select Subject Code"
+								matInput
+								[formControl]="subjectCodeControl"
+								[matAutocomplete]="auto"
+								(input)="filter()"
+								(focus)="filter()"
+							>
+							<mat-autocomplete
+								requireSelection
+								#auto="matAutocomplete"
+								(optionSelected)="searchCRN($event)"
+							>
+								<mat-option
+									*ngFor="let option of filteredOptions"
+									[value]="option"
+								>
+									{{option}}
+								</mat-option>
+							</mat-autocomplete>
+						</mat-form-field>
 
-		<div class="flex flex-col gap-4">
-			<a
-				class="block text-blue-500"
-				*ngIf="chosenCourse"
-				routerLink="/chart/crn/{{chosenCourse.crn}}"
-			>
-				View Chart for {{chosenCourse.crn}} - {{chosenCourse.subject_code}} {{chosenCourse.subject_number}}
-			</a>
+					</div>
+				</div>
+			</li>
 
-			<h2 class="text-lg">All Options:</h2>
-			<a
-				class="block text-blue-500"
-				*ngFor="let option of results"
-				routerLink="/chart/crn/{{option.crn}}"
-			>
-				View Chart for {{option.crn}} - {{option.subject_code}} {{option.subject_number}}
-			</a>
+			<li *ngIf="results.length !== 0">
+				<div>
+					<h3 class="text-lg">CRN</h3>
+					<div>
+
+						<mat-form-field class="w-full">
+							<mat-label>CRN Selection</mat-label>
+							<input #crnInput
+								type="text"
+								placeholder="Select a CRN"
+								matInput
+								[formControl]="crnControl"
+								[matAutocomplete]="auto"
+								(input)="filterCRN()"
+								(focus)="filterCRN()"
+							>
+							<mat-autocomplete
+								requireSelection
+								#auto="matAutocomplete"
+								(optionSelected)="crn=$event.option.value"
+							>
+								<mat-option
+									*ngFor="let option of results"
+									[value]="option.crn"
+								>
+									{{option.subject_code}} {{option.subject_number}} - {{option.crn}}
+								</mat-option>
+							</mat-autocomplete>
+						</mat-form-field>
+
+					</div>
+				</div>
+			</li>
+		</ul>
+
+	</aside>
+
+	<!-- Results -->
+	<section class="flex-grow flex flex-col px-4 py-2">
+		<h1 class="text-2xl">
+			CRN Lookup Tool Results
+		</h1>
+		<div *ngIf="!results.length">
+			<h2 class="text-sm text-slate-500">Filter by a Subject Code to begin</h2>
 		</div>
-	</ng-container>
-</section>
+
+		<ng-container *ngIf="results.length !== 0">
+
+
+			<div class="flex flex-col gap-4">
+				<a
+					class="block text-blue-500"
+					*ngIf="chosenCourse"
+					routerLink="/chart/crn/{{chosenCourse.crn}}"
+				>
+					View Chart for {{chosenCourse.crn}} - {{chosenCourse.subject_code}} {{chosenCourse.subject_number}}
+				</a>
+
+				<div>
+					<h2 class="text-lg">All Options:</h2>
+					<a
+						class="block text-blue-500"
+						*ngFor="let option of results"
+						routerLink="/chart/crn/{{option.crn}}"
+					>
+						View Chart for {{option.crn}} - {{option.subject_code}} {{option.subject_number}}
+					</a>
+				</div>
+			</div>
+		</ng-container>
+	</section>
+</div>
