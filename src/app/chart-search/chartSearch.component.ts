@@ -24,6 +24,8 @@ export class ChartSearchComponent {
 	results: APICrn[] = [];
 	chosenCourse: APICrn | null = null;
 
+	mobileShowFilters: boolean = false;
+
 	@ViewChild("input") input!: ElementRef<HTMLInputElement>;
 	@ViewChild("crnInput") crnInput!: ElementRef<HTMLInputElement>;
 
@@ -41,6 +43,10 @@ export class ChartSearchComponent {
 	filterCRN(): void {
 		const filterValue = this.crnInput.nativeElement.value.toLowerCase();
 		this.filteredCRNOptions = this.results.filter(course => course.crn.toLowerCase().includes(filterValue));
+	}
+
+	toggleMobileFilters(): void {
+		this.mobileShowFilters = !this.mobileShowFilters;
 	}
 
 	@Input()

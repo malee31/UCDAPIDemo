@@ -1,14 +1,25 @@
 <div class="flex-grow flex flex-row relative">
 	<!-- Filter Sidebar -->
-	<aside class="w-64 px-3 py-4 flex-shrink-0 flex-grow-0 bg-slate-100 border-r border-slate-50">
-		<h2 class="text-xl">Filter by</h2>
+	<aside
+		class="w-full h-full absolute sm:static sm:w-64 sm:h-auto px-3 py-4 flex-shrink-0 flex-grow-0 bg-slate-100 border-r border-slate-50 transition-[left]"
+		[ngClass]="{'-left-full': !mobileShowFilters, 'left-0': mobileShowFilters}"
+	>
+		<h2 class="text-xl">
+			Filter by
+			<button
+				class="sm:hidden text-base float-right px-2 py-1 bg-slate-200 rounded"
+				(click)="toggleMobileFilters()"
+			>
+				Show Results &gt;
+			</button>
+		</h2>
 		<hr class="my-2 border-t-2" />
 
 		<!-- Filter Options -->
 		<ul class="pt-2">
 			<li>
 				<div>
-					<h3 class="text-base">Subject Code</h3>
+					<h3 class="text-base">Subject Code <span class="text-red-500">*</span></h3>
 					<div>
 
 						<mat-form-field class="w-full">
@@ -86,9 +97,16 @@
 			<h2 class="text-sm text-slate-500">Filter by a Subject Code to begin</h2>
 		</div>
 
+		<div class="block py-2 sm:hidden">
+			<button
+				class="px-4 py-2 bg-slate-200 rounded"
+				(click)="toggleMobileFilters()"
+			>
+				Open Filters
+			</button>
+		</div>
+
 		<ng-container *ngIf="results.length !== 0">
-
-
 			<div class="flex flex-col gap-4">
 				<a
 					class="block text-blue-500"
@@ -104,6 +122,7 @@
 						class="block text-blue-500"
 						*ngFor="let option of results"
 						routerLink="/chart/crn/{{option.crn}}"
+						[queryParams]="{optimized: 1}"
 					>
 						View Chart for {{option.crn}} - {{option.subject_code}} {{option.subject_number}}
 					</a>
