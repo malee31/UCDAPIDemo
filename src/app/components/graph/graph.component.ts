@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from "@angular/core";
+import { Component, ElementRef, Input, ViewChild } from "@angular/core";
 import { Chart, ChartConfiguration } from "chart.js";
 import { Plugin } from "chart.js/dist/types";
 import { BaseChartDirective } from "ng2-charts";
@@ -39,6 +39,7 @@ function epochToDateTime(timestamp: number): string {
 })
 export class GraphComponent {
 	@ViewChild(BaseChartDirective) chart?: BaseChartDirective;
+	@ViewChild("chartSource") chartElem!: ElementRef<HTMLCanvasElement>;
 	@Input({ required: true }) crnData!: APISeats[];
 
 	public pointIndexRange!: [number, number];
@@ -173,5 +174,23 @@ export class GraphComponent {
 		newPointIndex[index] = (new Date((event.target as HTMLInputElement).value)).getTime();
 		this.pointIndexRange = newPointIndex;
 		this.ngOnChanges();
+	}
+
+	downloadChart() {
+		const sourceCanvas = this.chartElem.nativeElement;
+
+		// Add white background to chart
+		const canvasClone: HTMLCanvasElement = sourceCanvas.cloneNode(true) as HTMLCanvasElement;
+		const cloneCtx: CanvasRenderingContext2D = canvasClone.getContext("2d")!;
+		cloneCtx.fillStyle = "#FFFFFF";
+		cloneCtx.fillRect(0, 0, canvasClone.width, canvasClone.height);
+		cloneCtx.drawImage(sourceCanvas, 0, 0);
+		const chartDataUrl: string =  canvasClone.toDataURL("image/jpeg");
+
+		// Start a download
+		const downloadLink = document.createElement("a");
+		downloadLink.href = chartDataUrl;
+		downloadLink.download = "CRN_Seat_Chart.jpg";
+		downloadLink.click();
 	}
 }
