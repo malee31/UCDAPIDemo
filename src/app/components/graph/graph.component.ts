@@ -176,7 +176,7 @@ export class GraphComponent {
 		this.ngOnChanges();
 	}
 
-	downloadChart() {
+	chartToDataURL() {
 		const sourceCanvas = this.chartElem.nativeElement;
 
 		// Add white background to chart
@@ -185,12 +185,27 @@ export class GraphComponent {
 		cloneCtx.fillStyle = "#FFFFFF";
 		cloneCtx.fillRect(0, 0, canvasClone.width, canvasClone.height);
 		cloneCtx.drawImage(sourceCanvas, 0, 0);
-		const chartDataUrl: string =  canvasClone.toDataURL("image/jpeg");
+		return canvasClone.toDataURL("image/png");
+	}
+
+	downloadChart() {
+		const chartDataUrl: string = this.chartToDataURL();
 
 		// Start a download
 		const downloadLink = document.createElement("a");
 		downloadLink.href = chartDataUrl;
-		downloadLink.download = "CRN_Seat_Chart.jpg";
+		downloadLink.download = "CRN_Seat_Chart.png";
 		downloadLink.click();
+	}
+
+	copyChart() {
+		const chartDataUrl: string = this.chartToDataURL();
+
+		// Copy to clipboard
+		fetch(chartDataUrl)
+			.then(res => res.blob())
+			.then(blob => {
+				navigator.clipboard.write([new ClipboardItem({ "image/png": blob })])
+			})
 	}
 }

@@ -7,12 +7,20 @@
 	type="line"
 ></canvas>
 
-<button
-	class="block border px-2 py-1 rounded bg-slate-50"
-	(click)="downloadChart()"
->
-	Download Chart
-</button>
+<div class="block my-1 px-2">
+	<button
+		class="inline-block border px-2 py-1 mr-1 rounded bg-slate-50"
+		(click)="downloadChart()"
+	>
+		Download Chart
+	</button>
+	<button
+		class="inline-block border px-2 py-1 rounded bg-slate-50"
+		(click)="copyChart()"
+	>
+		Copy Chart
+	</button>
+</div>
 
 <label class="block">
 	<span class="inline-block mr-2">Start and End Ranges</span>
