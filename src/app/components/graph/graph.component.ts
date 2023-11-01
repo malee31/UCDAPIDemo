@@ -86,7 +86,7 @@ export class GraphComponent {
 
 		if(!this.pointIndexRange) {
 			this.pointIndexRange = [
-				Number(this.crnData[this.crnData.length - DEFAULT_POINT_COUNT - 1].timestamp),
+				Number(this.crnData[Math.max(0, this.crnData.length - DEFAULT_POINT_COUNT - 1)].timestamp),
 				Number(this.crnData[this.crnData.length - 1].timestamp)
 			];
 		}
@@ -204,8 +204,7 @@ export class GraphComponent {
 		// Copy to clipboard
 		fetch(chartDataUrl)
 			.then(res => res.blob())
-			.then(blob => {
-				navigator.clipboard.write([new ClipboardItem({ "image/png": blob })])
-			})
+			.then(blob => navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]))
+			.catch(err => alert(`Copy failed. Download instead.\n\nError: ${err}`))
 	}
 }
