@@ -14,6 +14,7 @@ export class CrnGraphComponent implements OnInit {
 	public loading: boolean = true;
 	public failed: boolean = false;
 	public crnData: APISeats[] = [];
+	public term: string = "";
 	public optimized: boolean = false;
 	@Input({ required: true }) crn: string = "";
 
@@ -26,7 +27,9 @@ export class CrnGraphComponent implements OnInit {
 
 		this.route.queryParams.subscribe(params => {
 			this.optimized = params["optimized"] === "true" || params["optimized"] === "1";
-			this.api.fetchSeatHistoryByCRN(this.crn, this.optimized)
+			this.term = params["term"] || "";
+
+			this.api.fetchSeatHistoryByCRN(this.term, this.crn, this.optimized)
 				.then((seats: APISeats[]) => {
 					this.crnData = seats;
 				})

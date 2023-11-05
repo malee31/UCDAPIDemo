@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ChartSearchComponent } from "./chart.component";
+import { ChartSearchComponent } from "./chartSearch.component";
 
-describe("ChartComponent", () => {
+describe("ChartSearchComponent", () => {
   let component: ChartSearchComponent;
   let fixture: ComponentFixture<ChartSearchComponent>;
 
