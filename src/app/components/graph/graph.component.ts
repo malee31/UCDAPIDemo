@@ -50,6 +50,7 @@ export class GraphComponent {
 
 	public generatedOptions: ChartConfiguration['options'] = {
 		responsive: true,
+		maintainAspectRatio: false,
 		scales: {
 			x: {
 				type: "linear",
