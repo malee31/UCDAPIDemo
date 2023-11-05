@@ -24,7 +24,8 @@
 
 						<mat-form-field class="w-full">
 							<mat-label>Subject Code Filter</mat-label>
-							<input #input
+							<input
+								#input
 								type="text"
 								placeholder="Select Subject Code"
 								matInput
@@ -32,17 +33,55 @@
 								[matAutocomplete]="auto"
 								(input)="filter()"
 								(focus)="filter()"
+								(blur)="searchCRN()"
 							>
 							<mat-autocomplete
 								requireSelection
 								#auto="matAutocomplete"
-								(optionSelected)="searchCRN($event)"
+								(optionSelected)="this.subjectCode=$event.option.value"
 							>
 								<mat-option
 									*ngFor="let option of filteredOptions"
 									[value]="option"
 								>
 									{{option}}
+								</mat-option>
+							</mat-autocomplete>
+						</mat-form-field>
+
+					</div>
+				</div>
+			</li>
+
+			<li>
+				<div>
+					<h3 class="text-base">Term Code (Quarter)</h3>
+					<div>
+
+						<mat-form-field class="w-full">
+							<mat-label>Term Code Filter</mat-label>
+							<input
+								#termInput
+								type="text"
+								placeholder="Select Term Code"
+								matInput
+								[formControl]="termControl"
+								[matAutocomplete]="autoTerm"
+								(blur)="searchCRN()"
+							>
+							<mat-autocomplete
+								requireSelection
+								#autoTerm="matAutocomplete"
+								(optionSelected)="term=$event.option.value"
+							>
+								<mat-option value="Default">
+									(Default: Most Recent)
+								</mat-option>
+								<mat-option
+									*ngFor="let term of validTerms"
+									[value]="term"
+								>
+									{{term}}
 								</mat-option>
 							</mat-autocomplete>
 						</mat-form-field>
@@ -58,7 +97,8 @@
 
 						<mat-form-field class="w-full">
 							<mat-label>CRN Selection</mat-label>
-							<input #crnInput
+							<input
+								#crnInput
 								type="text"
 								placeholder="Select a CRN"
 								matInput
@@ -122,7 +162,7 @@
 						class="block text-blue-500"
 						*ngFor="let option of results"
 						routerLink="/chart/crn/{{option.crn}}"
-						[queryParams]="{optimized: 1}"
+						[queryParams]="{optimized: 1, term: chosenTerm}"
 					>
 						View Chart for {{option.crn}} - {{option.subject_code}} {{option.subject_number}}
 					</a>

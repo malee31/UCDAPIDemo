@@ -9,6 +9,7 @@ import { APICrn } from "../../api-services/api-types";
 	providers: [ApiService]
 })
 export class CourseNameGraphComponent implements OnInit {
+	@Input({ required: true }) term: string = "";
 	@Input({ required: true }) subject_code: string = "";
 	@Input({ required: true }) subject_number: string = "";
 
@@ -17,7 +18,7 @@ export class CourseNameGraphComponent implements OnInit {
 	constructor(private api: ApiService) {}
 
 	ngOnInit(): void {
-		this.api.fetchCRNsBySubjectCodeAndNumber(this.subject_code, this.subject_number)
+		this.api.fetchCRNsBySubjectCodeAndNumber(this.term, this.subject_code, this.subject_number)
 			.then((courses: APICrn[]) => {
 				this.courses = courses;
 			})

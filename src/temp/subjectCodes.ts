@@ -160,3 +160,8 @@ export const SUBJECT_CODE_LIST: string[] = [
 	"WLD",
 	"WMS"
 ];
+
+export const TERMS_LIST = [
+	"202310",
+	"202401"
+];

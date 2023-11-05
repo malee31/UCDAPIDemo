@@ -2,10 +2,9 @@ import { Component, Input, ViewChild, ElementRef } from "@angular/core";
 import { ApiService } from "../api-services/api.service";
 import { APICrn } from "../api-services/api-types";
 
-import { SUBJECT_CODE_LIST } from "../../temp/subjectCodes";
+import { TERMS_LIST, SUBJECT_CODE_LIST } from "../../temp/subjectCodes";
 
 import { FormControl } from "@angular/forms";
-import { MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
 
 @Component({
 	selector: "app-chart-search",
@@ -14,12 +13,15 @@ import { MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
 	providers: [ApiService],
 })
 export class ChartSearchComponent {
+	validTerms: string[] = TERMS_LIST;
 	options: string[] = SUBJECT_CODE_LIST;
+	termControl = new FormControl("Default");
 	subjectCodeControl = new FormControl("");
 	crnControl = new FormControl("");
 	filteredOptions: string[];
 	filteredCRNOptions: APICrn[];
 
+	chosenTerm: string = "";
 	chosenSubjectCode: string = "";
 	results: APICrn[] = [];
 	chosenCourse: APICrn | null = null;
@@ -27,6 +29,7 @@ export class ChartSearchComponent {
 	mobileShowFilters: boolean = false;
 
 	@ViewChild("input") input!: ElementRef<HTMLInputElement>;
+	@ViewChild("termInput") termInput!: ElementRef<HTMLInputElement>;
 	@ViewChild("crnInput") crnInput!: ElementRef<HTMLInputElement>;
 
 	constructor(private api: ApiService) {
@@ -49,16 +52,24 @@ export class ChartSearchComponent {
 		this.mobileShowFilters = !this.mobileShowFilters;
 	}
 
-	@Input()
 	set crn(val: string) {
 		this.chosenCourse = this.results.find(course => course.crn === val) || null;
 	}
 
+	set term(val: string) {
+		this.chosenTerm = val;
+		this.searchCRN();
+	}
 
-	searchCRN(selection: MatAutocompleteSelectedEvent) {
-		this.chosenSubjectCode = selection.option.value;
+	set subjectCode(val: string) {
+		this.chosenSubjectCode = val;
+		this.searchCRN();
+	}
 
-		this.api.fetchCRNsBySubjectCode(this.chosenSubjectCode)
+	searchCRN() {
+		if(!this.chosenSubjectCode) return;
+
+		this.api.fetchCRNsBySubjectCode(this.chosenTerm, this.chosenSubjectCode)
 			.then(courses => {
 				this.results = courses;
 			})

@@ -13,15 +13,15 @@ export class ApiService {
 		return logResponse.logs;
 	}
 
-	fetchCRNsBySubjectCode = async (subjectCode: string): Promise<APICrn[]> => {
-		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/courses/crns/${subjectCode}`);
+	fetchCRNsBySubjectCode = async (term: string, subjectCode: string): Promise<APICrn[]> => {
+		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/courses/crns/${subjectCode}?term=${term}`);
 		if(apiRes.status !== 200) throw new RangeError(`Course by Subject Code responded with HTTP ${apiRes.status}`);
 		const coursesResponse: { ok: boolean, crns: APICrn[] } = await apiRes.json();
 		return coursesResponse.crns;
 	}
 
-	fetchCRNsBySubjectCodeAndNumber = async (subjectCode: string, subjectNumber: string): Promise<APICrn[]> => {
-		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/courses/crns/${subjectCode}/${subjectNumber}`);
+	fetchCRNsBySubjectCodeAndNumber = async (term: string, subjectCode: string, subjectNumber: string): Promise<APICrn[]> => {
+		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/courses/crns/${subjectCode}/${subjectNumber}?term=${term}`);
 		if(apiRes.status !== 200) throw new RangeError(`Course by Subject Code responded with HTTP ${apiRes.status}`);
 		const coursesResponse: { ok: boolean, crns: APICrn[] } = await apiRes.json();
 		return coursesResponse.crns;
