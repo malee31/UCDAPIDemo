@@ -1,11 +1,14 @@
-<canvas
-	#chartSource
-	baseChart
-	class="chart w-full"
-	[data]="generatedData"
-	[options]="generatedOptions"
-	type="line"
-></canvas>
+<!-- Div must exist with relative for Chart.js to resize properly -->
+<div class="w-full aspect-[2] relative">
+	<canvas
+		#chartSource
+		baseChart
+		class="chart w-full"
+		[data]="generatedData"
+		[options]="generatedOptions"
+		type="line"
+	></canvas>
+</div>
 
 <div class="block my-1 px-2">
 	<button
