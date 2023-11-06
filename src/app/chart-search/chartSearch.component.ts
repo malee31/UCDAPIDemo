@@ -57,7 +57,11 @@ export class ChartSearchComponent {
 	}
 
 	set term(val: string) {
-		this.chosenTerm = val;
+		if(val === "Default") {
+			this.chosenTerm = "";
+		} else {
+			this.chosenTerm = val;
+		}
 		this.searchCRN();
 	}
 
