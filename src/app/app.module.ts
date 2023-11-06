@@ -52,6 +52,8 @@ import { DocCodeBlockComponent } from './components/docs/doc-code-block/doc-code
 import { DocFooterComponent } from './components/docs/doc-footer/doc-footer.component';
 import { SeatHistoryDocChunkComponent } from './docs/chunks/seat-history-doc-chunk/seat-history-doc-chunk.component';
 import { SeatsCurrentDocChunkComponent } from './docs/chunks/seats-current-doc-chunk/seats-current-doc-chunk.component';
+import { DegreesDocChunkComponent } from './docs/chunks/degrees-doc-chunk/degrees-doc-chunk.component';
+import { DegreeTypesDocChunkComponent } from './docs/chunks/degree-types-doc-chunk/degree-types-doc-chunk.component';
 
 @NgModule({
 	declarations: [
@@ -89,9 +91,11 @@ import { SeatsCurrentDocChunkComponent } from './docs/chunks/seats-current-doc-c
 		DocErrorsComponent,
 		DocCodeBlockComponent,
 		DocFooterComponent,
+		PrismComponent,
 		SeatHistoryDocChunkComponent,
 		SeatsCurrentDocChunkComponent,
-		PrismComponent
+		DegreesDocChunkComponent,
+  DegreeTypesDocChunkComponent
 	],
 	imports: [
 		BrowserModule,

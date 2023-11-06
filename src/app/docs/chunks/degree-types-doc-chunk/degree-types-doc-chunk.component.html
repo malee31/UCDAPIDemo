@@ -1,0 +1,45 @@
+<div
+	[id]="docSlug"
+	class="w-full px-6 mb-16"
+>
+	<app-doc-header
+		[anchorId]="slugs.title"
+		title="Degree Types API"
+		description="Retrieve a list of degree types as JSON. All types are from the same source as the Degrees API and have the same parsing inaccuracies"
+	></app-doc-header>
+
+	<hr class="mb-4"/>
+
+	<app-doc-meta
+		[anchorId]="slugs.details"
+		endpoint="/v1/degrees/types"
+	></app-doc-meta>
+
+	<app-doc-response
+		[anchorId]="slugs.response"
+		description="Responds with a JSON array of degrees types"
+	>
+		<app-doc-code-block [code]="exampleResponse">
+			{{exampleResponse}}
+		</app-doc-code-block>
+	</app-doc-response>
+
+	<app-doc-warnings
+		[anchorId]="slugs.warnings"
+	>
+		<table class="[&_td]:border [&_td]:px-2 [&_th]:border [&_th]:px-2 w-full border border-collapse text-left">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>no_results</td>
+					<td>No results were found. The entire degree API may be unavailable at this time or its degree type classification has failed</td>
+				</tr>
+			</tbody>
+		</table>
+	</app-doc-warnings>
+</div>

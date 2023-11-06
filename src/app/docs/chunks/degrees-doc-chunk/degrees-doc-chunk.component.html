@@ -1,0 +1,58 @@
+<div
+	[id]="docSlug"
+	class="w-full px-6 mb-16"
+>
+	<app-doc-header
+		[anchorId]="slugs.title"
+		title="Degrees API"
+		description="Retrieve a list of degrees as JSON. Not all degrees are perfectly parsed"
+	></app-doc-header>
+
+	<hr class="mb-4"/>
+
+	<app-doc-meta
+		[anchorId]="slugs.details"
+		endpoint="/v1/degrees"
+	></app-doc-meta>
+
+	<app-doc-params
+		[anchorId]="slugs.params"
+	>
+		<app-doc-params-table>
+			<app-doc-params-table-row
+				paramType="query"
+				param="?type"
+				description="Filter by a specific degree type (See Degree Types API for obtaining a list of types)"
+				default="(empty)"
+			></app-doc-params-table-row>
+		</app-doc-params-table>
+	</app-doc-params>
+
+	<app-doc-response
+		[anchorId]="slugs.response"
+		description="Responds with a JSON array of degrees and their types"
+	>
+		<app-doc-code-block [code]="exampleResponse">
+			{{exampleResponse}}
+		</app-doc-code-block>
+	</app-doc-response>
+
+	<app-doc-warnings
+		[anchorId]="slugs.warnings"
+	>
+		<table class="[&_td]:border [&_td]:px-2 [&_th]:border [&_th]:px-2 w-full border border-collapse text-left">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>no_results</td>
+					<td>No results were found. May imply an invalid degree type if one is being used</td>
+				</tr>
+			</tbody>
+		</table>
+	</app-doc-warnings>
+</div>
