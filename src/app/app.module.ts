@@ -54,6 +54,8 @@ import { SeatHistoryDocChunkComponent } from './docs/chunks/seat-history-doc-chu
 import { SeatsCurrentDocChunkComponent } from './docs/chunks/seats-current-doc-chunk/seats-current-doc-chunk.component';
 import { DegreesDocChunkComponent } from './docs/chunks/degrees-doc-chunk/degrees-doc-chunk.component';
 import { DegreeTypesDocChunkComponent } from './docs/chunks/degree-types-doc-chunk/degree-types-doc-chunk.component';
+import { CourseDetailsDocChunkComponent } from './docs/chunks/course-details-doc-chunk/course-details-doc-chunk.component';
+import { CourseCrnsDocChunkComponent } from './docs/chunks/course-crns-doc-chunk/course-crns-doc-chunk.component';
 
 @NgModule({
 	declarations: [
@@ -95,7 +97,9 @@ import { DegreeTypesDocChunkComponent } from './docs/chunks/degree-types-doc-chu
 		SeatHistoryDocChunkComponent,
 		SeatsCurrentDocChunkComponent,
 		DegreesDocChunkComponent,
-  DegreeTypesDocChunkComponent
+  DegreeTypesDocChunkComponent,
+  CourseDetailsDocChunkComponent,
+  CourseCrnsDocChunkComponent
 	],
 	imports: [
 		BrowserModule,
