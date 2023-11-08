@@ -41,13 +41,16 @@ $UCDAPIDemo-theme: mat.define-light-theme((
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html {
 	height: 100%;
 }
 
 body {
+	min-height: 100%;
 	margin: 0;
 	font-family: Roboto, "Helvetica Neue", sans-serif;
+	// Needed !important to override FlowBite hiding the scrollbar when the sidebar appears
+	overflow-y: auto !important;
 }
 
 /* Smooth scroll by default */
