@@ -42,13 +42,13 @@ export class GraphComponent {
 	@ViewChild("chartSource") chartElem!: ElementRef<HTMLCanvasElement>;
 	@Input({ required: true }) crnData!: APISeats[];
 
-	public pointIndexRange!: [number, number];
-	public datePointRangeLimits!: [string, string];
-	public datePointRangeLabels!: [string, string];
+	pointIndexRange!: [number, number];
+	datePointRangeLimits!: [string, string];
+	datePointRangeLabels!: [string, string];
 
-	public generatedData: ChartConfiguration['data'] | undefined;
+	generatedData: ChartConfiguration['data'] | undefined;
 
-	public generatedOptions: ChartConfiguration['options'] = {
+	generatedOptions: ChartConfiguration['options'] = {
 		responsive: true,
 		maintainAspectRatio: false,
 		scales: {
@@ -101,9 +101,9 @@ export class GraphComponent {
 		const renderCrnData = this.crnData
 			.filter(c => Number(c.timestamp) >= this.pointIndexRange[0] && Number(c.timestamp) <= this.pointIndexRange[1]);
 
-		// Fix edge case in which there are no points to render by rendering the first point
+		// Fix edge case in which there are no points to render by rendering the first two points
 		// TODO: Locate nearest points instead
-		if(renderCrnData.length === 0) renderCrnData.push(this.crnData[0]);
+		if(renderCrnData.length === 0) renderCrnData.push(...this.crnData.slice(0, 2));
 
 		const labels = renderCrnData.map(e => {
 			return moment(new Date(Number(e.timestamp))).format("M/D h:mm a")
