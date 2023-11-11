@@ -1,14 +1,16 @@
-<table class="w-full border border-slate-200 border-collapse text-left">
-	<thead>
-		<tr class="[&>*]:px-2 [&>*]:border [&>*]:border-slate-200">
-			<th>Name</th>
-			<th>Type</th>
-			<th>Description</th>
-			<th>Required</th>
-			<th>Default</th>
-		</tr>
-	</thead>
-	<tbody>
-		<ng-content></ng-content>
-	</tbody>
-</table>
+<div class="w-full overflow-x-auto">
+	<table class="w-full border border-slate-200 border-collapse text-left">
+		<thead>
+			<tr class="[&>*]:px-2 [&>*]:border [&>*]:border-slate-200">
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
+				<th>Required</th>
+				<th>Default</th>
+			</tr>
+		</thead>
+		<tbody>
+			<ng-content></ng-content>
+		</tbody>
+	</table>
+</div>
