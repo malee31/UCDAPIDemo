@@ -42,6 +42,7 @@ export class GraphComponent {
 	@ViewChild("chartSource") chartElem!: ElementRef<HTMLCanvasElement>;
 	@Input({ required: true }) crnData!: APISeats[];
 
+	numIntervals: number = 0;
 	pointIndexRange!: [number, number];
 	datePointRangeLimits!: [string, string];
 	datePointRangeLabels!: [string, string];
@@ -108,16 +109,17 @@ export class GraphComponent {
 		const labels = renderCrnData.map(e => {
 			return moment(new Date(Number(e.timestamp))).format("M/D h:mm a")
 		});
+		const netSeatData = renderCrnData.map(e => ({
+			x: Number(e.timestamp),
+			y: e.seats_available + e.seats_reserved - e.waitlist
+		}));
 		// @ts-ignore
 		this.generatedData = {
 			labels: labels,
 			datasets: [
 				{
 					label: "Net Seats",
-					data: renderCrnData.map(e => ({
-						x: Number(e.timestamp),
-						y: e.seats_available + e.seats_reserved - e.waitlist
-					})),
+					data: netSeatData,
 					fill: true,
 					borderColor: "rgb(91,194,38)",
 					pointBackgroundColor: "rgb(91,194,38)",
@@ -151,23 +153,61 @@ export class GraphComponent {
 			]
 		};
 
+		// Formula for linear regression:
+		const pointCount = netSeatData.length;
+		const timeSum =  netSeatData.reduce((acc, point) => {
+			return acc + point.x;
+		}, 0);
+		const timeSquaredSum =  netSeatData.reduce((acc, point) => {
+			return acc + Math.pow(point.x, 2);
+		}, 0);
+		const seatTimeProductSum =  netSeatData.reduce((acc, point) => {
+			return acc + point.x * point.y;
+		}, 0);
+		const seatSum =  netSeatData.reduce((acc, point) => {
+			return acc + point.y;
+		}, 0);
+
+		const seatSlope = (pointCount * seatTimeProductSum - timeSum * seatSum) / (pointCount * timeSquaredSum - Math.pow(timeSum, 2));
+		const seatIntercept = (seatSum / pointCount) - (seatSlope * timeSum)/ pointCount;
+
+		const trendLinePredict = (x: number) => Number((seatSlope * x + seatIntercept).toFixed(1));
+
+		const trendLineData = netSeatData.map(point => {
+			return {
+				x: point.x,
+				y: trendLinePredict(point.x)
+			};
+		});
+		const lookAheadFrom = Math.max(...trendLineData.map(point => point.x));
+		const interval = 15 * 60 * 1000;
+		for(let lookAheadNum = 0; lookAheadNum < this.numIntervals; lookAheadNum++) {
+			const lookAheadX = lookAheadFrom + lookAheadNum * interval;
+			trendLineData.push({
+				x: lookAheadX,
+				y: trendLinePredict(lookAheadX)
+			});
+		}
+
 		// @ts-ignore
 		this.generatedData.datasets.push({
 			label: "Linear Trend Line",
-			data: [],
+			data: trendLineData,
 			fill: false,
 			borderColor: "rgb(200,100,30)",
 			tension: 0.05
 		})
-
-		// TODO: Re-add trend line feature
-		this.generatedData.datasets.pop();
 
 		// Modify scale start and end
 		// @ts-ignore
 		this.generatedOptions.scales.x.min = Number(renderCrnData[0].timestamp);
 		// @ts-ignore
 		this.generatedOptions.scales.x.max = Number(renderCrnData[renderCrnData.length - 1].timestamp);
+		if(trendLineData.length) {
+			// @ts-ignore
+			this.generatedOptions.scales.x.max = Math.max(this.generatedOptions.scales.x.max, trendLineData[trendLineData.length - 1].x);
+
+		}
 	}
 
 	setRange(index: number, event: Event) {
@@ -175,6 +215,10 @@ export class GraphComponent {
 		newPointIndex[index] = (new Date((event.target as HTMLInputElement).value)).getTime();
 		this.pointIndexRange = newPointIndex;
 		this.ngOnChanges();
+	}
+
+	setPredict(numHoursEvent: Event) {
+		this.numIntervals = Number((numHoursEvent.target as HTMLInputElement).value) * 4;
 	}
 
 	chartToDataURL() {
