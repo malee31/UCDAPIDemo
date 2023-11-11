@@ -13,67 +13,68 @@ import { FormControl } from "@angular/forms";
 	providers: [ApiService],
 })
 export class ChartSearchComponent {
-	validTerms: string[] = TERMS_LIST;
-	options: string[] = SUBJECT_CODE_LIST;
-	termControl = new FormControl("Default");
-	subjectCodeControl = new FormControl("");
-	crnControl = new FormControl("");
-	filteredOptions: string[];
-	filteredCRNOptions: APICrn[];
+	// Filter option lists
+	validTerms: string[] = TERMS_LIST.slice();
+	validSubjectCodes: string[] = SUBJECT_CODE_LIST.slice();
 
-	chosenTerm: string = "";
-	chosenSubjectCode: string = "";
-	results: APICrn[] = [];
-	chosenCourse: APICrn | null = null;
-
+	// Mobile-specific settings
 	mobileShowFilters: boolean = false;
-
-	@ViewChild("input") input!: ElementRef<HTMLInputElement>;
-	@ViewChild("termInput") termInput!: ElementRef<HTMLInputElement>;
-	@ViewChild("crnInput") crnInput!: ElementRef<HTMLInputElement>;
-
-	constructor(private api: ApiService) {
-		this.filteredOptions = this.options.slice();
-		this.filteredCRNOptions = [];
-	}
-
-	filter(): void {
-		const filterValue = this.input.nativeElement.value.toLowerCase();
-		this.filteredOptions = this.options.filter(o => o.toLowerCase().includes(filterValue));
-		this.crnControl.setValue("");
-	}
-
-	filterCRN(): void {
-		const filterValue = this.crnInput.nativeElement.value.toLowerCase();
-		this.filteredCRNOptions = this.results.filter(course => course.crn.toLowerCase().includes(filterValue));
-	}
-
 	toggleMobileFilters(): void {
 		this.mobileShowFilters = !this.mobileShowFilters;
 	}
 
-	set crn(val: string) {
-		this.chosenCourse = this.results.find(course => course.crn === val) || null;
+	// Filters and their values
+	// Term filter
+	@ViewChild("termInput") termInput!: ElementRef<HTMLInputElement>;
+	termControl = new FormControl("Default");
+	// Subject code filter
+	@ViewChild("subjectCodeInput") subjectCodeInput!: ElementRef<HTMLInputElement>;
+	subjectCodeControl = new FormControl("");
+
+	appliedFilters = {
+		term: "",
+		subjectCode: "",
+		subjectNumber: ""
+	};
+
+	// Autocomplete filters
+	filteredOptions: string[];
+
+	// Displayed results
+	results: APICrn[] = [];
+
+	constructor(private api: ApiService) {
+		this.filteredOptions = this.validSubjectCodes;
 	}
 
-	set term(val: string) {
-		if(val === "Default") {
-			this.chosenTerm = "";
-		} else {
-			this.chosenTerm = val;
-		}
+	resetAutofillSubjectCode() {
+		this.filteredOptions = this.validSubjectCodes;
+	}
+
+	filterSubjectCodes(): void {
+		const filterValue = this.subjectCodeInput.nativeElement.value.toLowerCase();
+		this.filteredOptions = this.validSubjectCodes.filter(o => o.toLowerCase().includes(filterValue));
+	}
+
+	setTerm(val: string) {
+		const newTermVal = val === "Default" ? "" : val;
+		if(this.appliedFilters.term === newTermVal) return;
+
+		this.appliedFilters.term = newTermVal;
 		this.searchCRN();
 	}
 
-	set subjectCode(val: string) {
-		this.chosenSubjectCode = val;
+	setSubjectCode(newSubjectCodeVal: string) {
+		if(this.appliedFilters.subjectCode === newSubjectCodeVal) return;
+
+		this.appliedFilters.subjectCode = newSubjectCodeVal;
 		this.searchCRN();
 	}
 
 	searchCRN() {
-		if(!this.chosenSubjectCode) return;
+		if(!this.appliedFilters.subjectCode) return;
 
-		this.api.fetchCRNsBySubjectCode(this.chosenTerm, this.chosenSubjectCode)
+		this.api.fetchCRNsBySubjectCode(this.appliedFilters.term, this.appliedFilters.subjectCode)
 			.then(courses => {
 				this.results = courses;
 			})

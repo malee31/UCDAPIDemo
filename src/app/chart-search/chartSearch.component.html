@@ -13,7 +13,7 @@
 				Show Results &gt;
 			</button>
 		</h2>
-		<hr class="my-2 border-t-2" />
+		<hr class="my-2 border-t-2"/>
 
 		<!-- Filter Options -->
 		<ul class="pt-2">
@@ -25,20 +25,19 @@
 						<mat-form-field class="w-full">
 							<mat-label>Subject Code Filter</mat-label>
 							<input
-								#input
+								#subjectCodeInput
 								type="text"
 								placeholder="Select Subject Code"
 								matInput
 								[formControl]="subjectCodeControl"
 								[matAutocomplete]="auto"
-								(input)="filter()"
-								(focus)="filter()"
-								(blur)="searchCRN()"
+								(focus)="resetAutofillSubjectCode()"
+								(input)="filterSubjectCodes()"
 							>
 							<mat-autocomplete
 								requireSelection
 								#auto="matAutocomplete"
-								(optionSelected)="this.subjectCode=$event.option.value"
+								(optionSelected)="setSubjectCode($event.option.value)"
 							>
 								<mat-option
 									*ngFor="let option of filteredOptions"
@@ -67,12 +66,11 @@
 								matInput
 								[formControl]="termControl"
 								[matAutocomplete]="autoTerm"
-								(blur)="searchCRN()"
 							>
 							<mat-autocomplete
 								requireSelection
 								#autoTerm="matAutocomplete"
-								(optionSelected)="term=$event.option.value"
+								(optionSelected)="setTerm($event.option.value)"
 							>
 								<mat-option value="Default">
 									(Default: Most Recent)
@@ -82,41 +80,6 @@
 									[value]="term"
 								>
 									{{term}}
-								</mat-option>
-							</mat-autocomplete>
-						</mat-form-field>
-
-					</div>
-				</div>
-			</li>
-
-			<li *ngIf="results.length !== 0">
-				<div>
-					<h3 class="text-lg">CRN</h3>
-					<div>
-
-						<mat-form-field class="w-full">
-							<mat-label>CRN Selection</mat-label>
-							<input
-								#crnInput
-								type="text"
-								placeholder="Select a CRN"
-								matInput
-								[formControl]="crnControl"
-								[matAutocomplete]="auto"
-								(input)="filterCRN()"
-								(focus)="filterCRN()"
-							>
-							<mat-autocomplete
-								requireSelection
-								#auto="matAutocomplete"
-								(optionSelected)="crn=$event.option.value"
-							>
-								<mat-option
-									*ngFor="let option of results"
-									[value]="option.crn"
-								>
-									{{option.subject_code}} {{option.subject_number}} - {{option.crn}}
 								</mat-option>
 							</mat-autocomplete>
 						</mat-form-field>
@@ -147,26 +110,16 @@
 		</div>
 
 		<ng-container *ngIf="results.length !== 0">
-			<div class="flex flex-col gap-4">
+			<div class="flex flex-col">
+				<h2 class="text-lg">All Options:</h2>
 				<a
 					class="block text-blue-500"
-					*ngIf="chosenCourse"
-					routerLink="/chart/crn/{{chosenCourse.crn}}"
+					*ngFor="let option of results"
+					routerLink="/chart/crn/{{option.crn}}"
+					[queryParams]="{optimized: 1, term: appliedFilters.term}"
 				>
-					View Chart for {{chosenCourse.crn}} - {{chosenCourse.subject_code}} {{chosenCourse.subject_number}}
+					View Chart for {{option.crn}} - {{option.subject_code}} {{option.subject_number}}
 				</a>
-
-				<div>
-					<h2 class="text-lg">All Options:</h2>
-					<a
-						class="block text-blue-500"
-						*ngFor="let option of results"
-						routerLink="/chart/crn/{{option.crn}}"
-						[queryParams]="{optimized: 1, term: chosenTerm}"
-					>
-						View Chart for {{option.crn}} - {{option.subject_code}} {{option.subject_number}}
-					</a>
-				</div>
 			</div>
 		</ng-container>
 	</section>
