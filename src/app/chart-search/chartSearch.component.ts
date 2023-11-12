@@ -16,6 +16,7 @@ export class ChartSearchComponent {
 	// Filter option lists
 	validTerms: string[] = TERMS_LIST.slice();
 	validSubjectCodes: string[] = SUBJECT_CODE_LIST.slice();
+	validSubjectNumbers: string[] = [];
 
 	// Mobile-specific settings
 	mobileShowFilters: boolean = false;
@@ -27,9 +28,11 @@ export class ChartSearchComponent {
 	// Term filter
 	@ViewChild("termInput") termInput!: ElementRef<HTMLInputElement>;
 	termControl = new FormControl("Default");
-	// Subject code filter
+	// Subject code and number filters
 	@ViewChild("subjectCodeInput") subjectCodeInput!: ElementRef<HTMLInputElement>;
 	subjectCodeControl = new FormControl("");
+	@ViewChild("subjectNumberInput") subjectNumberInput!: ElementRef<HTMLInputElement>;
+	subjectNumberControl = new FormControl("All");
 
 	appliedFilters = {
 		term: "",
@@ -38,22 +41,31 @@ export class ChartSearchComponent {
 	};
 
 	// Autocomplete filters
-	filteredOptions: string[];
+	filteredCodeOptions: string[];
+	filteredNumberOptions: string[] = [];
 
 	// Displayed results
 	results: APICrn[] = [];
 
 	constructor(private api: ApiService) {
-		this.filteredOptions = this.validSubjectCodes;
+		this.filteredCodeOptions = this.validSubjectCodes;
 	}
 
 	resetAutofillSubjectCode() {
-		this.filteredOptions = this.validSubjectCodes;
+		this.filteredCodeOptions = this.validSubjectCodes;
+	}
+	resetAutofillSubjectNumber() {
+		this.filteredNumberOptions = this.validSubjectNumbers;
 	}
 
-	filterSubjectCodes(): void {
-		const filterValue = this.subjectCodeInput.nativeElement.value.toLowerCase();
-		this.filteredOptions = this.validSubjectCodes.filter(o => o.toLowerCase().includes(filterValue));
+	applyPartialSubjectCodeFilter(e: Event): void {
+		const filterValue = (e.currentTarget as HTMLInputElement).value.toLowerCase();
+		this.filteredCodeOptions = this.validSubjectCodes.filter(o => o.toLowerCase().includes(filterValue));
+	}
+
+	applyPartialSubjectNumberFilter(e: Event): void {
+		const filterValue = (e.currentTarget as HTMLInputElement).value.toLowerCase();
+		this.filteredNumberOptions = this.validSubjectNumbers.filter(o => o.toLowerCase().includes(filterValue));
 	}
 
 	setTerm(val: string) {
@@ -68,15 +80,28 @@ export class ChartSearchComponent {
 		if(this.appliedFilters.subjectCode === newSubjectCodeVal) return;
 
 		this.appliedFilters.subjectCode = newSubjectCodeVal;
+		this.appliedFilters.subjectNumber = "";
+		this.subjectNumberControl.reset("");
+		this.searchCRN();
+	}
+
+	setSubjectNumber(val: string) {
+		const newSubjectNumberVal = val === "All" ? "" : val;
+		if(this.appliedFilters.subjectNumber === newSubjectNumberVal) return;
+
+		this.appliedFilters.subjectNumber = newSubjectNumberVal;
 		this.searchCRN();
 	}
 
 	searchCRN() {
 		if(!this.appliedFilters.subjectCode) return;
 
-		this.api.fetchCRNsBySubjectCode(this.appliedFilters.term, this.appliedFilters.subjectCode)
+		this.api.fetchCRNs(this.appliedFilters.term, this.appliedFilters.subjectCode, this.appliedFilters.subjectNumber)
 			.then(courses => {
 				this.results = courses;
+				this.validSubjectNumbers = courses
+					.map(res => res.subject_number)
+					.filter((x, index, arr) => arr.indexOf(x) === index);
 			})
 			.catch(alert);
 	}

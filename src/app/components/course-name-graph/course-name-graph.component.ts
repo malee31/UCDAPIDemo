@@ -18,7 +18,7 @@ export class CourseNameGraphComponent implements OnInit {
 	constructor(private api: ApiService) {}
 
 	ngOnInit(): void {
-		this.api.fetchCRNsBySubjectCodeAndNumber(this.term, this.subject_code, this.subject_number)
+		this.api.fetchCRNs(this.term, this.subject_code, this.subject_number)
 			.then((courses: APICrn[]) => {
 				this.courses = courses;
 			})
