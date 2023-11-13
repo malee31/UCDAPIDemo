@@ -2,7 +2,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ApiService } from "../../api-services/api.service";
 import { APISeats } from "../../api-services/api-types";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router, ParamMap } from "@angular/router";
 
 @Component({
 	selector: "app-crn-graph",
@@ -25,9 +25,10 @@ export class CrnGraphComponent implements OnInit {
 			throw new Error(`CRN must be 5 characters: "${this.crn}"`);
 		}
 
-		this.route.queryParams.subscribe(params => {
-			this.optimized = params["optimized"] === "true" || params["optimized"] === "1";
-			this.term = params["term"] || "";
+		this.route.queryParamMap.subscribe((params: ParamMap) => {
+			const optimizedParam = params.get("optimized");
+			this.optimized = optimizedParam === "true" || optimizedParam === "1";
+			this.term = params.get("term") || "";
 
 			this.api.fetchSeatHistoryByCRN(this.term, this.crn, this.optimized)
 				.then((seats: APISeats[]) => {

@@ -19,7 +19,7 @@ const routes: Routes = [
 	{ path: "logs", component: LogsComponent },
 	{ path: "chart", component: ChartSearchComponent },
 	{ path: "chart/crn/:crn", component: ChartComponent },
-	{ path: "chart/name/:term/:subject_code/:subject_number", component: MultiChartComponent },
+	{ path: "chart/name/:subject_code/:subject_number", component: MultiChartComponent },
 	{ path: "degrees", component: DegreesComponent },
 	{ path: "courses", component: CoursesComponent },
 	{ path: "seats", component: ChartSearchComponent },

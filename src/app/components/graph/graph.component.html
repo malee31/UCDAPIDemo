@@ -1,13 +1,15 @@
 <!-- Div must exist with relative for Chart.js to resize properly -->
-<div class="w-full h-[50vw] max-h-[calc(90vh-4rem)] relative">
-	<canvas
-		#chartSource
-		baseChart
-		class="chart w-full"
-		[data]="generatedData"
-		[options]="generatedOptions"
-		type="line"
-	></canvas>
+<div class="w-full px-2 sm:px-0 overflow-x-auto">
+	<div class="w-full min-w-[580px] h-[70vw] md:h-[50vw] max-h-[calc(90vh-4rem)] overflow-hidden relative">
+		<canvas
+			#chartSource
+			baseChart
+			class="chart w-full"
+			[data]="generatedData"
+			[options]="generatedOptions"
+			type="line"
+		></canvas>
+	</div>
 </div>
 <div class="px-2">
 	<div class="block my-1 px-2">
