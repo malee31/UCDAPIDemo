@@ -18,12 +18,6 @@ export class ChartSearchComponent {
 	validSubjectCodes: string[] = SUBJECT_CODE_LIST.slice();
 	validSubjectNumbers: string[] = [];
 
-	// Mobile-specific settings
-	mobileShowFilters: boolean = false;
-	toggleMobileFilters(): void {
-		this.mobileShowFilters = !this.mobileShowFilters;
-	}
-
 	// Filters and their values
 	// Term filter
 	@ViewChild("termInput") termInput!: ElementRef<HTMLInputElement>;

@@ -57,6 +57,7 @@ import { DegreeTypesDocChunkComponent } from './docs/chunks/degree-types-doc-chu
 import { CourseDetailsDocChunkComponent } from './docs/chunks/course-details-doc-chunk/course-details-doc-chunk.component';
 import { CourseCrnsDocChunkComponent } from './docs/chunks/course-crns-doc-chunk/course-crns-doc-chunk.component';
 import { CrnLookupResultComponent } from './components/search/crn-lookup-result/crn-lookup-result.component';
+import { FilterUiLayoutComponent } from './components/search/filter-ui-layout/filter-ui-layout.component';
 
 @NgModule({
 	declarations: [
@@ -101,7 +102,8 @@ import { CrnLookupResultComponent } from './components/search/crn-lookup-result/
   DegreeTypesDocChunkComponent,
   CourseDetailsDocChunkComponent,
   CourseCrnsDocChunkComponent,
-  CrnLookupResultComponent
+  CrnLookupResultComponent,
+  FilterUiLayoutComponent
 	],
 	imports: [
 		BrowserModule,

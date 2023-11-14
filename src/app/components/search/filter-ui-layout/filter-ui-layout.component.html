@@ -1,0 +1,42 @@
+<div class="h-[calc(100vh-4rem)] flex-grow flex flex-row relative">
+	<!-- Filter Sidebar -->
+	<aside
+		class="w-full h-full absolute sm:static sm:w-64 sm:h-auto px-3 py-4 flex-shrink-0 flex-grow-0 bg-slate-100 border-r border-slate-50 transition-[left]"
+		[ngClass]="{'-left-full': !mobileShowFilters, 'left-0': mobileShowFilters}"
+	>
+		<h2 class="text-xl">
+			Filter by
+			<button
+				class="sm:hidden text-base float-right px-2 py-1 bg-slate-200 rounded"
+				(click)="toggleMobileFilters()"
+			>
+				Show Results &gt;
+			</button>
+		</h2>
+		<hr class="my-2 border-t-2"/>
+
+		<!-- Filter Options -->
+		<ng-content select="[filter-list]"></ng-content>
+	</aside>
+
+	<!-- Results -->
+	<section class="flex-grow flex flex-col px-4 py-2 overflow-y-auto bg-slate-50">
+		<h1 class="text-2xl">
+			{{filterTitle}}
+		</h1>
+		<div *ngIf="showSubtitle">
+			<h2 class="text-sm text-slate-500">{{subtitle}}</h2>
+		</div>
+
+		<div class="block py-2 sm:hidden">
+			<button
+				class="px-4 py-2 bg-slate-200 rounded"
+				(click)="toggleMobileFilters()"
+			>
+				Open Filters
+			</button>
+		</div>
+
+		<ng-content></ng-content>
+	</section>
+</div>

@@ -12,26 +12,34 @@ export class SeatHistoryDocChunkComponent extends ChunkInterface {
 	}
 
 	exampleResponse: string = JSON.stringify({
-		ok: true,
-		history: [
+		"ok": true,
+		"history": [
 			{
-				"id": 9960085,
-				"refresh_cycle_timestamp": "1695301201951",
-				"timestamp": "1695301215143",
 				"crn": "30459",
 				"seats_available": 0,
 				"seats_reserved": 0,
-				"waitlist": 39
+				"waitlist": 54,
+				"refresh_cycle_timestamp": "1685761205974",
+				"timestamp": "1685761271569",
+				"net_diff": 0
 			},
-			"----- 198 more results -----",
 			{
-				"id": 10825650,
-				"refresh_cycle_timestamp": "1696366801536",
-				"timestamp": "1696366814073",
+				"crn": "30459",
+				"seats_available": 1,
+				"seats_reserved": 0,
+				"waitlist": 54,
+				"refresh_cycle_timestamp": "1685764804224",
+				"timestamp": "1685764896355",
+				"net_diff": 1
+			},
+			{
 				"crn": "30459",
 				"seats_available": 0,
 				"seats_reserved": 0,
-				"waitlist": 15
+				"waitlist": 53,
+				"refresh_cycle_timestamp": "1685772004274",
+				"timestamp": "1685772075992",
+				"net_diff": 0
 			}
 		]
 	}, null, "\t");
