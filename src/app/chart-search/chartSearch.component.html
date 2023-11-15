@@ -7,112 +7,41 @@
 		<!-- Filter Options -->
 		<ul class="pt-2">
 			<li>
-				<div>
-					<h3 class="text-base">Term Code (Quarter)</h3>
-					<div>
-
-						<mat-form-field class="w-full">
-							<mat-label>Term Code Filter</mat-label>
-							<input
-								#termInput
-								type="text"
-								placeholder="Select Term Code"
-								matInput
-								[formControl]="termControl"
-								[matAutocomplete]="autoTerm"
-							>
-							<mat-autocomplete
-								requireSelection
-								#autoTerm="matAutocomplete"
-								(optionSelected)="setTerm($event.option.value)"
-							>
-								<mat-option value="Default">
-									(Default: Most Recent)
-								</mat-option>
-								<mat-option
-									*ngFor="let term of validTerms"
-									[value]="term"
-								>
-									{{term}}
-								</mat-option>
-							</mat-autocomplete>
-						</mat-form-field>
-
-					</div>
-				</div>
+				<app-autocomplete-filter-field
+					(onSelect)="setTerm($event)"
+					[options]="validTerms"
+					titleText="Term Code (Quarter)"
+					labelText="Term Code Filter"
+					placeholder="Select Term Code"
+					defaultLabel="(Default: Most Recent)"
+					initialValue="Default"
+					defaultOption="Default"
+					[required]="true"
+				></app-autocomplete-filter-field>
 			</li>
 
 			<li>
-				<div>
-					<h3 class="text-base">Subject Code <span class="text-red-500">*</span></h3>
-					<div>
-
-						<mat-form-field class="w-full">
-							<mat-label>Subject Code Filter</mat-label>
-							<input
-								#subjectCodeInput
-								type="text"
-								placeholder="Select Subject Code"
-								matInput
-								[formControl]="subjectCodeControl"
-								[matAutocomplete]="auto"
-								(focus)="resetAutofillSubjectCode()"
-								(input)="applyPartialSubjectCodeFilter($event)"
-							>
-							<mat-autocomplete
-								requireSelection
-								#auto="matAutocomplete"
-								(optionSelected)="setSubjectCode($event.option.value)"
-							>
-								<mat-option
-									*ngFor="let option of filteredCodeOptions"
-									[value]="option"
-								>
-									{{option}}
-								</mat-option>
-							</mat-autocomplete>
-						</mat-form-field>
-
-					</div>
-				</div>
+				<app-autocomplete-filter-field
+					(onSelect)="setSubjectCode($event)"
+					[options]="validSubjectCodes"
+					titleText="Subject Code"
+					labelText="Subject Code Filter"
+					placeholder="Select Subject Code"
+					[required]="true"
+				></app-autocomplete-filter-field>
 			</li>
 
 			<li>
-				<div>
-					<h3 class="text-base">Subject Number</h3>
-					<div>
-
-						<mat-form-field class="w-full">
-							<mat-label>Subject Number Filter</mat-label>
-							<input
-								#subjectNumberInput
-								type="text"
-								placeholder="Select Subject Number"
-								matInput
-								[formControl]="subjectNumberControl"
-								[matAutocomplete]="autoNum"
-								(focus)="resetAutofillSubjectNumber()"
-								(input)="applyPartialSubjectNumberFilter($event)"
-							>
-							<mat-autocomplete
-								requireSelection
-								#autoNum="matAutocomplete"
-								(optionSelected)="setSubjectNumber($event.option.value)"
-							>
-								<mat-option value="All">
-									(All)
-								</mat-option>
-								<mat-option
-									*ngFor="let option of filteredNumberOptions"
-									[value]="option"
-								>
-									{{option}}
-								</mat-option>
-							</mat-autocomplete>
-						</mat-form-field>
-
-					</div>
-				</div>
+				<app-autocomplete-filter-field
+					(onSelect)="setSubjectNumber($event)"
+					[options]="validSubjectNumbers"
+					titleText="Subject Number"
+					labelText="Subject Number Filter"
+					placeholder="Select Subject Number"
+					defaultLabel="(All)"
+					initialValue="All"
+					defaultOption="All"
+				></app-autocomplete-filter-field>
 			</li>
 		</ul>
 	</ng-container>

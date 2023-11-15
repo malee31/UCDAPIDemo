@@ -58,6 +58,7 @@ import { CourseDetailsDocChunkComponent } from './docs/chunks/course-details-doc
 import { CourseCrnsDocChunkComponent } from './docs/chunks/course-crns-doc-chunk/course-crns-doc-chunk.component';
 import { CrnLookupResultComponent } from './components/search/crn-lookup-result/crn-lookup-result.component';
 import { FilterUiLayoutComponent } from './components/search/filter-ui-layout/filter-ui-layout.component';
+import { AutocompleteFilterFieldComponent } from './components/search/filter-ui-layout/autocomplete-filter-field/autocomplete-filter-field.component';
 
 @NgModule({
 	declarations: [
@@ -99,11 +100,12 @@ import { FilterUiLayoutComponent } from './components/search/filter-ui-layout/fi
 		SeatHistoryDocChunkComponent,
 		SeatsCurrentDocChunkComponent,
 		DegreesDocChunkComponent,
-  DegreeTypesDocChunkComponent,
-  CourseDetailsDocChunkComponent,
-  CourseCrnsDocChunkComponent,
-  CrnLookupResultComponent,
-  FilterUiLayoutComponent
+		DegreeTypesDocChunkComponent,
+		CourseDetailsDocChunkComponent,
+		CourseCrnsDocChunkComponent,
+		CrnLookupResultComponent,
+		FilterUiLayoutComponent,
+  AutocompleteFilterFieldComponent,
 	],
 	imports: [
 		BrowserModule,

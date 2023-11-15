@@ -1,0 +1,38 @@
+<div>
+	<h3 class="text-base">{{titleText}} <span *ngIf="required" class="text-red-500">*</span></h3>
+	<div>
+
+		<mat-form-field class="w-full">
+			<mat-label>{{labelText}}</mat-label>
+			<input
+				#autocompleteInput
+				type="text"
+				[placeholder]="placeholder"
+				matInput
+				[formControl]="autocompleteTextControl"
+				[matAutocomplete]="autocomplete"
+				(focus)="resetAutocompleteTextInput()"
+				(input)="handleInput($event)"
+			>
+			<mat-autocomplete
+				requireSelection
+				#autocomplete="matAutocomplete"
+				(optionSelected)="selectValue($event.option.value)"
+			>
+				<mat-option
+					*ngIf="defaultOption"
+					[value]="defaultOption"
+				>
+					{{defaultLabel || defaultOption}}
+				</mat-option>
+				<mat-option
+					*ngFor="let autoOption of filteredOptions"
+					[value]="autoOption"
+				>
+					{{autoOption}}
+				</mat-option>
+			</mat-autocomplete>
+		</mat-form-field>
+
+	</div>
+</div>

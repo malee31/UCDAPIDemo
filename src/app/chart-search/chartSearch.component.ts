@@ -23,8 +23,6 @@ export class ChartSearchComponent {
 	@ViewChild("termInput") termInput!: ElementRef<HTMLInputElement>;
 	termControl = new FormControl("Default");
 	// Subject code and number filters
-	@ViewChild("subjectCodeInput") subjectCodeInput!: ElementRef<HTMLInputElement>;
-	subjectCodeControl = new FormControl("");
 	@ViewChild("subjectNumberInput") subjectNumberInput!: ElementRef<HTMLInputElement>;
 	subjectNumberControl = new FormControl("All");
 
@@ -35,26 +33,15 @@ export class ChartSearchComponent {
 	};
 
 	// Autocomplete filters
-	filteredCodeOptions: string[];
 	filteredNumberOptions: string[] = [];
 
 	// Displayed results
 	results: APICrn[] = [];
 
-	constructor(private api: ApiService) {
-		this.filteredCodeOptions = this.validSubjectCodes;
-	}
+	constructor(private api: ApiService) {}
 
-	resetAutofillSubjectCode() {
-		this.filteredCodeOptions = this.validSubjectCodes;
-	}
 	resetAutofillSubjectNumber() {
 		this.filteredNumberOptions = this.validSubjectNumbers;
-	}
-
-	applyPartialSubjectCodeFilter(e: Event): void {
-		const filterValue = (e.currentTarget as HTMLInputElement).value.toLowerCase();
-		this.filteredCodeOptions = this.validSubjectCodes.filter(o => o.toLowerCase().includes(filterValue));
 	}
 
 	applyPartialSubjectNumberFilter(e: Event): void {
