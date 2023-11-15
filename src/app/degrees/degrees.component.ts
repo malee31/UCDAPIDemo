@@ -1,25 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from "../api-services/api.service";
+import { APIDegrees } from "../api-services/api-types";
 
 @Component({
 	selector: 'app-degrees',
 	templateUrl: './degrees.component.html',
 	styleUrls: ['./degrees.component.scss']
 })
-export class DegreesComponent {
-	validDegreeTypes: string[] = ["Major", "Minor"];
+export class DegreesComponent implements OnInit {
+	validDegreeTypes: string[] = [];
 	filters = {
 		degreeType: ""
 	};
 
-	results: Object[] = []
+	results: APIDegrees[] = [];
+
+	constructor(private api: ApiService) {}
+	ngOnInit() {
+		this.api.fetchDegreeTypes()
+			.then(degreeTypes => {
+				this.validDegreeTypes = degreeTypes;
+			});
+		this.searchDegrees();
+	}
 
 	setDegreeType(degreeType: string) {
-		if(this.filters.degreeType === degreeType) return;
-		this.filters.degreeType = degreeType;
-		this.searchDegrees()
+		const degreeVal = degreeType === "All" ? "" : degreeType;
+		if(this.filters.degreeType === degreeVal) return;
+		this.filters.degreeType = degreeVal;
+		this.searchDegrees();
 	}
 
 	searchDegrees() {
-		alert("Not implemented");
+		this.api.fetchDegrees(this.filters.degreeType)
+			.then(degrees => {
+				this.results = degrees
+			})
 	}
 }

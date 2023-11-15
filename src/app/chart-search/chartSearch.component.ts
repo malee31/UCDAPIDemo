@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from "@angular/core";
+import { Component } from "@angular/core";
 import { ApiService } from "../api-services/api.service";
 import { APICrn } from "../api-services/api-types";
 

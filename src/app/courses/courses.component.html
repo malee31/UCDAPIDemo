@@ -1,23 +1,11 @@
 <app-filter-ui-layout
 	filterTitle="Course Lookup Tool"
+	[showSubtitle]="!results.length"
+	subtitle="Filter by a Subject Code to begin"
 >
 	<ng-container filter-list>
 		<!-- Filter Options -->
 		<ul class="pt-2">
-			<li>
-				<app-autocomplete-filter-field
-					(onSelect)="setTerm($event)"
-					[options]="validTerms"
-					titleText="Term Code (Quarter)"
-					labelText="Term Code Filter"
-					placeholder="Select Term Code"
-					defaultLabel="(Default: Most Recent)"
-					initialValue="Default"
-					defaultOption="Default"
-					[required]="true"
-				></app-autocomplete-filter-field>
-			</li>
-
 			<li>
 				<app-autocomplete-filter-field
 					(onSelect)="setSubjectCode($event)"
@@ -45,6 +33,13 @@
 		</ul>
 	</ng-container>
 
-	<app-coming-soon></app-coming-soon>
+	<p>Better UI Coming Tomorrow</p>
+	<ul class="pl-4 list-disc">
+		<li *ngFor="let course of results">
+			({{course.subject_code}} {{course.subject_number}}) {{course.course_title}} - {{course.units}}
+			<br/>
+			{{course.description}}
+		</li>
+	</ul>
 </app-filter-ui-layout>
 

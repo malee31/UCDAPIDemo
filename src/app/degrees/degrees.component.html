@@ -20,6 +20,13 @@
 		</ul>
 	</ng-container>
 
-	<app-coming-soon></app-coming-soon>
+	<p>Better UI Coming Tomorrow</p>
+	<ul class="pl-4 list-disc">
+		<li
+			*ngFor="let degree of results"
+		>
+			<span class="font-bold">[{{degree.degree_type}}]</span> {{degree.name}}
+		</li>
+	</ul>
 </app-filter-ui-layout>
 

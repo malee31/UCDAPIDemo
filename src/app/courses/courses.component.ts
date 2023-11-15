@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { SUBJECT_CODE_LIST, TERMS_LIST } from "../../temp/subjectCodes";
+import { SUBJECT_CODE_LIST } from "../../temp/subjectCodes";
 import { FormControl } from "@angular/forms";
-import { APICrn } from "../api-services/api-types";
+import { APICourses } from "../api-services/api-types";
 import { ApiService } from "../api-services/api.service";
 
 @Component({
@@ -11,12 +11,10 @@ import { ApiService } from "../api-services/api.service";
 })
 export class CoursesComponent {
 	// Filter option lists
-	validTerms: string[] = TERMS_LIST.slice();
 	validSubjectCodes: string[] = SUBJECT_CODE_LIST.slice();
 	validSubjectNumbers: string[] = [];
 
 	appliedFilters = {
-		term: "",
 		subjectCode: "",
 		subjectNumber: ""
 	};
@@ -24,19 +22,11 @@ export class CoursesComponent {
 	subjectCodeControl: FormControl<string | null> = new FormControl("All");
 
 	// Results directly from the API
-	allResults: APICrn[] = [];
+	allResults: APICourses[] = [];
 	// Displayed results after applying local filters
-	results: APICrn[] = [];
+	results: APICourses[] = [];
 
 	constructor(private api: ApiService) {}
-
-	setTerm(val: string) {
-		const newTermVal = val === "Default" ? "" : val;
-		if(this.appliedFilters.term === newTermVal) return;
-
-		this.appliedFilters.term = newTermVal;
-		this.searchCourses();
-	}
 
 	setSubjectCode(newSubjectCodeVal: string) {
 		if(this.appliedFilters.subjectCode === newSubjectCodeVal) return;
@@ -58,6 +48,13 @@ export class CoursesComponent {
 	searchCourses() {
 		if(!this.appliedFilters.subjectCode) return;
 
-		alert("Not implemented")
+		this.api.fetchCourses(this.appliedFilters.subjectCode)
+			.then(courses => {
+				this.allResults = courses;
+				this.results = this.allResults;
+				this.validSubjectNumbers = courses
+					.map(res => res.subject_number)
+					.filter((x, index, arr) => arr.indexOf(x) === index);
+			})
 	}
 }

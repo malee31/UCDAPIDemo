@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
-import { APICrn, APILog, APISeats } from "./api-types";
+import { APICourses, APICrn, APIDegrees, APILog, APISeats } from "./api-types";
 import { ConstantsService } from "../config/constants.service";
 
 @Injectable({
 	providedIn: "root",
 })
 export class ApiService {
+	constructor(private CONSTANTS: ConstantsService) {}
+
 	fetchLogs = async (): Promise<APILog[]> => {
 		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/logs/raw`);
 		if(apiRes.status !== 200) throw new RangeError(`Logs responded with HTTP ${apiRes.status}`);
@@ -32,5 +34,24 @@ export class ApiService {
 		return coursesResponse.history;
 	}
 
-	constructor(private CONSTANTS: ConstantsService) {}
+	fetchDegreeTypes = async (): Promise<string[]> => {
+		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/degrees/types`);
+		if(apiRes.status !== 200) throw new RangeError(`Degrees API responded with HTTP ${apiRes.status}`);
+		const coursesResponse: { ok: boolean, degree_types: string[] } = await apiRes.json();
+		return coursesResponse.degree_types;
+	}
+
+	fetchDegrees = async (degreeType: string = ""): Promise<APIDegrees[]> => {
+		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/degrees?type=${degreeType}`);
+		if(apiRes.status !== 200) throw new RangeError(`Degrees API responded with HTTP ${apiRes.status}`);
+		const coursesResponse: { ok: boolean, degrees: APIDegrees[] } = await apiRes.json();
+		return coursesResponse.degrees;
+	}
+
+	fetchCourses = async (subjectCode: string): Promise<APICourses[]> => {
+		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/courses/details/${subjectCode}`);
+		if(apiRes.status !== 200) throw new RangeError(`Courses API responded with HTTP ${apiRes.status}`);
+		const coursesResponse: { ok: boolean, courses: APICourses[] } = await apiRes.json();
+		return coursesResponse.courses;
+	}
 }
