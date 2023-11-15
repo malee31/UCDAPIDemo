@@ -18,36 +18,20 @@ export class ChartSearchComponent {
 	validSubjectCodes: string[] = SUBJECT_CODE_LIST.slice();
 	validSubjectNumbers: string[] = [];
 
-	// Filters and their values
-	// Term filter
-	@ViewChild("termInput") termInput!: ElementRef<HTMLInputElement>;
-	termControl = new FormControl("Default");
-	// Subject code and number filters
-	@ViewChild("subjectNumberInput") subjectNumberInput!: ElementRef<HTMLInputElement>;
-	subjectNumberControl = new FormControl("All");
-
 	appliedFilters = {
 		term: "",
 		subjectCode: "",
 		subjectNumber: ""
 	};
 
-	// Autocomplete filters
-	filteredNumberOptions: string[] = [];
+	subjectCodeControl: FormControl<string|null>  = new FormControl("All");
 
-	// Displayed results
+	// Results directly from the API
+	allResults: APICrn[] = [];
+	// Displayed results after applying local filters
 	results: APICrn[] = [];
 
 	constructor(private api: ApiService) {}
-
-	resetAutofillSubjectNumber() {
-		this.filteredNumberOptions = this.validSubjectNumbers;
-	}
-
-	applyPartialSubjectNumberFilter(e: Event): void {
-		const filterValue = (e.currentTarget as HTMLInputElement).value.toLowerCase();
-		this.filteredNumberOptions = this.validSubjectNumbers.filter(o => o.toLowerCase().includes(filterValue));
-	}
 
 	setTerm(val: string) {
 		const newTermVal = val === "Default" ? "" : val;
@@ -62,7 +46,7 @@ export class ChartSearchComponent {
 
 		this.appliedFilters.subjectCode = newSubjectCodeVal;
 		this.appliedFilters.subjectNumber = "";
-		this.subjectNumberControl.reset("");
+		this.subjectCodeControl.reset("All");
 		this.searchCRN();
 	}
 
@@ -71,15 +55,16 @@ export class ChartSearchComponent {
 		if(this.appliedFilters.subjectNumber === newSubjectNumberVal) return;
 
 		this.appliedFilters.subjectNumber = newSubjectNumberVal;
-		this.searchCRN();
+		this.results = this.allResults.filter(course => course.subject_number === this.appliedFilters.subjectNumber);
 	}
 
 	searchCRN() {
 		if(!this.appliedFilters.subjectCode) return;
 
-		this.api.fetchCRNs(this.appliedFilters.term, this.appliedFilters.subjectCode, this.appliedFilters.subjectNumber)
+		this.api.fetchCRNs(this.appliedFilters.term, this.appliedFilters.subjectCode)
 			.then(courses => {
-				this.results = courses;
+				this.allResults = courses;
+				this.results = this.allResults;
 				this.validSubjectNumbers = courses
 					.map(res => res.subject_number)
 					.filter((x, index, arr) => arr.indexOf(x) === index);

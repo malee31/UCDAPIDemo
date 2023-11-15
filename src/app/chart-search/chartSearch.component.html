@@ -35,6 +35,7 @@
 				<app-autocomplete-filter-field
 					(onSelect)="setSubjectNumber($event)"
 					[options]="validSubjectNumbers"
+					[autocompleteTextControl]="subjectCodeControl"
 					titleText="Subject Number"
 					labelText="Subject Number Filter"
 					placeholder="Select Subject Number"

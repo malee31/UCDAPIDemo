@@ -15,11 +15,12 @@ export class AutocompleteFilterFieldComponent implements OnInit {
 	@Input() initialValue: string = "";
 	@Input() defaultOption: string = "";
 	@Input() defaultLabel: string = "";
+	// Optionally provide form control to control the input externally
+	@Input() autocompleteTextControl: FormControl<string|null> = new FormControl("");
 	@Output() onChange = new EventEmitter<string>();
 	@Output() onSelect = new EventEmitter<string>();
 
 	@ViewChild("autocompleteInput") autocompleteInput!: ElementRef<HTMLInputElement>;
-	autocompleteTextControl = new FormControl("");
 	filteredOptions: Object[] = []
 	autocompleteFilter = (opt: string, inputVal: string) => opt.toLowerCase().includes(inputVal)
 
