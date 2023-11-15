@@ -1,1 +1,25 @@
-<app-coming-soon></app-coming-soon>
+<app-filter-ui-layout
+	filterTitle="Degree Lookup Tool"
+>
+	<ng-container filter-list>
+		<!-- Filter Options -->
+		<ul class="pt-2">
+			<li>
+				<app-autocomplete-filter-field
+					(onSelect)="setDegreeType($event)"
+					[options]="validDegreeTypes"
+					titleText="Degree Type"
+					labelText="Degree Type Filter"
+					placeholder="Select Degree Type"
+					defaultLabel="(All)"
+					initialValue="All"
+					defaultOption="All"
+					[required]="true"
+				></app-autocomplete-filter-field>
+			</li>
+		</ul>
+	</ng-container>
+
+	<app-coming-soon></app-coming-soon>
+</app-filter-ui-layout>
+
