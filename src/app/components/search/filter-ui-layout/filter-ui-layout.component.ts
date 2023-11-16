@@ -9,11 +9,10 @@ import { Component, Input } from '@angular/core';
 export class FilterUiLayoutComponent {
 	// Mobile-specific settings
 	mobileShowFilters: boolean = false;
-	toggleMobileFilters(): void {
-		this.mobileShowFilters = !this.mobileShowFilters;
-	}
-
 	@Input({ required: true }) filterTitle: string = "";
 	@Input() showSubtitle: boolean = false;
 	@Input() subtitle: string = "Insert Subtitle Here";
+	toggleMobileFilters(): void {
+		this.mobileShowFilters = !this.mobileShowFilters;
+	}
 }

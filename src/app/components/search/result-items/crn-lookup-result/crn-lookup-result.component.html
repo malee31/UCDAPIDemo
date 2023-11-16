@@ -5,9 +5,9 @@
 		<span class="inline-block">CRN: {{crn}}</span>
 	</h3>
 	<a
+		[queryParams]="{optimized: 1, term: term}"
 		class="block text-blue-500"
 		routerLink="/chart/crn/{{crn}}"
-		[queryParams]="{optimized: 1, term: term}"
 	>
 		View Chart for {{crn}} - {{subject_code}} {{subject_number}}
 	</a>

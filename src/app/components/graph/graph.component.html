@@ -3,10 +3,10 @@
 	<div class="w-full min-w-[580px] h-[70vw] md:h-[50vw] max-h-[calc(90vh-4rem)] overflow-hidden relative">
 		<canvas
 			#chartSource
-			baseChart
-			class="chart w-full"
 			[data]="generatedData"
 			[options]="generatedOptions"
+			baseChart
+			class="chart w-full"
 			type="line"
 		></canvas>
 	</div>
@@ -14,14 +14,14 @@
 <div class="px-2">
 	<div class="block my-1 px-2">
 		<button
-			class="inline-block border px-2 py-1 mr-1 rounded bg-slate-50"
 			(click)="downloadChart()"
+			class="inline-block border px-2 py-1 mr-1 rounded bg-slate-50"
 		>
 			Download Chart
 		</button>
 		<button
-			class="inline-block border px-2 py-1 rounded bg-slate-50"
 			(click)="copyChart()"
+			class="inline-block border px-2 py-1 rounded bg-slate-50"
 		>
 			Copy Chart
 		</button>
@@ -30,28 +30,28 @@
 	<label class="block">
 		<span class="inline-block mr-2">Start and End Ranges</span>
 		<input
-			type="datetime-local"
-			[value]="datePointRangeLabels[0]"
-			[min]="datePointRangeLimits[0]"
-			[max]="datePointRangeLabels[1]"
 			(change)="setRange(0, $event)"
+			[max]="datePointRangeLabels[1]"
+			[min]="datePointRangeLimits[0]"
+			[value]="datePointRangeLabels[0]"
+			type="datetime-local"
 		/>
 		<input
-			type="datetime-local"
-			[value]="datePointRangeLabels[1]"
-			[min]="datePointRangeLabels[0]"
-			[max]="datePointRangeLimits[1]"
 			(change)="setRange(1, $event)"
+			[max]="datePointRangeLimits[1]"
+			[min]="datePointRangeLabels[0]"
+			[value]="datePointRangeLabels[1]"
+			type="datetime-local"
 		/>
 	</label>
 	<label class="block">
 		<span class="inline-block mr-2">Hours Ahead to Predict</span>
 		<input
-			type="number"
-			min="0"
-			[value]="0"
-			(change)="setPredict($event)"
 			(blur)="ngOnChanges()"
+			(change)="setPredict($event)"
+			[value]="0"
+			min="0"
+			type="number"
 		/>
 	</label>
 </div>

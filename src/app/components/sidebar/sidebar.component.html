@@ -1,15 +1,15 @@
 <div
-	id="sidebar-backdrop"
-	class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 dark:bg-opacity-80 inset-0 z-50"
-	[ngClass]="showOverlay ? 'block' : 'hidden'"
-	data-drawer-hide="sidebar"
 	(click)="hideSidebar()"
+	[ngClass]="showOverlay ? 'block' : 'hidden'"
+	class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 dark:bg-opacity-80 inset-0 z-50"
+	data-drawer-hide="sidebar"
+	id="sidebar-backdrop"
 >
 </div>
 <aside
-	id="sidebar"
-	class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full z-50"
 	aria-label="Sidenav"
+	class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full z-50"
+	id="sidebar"
 >
 	<div class="overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
 		<app-close-sidebar-button (onHide)="hideSidebar()"/>
@@ -17,10 +17,10 @@
 		<ul class="space-y-2 pt-6">
 			<li>
 				<a
-					routerLink="/home"
-					data-drawer-hide="sidebar"
 					(click)="hideSidebar()"
 					class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+					data-drawer-hide="sidebar"
+					routerLink="/home"
 				>
 					<svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 						<path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
@@ -30,14 +30,14 @@
 			</li>
 			<li>
 				<a
-					fragment="about"
-					routerLink="/home"
-					data-drawer-hide="sidebar"
 					(click)="hideSidebar()"
 					class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+					data-drawer-hide="sidebar"
+					fragment="about"
+					routerLink="/home"
 				>
 					<svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z" clip-rule="evenodd"></path>
+						<path clip-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z" fill-rule="evenodd"></path>
 					</svg>
 					<span class="ml-3">About Us</span>
 				</a>
@@ -46,10 +46,10 @@
 		<ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
 			<li>
 				<a
-					routerLink="/chart"
-					data-drawer-hide="sidebar"
 					(click)="hideSidebar()"
 					class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+					data-drawer-hide="sidebar"
+					routerLink="/chart"
 				>
 					<svg aria-hidden="true" class="w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 						<g transform="translate(1,0)">
@@ -62,10 +62,10 @@
 			</li>
 			<li>
 				<a
-					routerLink="/logs"
-					data-drawer-hide="sidebar"
 					(click)="hideSidebar()"
 					class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+					data-drawer-hide="sidebar"
+					routerLink="/logs"
 				>
 					<svg
 						class="w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -83,13 +83,13 @@
 			</li>
 			<li>
 				<app-collapsible-sidebar-link
-					controlId="dropdown-find-pages"
 					collapsibleTitle="Pages"
+					controlId="dropdown-find-pages"
 				>
 					<svg
-						data-ng-slot="icon"
 						aria-hidden="true"
 						class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+						data-ng-slot="icon"
 						fill="currentColor"
 						viewBox="0 0 16 20"
 						xmlns="http://www.w3.org/2000/svg"
@@ -99,17 +99,17 @@
 					</svg>
 
 					<ul
+						class="hidden py-2 space-y-2"
 						data-ng-slot="links"
 						id="dropdown-find-pages"
-						class="hidden py-2 space-y-2"
 					>
-						<app-collapsible-sidebar-link-item routerLink="/degrees" [onclick]="hideSidebar">
+						<app-collapsible-sidebar-link-item [onclick]="hideSidebar" routerLink="/degrees">
 							Find Degrees
 						</app-collapsible-sidebar-link-item>
-						<app-collapsible-sidebar-link-item routerLink="/courses" [onclick]="hideSidebar">
+						<app-collapsible-sidebar-link-item [onclick]="hideSidebar" routerLink="/courses">
 							Find Courses
 						</app-collapsible-sidebar-link-item>
-						<app-collapsible-sidebar-link-item routerLink="/seats" [onclick]="hideSidebar">
+						<app-collapsible-sidebar-link-item [onclick]="hideSidebar" routerLink="/seats">
 							Find Seats
 						</app-collapsible-sidebar-link-item>
 					</ul>
@@ -117,32 +117,32 @@
 			</li>
 			<li>
 				<app-collapsible-sidebar-link
-					controlId="dropdown-docs"
 					collapsibleTitle="Docs"
+					controlId="dropdown-docs"
 				>
 					<svg
-						data-ng-slot="icon"
 						aria-hidden="true"
 						class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-						xmlns="http://www.w3.org/2000/svg"
+						data-ng-slot="icon"
 						fill="none"
 						viewBox="0 0 20 16"
+						xmlns="http://www.w3.org/2000/svg"
 					>
-						<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15"/>
+						<path d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
 					</svg>
 
 					<ul
+						class="hidden py-2 space-y-2"
 						data-ng-slot="links"
 						id="dropdown-docs"
-						class="hidden py-2 space-y-2"
 					>
-						<app-collapsible-sidebar-link-item routerLink="/docs/degrees" [onclick]="hideSidebar">
+						<app-collapsible-sidebar-link-item [onclick]="hideSidebar" routerLink="/docs/degrees">
 							Degrees API
 						</app-collapsible-sidebar-link-item>
-						<app-collapsible-sidebar-link-item routerLink="/docs/courses" [onclick]="hideSidebar">
+						<app-collapsible-sidebar-link-item [onclick]="hideSidebar" routerLink="/docs/courses">
 							Courses API
 						</app-collapsible-sidebar-link-item>
-						<app-collapsible-sidebar-link-item routerLink="/docs/seats" [onclick]="hideSidebar">
+						<app-collapsible-sidebar-link-item [onclick]="hideSidebar" routerLink="/docs/seats">
 							Seats API
 						</app-collapsible-sidebar-link-item>
 					</ul>

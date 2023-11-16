@@ -6,18 +6,18 @@
 			<mat-label>{{labelText}}</mat-label>
 			<input
 				#autocompleteInput
-				type="text"
-				[placeholder]="placeholder"
-				matInput
-				[formControl]="autocompleteTextControl"
-				[matAutocomplete]="autocomplete"
 				(focus)="resetAutocompleteTextInput()"
 				(input)="handleInput($event)"
+				[formControl]="autocompleteTextControl"
+				[matAutocomplete]="autocomplete"
+				[placeholder]="placeholder"
+				matInput
+				type="text"
 			>
 			<mat-autocomplete
-				requireSelection
 				#autocomplete="matAutocomplete"
 				(optionSelected)="selectValue($event.option.value)"
+				requireSelection
 			>
 				<mat-option
 					*ngIf="defaultOption"

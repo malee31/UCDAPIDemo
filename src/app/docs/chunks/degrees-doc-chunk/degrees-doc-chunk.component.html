@@ -4,8 +4,8 @@
 >
 	<app-doc-header
 		[anchorId]="slugs.title"
-		title="Degrees API"
 		description="Retrieve a list of degrees as JSON. Not all degrees are perfectly parsed"
+		title="Degrees API"
 	/>
 
 	<hr class="mb-4"/>
@@ -20,10 +20,10 @@
 	>
 		<app-doc-params-table>
 			<app-doc-params-table-row
-				paramType="query"
-				param="?type"
-				description="Filter by a specific degree type (See Degree Types API for obtaining a list of types)"
 				default="(empty)"
+				description="Filter by a specific degree type (See Degree Types API for obtaining a list of types)"
+				param="?type"
+				paramType="query"
 			/>
 		</app-doc-params-table>
 	</app-doc-params>

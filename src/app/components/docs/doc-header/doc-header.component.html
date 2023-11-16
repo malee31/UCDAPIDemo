@@ -5,11 +5,11 @@
 		class="leading-tight text-xl sm:text-2xl lg:text-3xl font-bold"
 	>
 		{{title}}
-		<a class="group" routerLink="." [fragment]="anchorId">
+		<a [fragment]="anchorId" class="group" routerLink=".">
 			<img
+				alt="(Permalink)"
 				class="inline align-bottom w-6 h-8 object-contain border-b-2 border-b-transparent group-hover:border-b-slate-950"
 				src="assets/anchor-link.svg"
-				alt="(Permalink)"
 			/>
 		</a>
 	</h1>

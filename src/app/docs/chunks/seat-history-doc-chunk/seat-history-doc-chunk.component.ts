@@ -7,10 +7,6 @@ import { ChunkInterface } from "../chunk-interface";
 	styleUrls: ['./seat-history-doc-chunk.component.scss']
 })
 export class SeatHistoryDocChunkComponent extends ChunkInterface {
-	constructor() {
-		super("seat-history");
-	}
-
 	exampleResponse: string = JSON.stringify({
 		"ok": true,
 		"history": [
@@ -43,4 +39,7 @@ export class SeatHistoryDocChunkComponent extends ChunkInterface {
 			}
 		]
 	}, null, "\t");
+	constructor() {
+		super("seat-history");
+	}
 }

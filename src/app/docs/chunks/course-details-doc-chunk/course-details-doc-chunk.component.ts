@@ -7,10 +7,6 @@ import { ChunkInterface } from "../chunk-interface";
 	styleUrls: ['./course-details-doc-chunk.component.scss']
 })
 export class CourseDetailsDocChunkComponent extends ChunkInterface {
-	constructor() {
-		super("course-details");
-	}
-
 	exampleResponse = JSON.stringify({
 		"ok": true,
 		"courses": [
@@ -46,4 +42,7 @@ export class CourseDetailsDocChunkComponent extends ChunkInterface {
 			}
 		]
 	}, null, "\t");
+	constructor() {
+		super("course-details");
+	}
 }

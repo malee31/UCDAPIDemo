@@ -8,25 +8,29 @@
 				<app-autocomplete-filter-field
 					(onSelect)="setDegreeType($event)"
 					[options]="validDegreeTypes"
-					titleText="Degree Type"
+					[required]="true"
+					defaultLabel="(All)"
+					defaultOption="All"
+					initialValue="All"
 					labelText="Degree Type Filter"
 					placeholder="Select Degree Type"
-					defaultLabel="(All)"
-					initialValue="All"
-					defaultOption="All"
-					[required]="true"
+					titleText="Degree Type"
 				/>
 			</li>
 		</ul>
 	</ng-container>
 
-	<p>Better UI Coming Tomorrow</p>
-	<ul class="pl-4 list-disc">
-		<li
+	<ng-container *ngIf="results.length">
+		<div class="my-2 py-1 animate-bounce">
+			<p class="text-lg underline">UI Improvements Are Being Worked On This Week!</p>
+			<p class="text-slate-600 text-base italic">(Please excuse the mess... I am one person ;-;)</p>
+		</div>
+		<app-degree-lookup-result
 			*ngFor="let degree of results"
-		>
-			<span class="font-bold">[{{degree.degree_type}}]</span> {{degree.name}}
-		</li>
-	</ul>
+			[degree_type]="degree.degree_type"
+			[identifier]="degree.identifier"
+			[name]="degree.name"
+		/>
+	</ng-container>
 </app-filter-ui-layout>
 

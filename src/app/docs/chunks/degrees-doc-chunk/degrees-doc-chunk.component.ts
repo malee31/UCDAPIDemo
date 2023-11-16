@@ -7,10 +7,6 @@ import { ChunkInterface } from "../chunk-interface";
 	styleUrls: ['./degrees-doc-chunk.component.scss']
 })
 export class DegreesDocChunkComponent extends ChunkInterface {
-	constructor() {
-		super("degrees");
-	}
-
 	exampleResponse = JSON.stringify({
 		"ok": true,
 		"degrees": [
@@ -56,4 +52,7 @@ export class DegreesDocChunkComponent extends ChunkInterface {
 			}
 		]
 	}, null, "\t");
+	constructor() {
+		super("degrees");
+	}
 }

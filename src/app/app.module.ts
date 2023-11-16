@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { CommonModule, AsyncPipe } from "@angular/common";
+import { AsyncPipe, CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -56,9 +56,11 @@ import { DegreesDocChunkComponent } from './docs/chunks/degrees-doc-chunk/degree
 import { DegreeTypesDocChunkComponent } from './docs/chunks/degree-types-doc-chunk/degree-types-doc-chunk.component';
 import { CourseDetailsDocChunkComponent } from './docs/chunks/course-details-doc-chunk/course-details-doc-chunk.component';
 import { CourseCrnsDocChunkComponent } from './docs/chunks/course-crns-doc-chunk/course-crns-doc-chunk.component';
-import { CrnLookupResultComponent } from './components/search/crn-lookup-result/crn-lookup-result.component';
 import { FilterUiLayoutComponent } from './components/search/filter-ui-layout/filter-ui-layout.component';
 import { AutocompleteFilterFieldComponent } from './components/search/filter-ui-layout/autocomplete-filter-field/autocomplete-filter-field.component';
+import { CrnLookupResultComponent } from './components/search/result-items/crn-lookup-result/crn-lookup-result.component';
+import { CourseLookupResultComponent } from './components/search/result-items/course-lookup-result/course-lookup-result.component';
+import { DegreeLookupResultComponent } from './components/search/result-items/degree-lookup-result/degree-lookup-result.component';
 
 @NgModule({
 	declarations: [
@@ -105,7 +107,9 @@ import { AutocompleteFilterFieldComponent } from './components/search/filter-ui-
 		CourseCrnsDocChunkComponent,
 		CrnLookupResultComponent,
 		FilterUiLayoutComponent,
-  AutocompleteFilterFieldComponent,
+		AutocompleteFilterFieldComponent,
+		CourseLookupResultComponent,
+		DegreeLookupResultComponent,
 	],
 	imports: [
 		BrowserModule,

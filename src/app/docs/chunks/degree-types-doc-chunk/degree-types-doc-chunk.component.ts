@@ -7,10 +7,6 @@ import { ChunkInterface } from "../chunk-interface";
 	styleUrls: ['./degree-types-doc-chunk.component.scss']
 })
 export class DegreeTypesDocChunkComponent extends ChunkInterface {
-	constructor() {
-		super("degree-types");
-	}
-
 	exampleResponse = JSON.stringify({
 		"ok": true,
 		"degree_types": [
@@ -46,4 +42,7 @@ export class DegreeTypesDocChunkComponent extends ChunkInterface {
 			"Minor"
 		]
 	}, null, "\t");
+	constructor() {
+		super("degree-types");
+	}
 }

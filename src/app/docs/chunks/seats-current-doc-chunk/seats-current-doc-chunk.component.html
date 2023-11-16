@@ -4,8 +4,8 @@
 >
 	<app-doc-header
 		[anchorId]="slugs.title"
-		title="Seats API"
 		description="Retrieve the most recent seat data point as JSON. In the future, this will produce live data instead"
+		title="Seats API"
 	/>
 
 	<hr class="mb-4"/>
@@ -20,16 +20,16 @@
 	>
 		<app-doc-params-table>
 			<app-doc-params-table-row
-				paramType="url"
-				param=":crn"
 				[required]=true
 				description="The CRN of the course to fetch seat data from"
+				param=":crn"
+				paramType="url"
 			/>
 			<app-doc-params-table-row
-				paramType="query"
-				param="?term"
-				description="Selects a term associated with the CRN. The same CRN may be associated with multiple terms. Defaults to most latest term if omitted"
 				default="(empty)"
+				description="Selects a term associated with the CRN. The same CRN may be associated with multiple terms. Defaults to most latest term if omitted"
+				param="?term"
+				paramType="query"
 			/>
 		</app-doc-params-table>
 	</app-doc-params>

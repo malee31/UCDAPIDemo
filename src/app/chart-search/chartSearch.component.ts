@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { ApiService } from "../api-services/api.service";
 import { APICrn } from "../api-services/api-types";
 
-import { TERMS_LIST, SUBJECT_CODE_LIST } from "../../temp/subjectCodes";
+import { SUBJECT_CODE_LIST, TERMS_LIST } from "../../temp/subjectCodes";
 
 import { FormControl } from "@angular/forms";
 
@@ -24,7 +24,7 @@ export class ChartSearchComponent {
 		subjectNumber: ""
 	};
 
-	subjectCodeControl: FormControl<string|null>  = new FormControl("All");
+	subjectCodeControl: FormControl<string | null> = new FormControl("All");
 
 	// Results directly from the API
 	allResults: APICrn[] = [];

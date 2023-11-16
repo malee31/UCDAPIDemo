@@ -4,8 +4,8 @@
 >
 	<app-doc-header
 		[anchorId]="slugs.title"
-		title="Course API"
 		description="Retrieve information about courses as JSON"
+		title="Course API"
 	/>
 
 	<hr class="mb-4"/>
@@ -20,10 +20,10 @@
 	>
 		<app-doc-params-table>
 			<app-doc-params-table-row
-				paramType="url"
-				param=":subject_code"
 				[required]=true
 				description="The subject code to receive course details for like ECS"
+				param=":subject_code"
+				paramType="url"
 			/>
 		</app-doc-params-table>
 	</app-doc-params>

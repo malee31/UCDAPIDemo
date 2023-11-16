@@ -10,7 +10,7 @@ export type DOC_SLUGS = {
 export class ChunkInterface {
 	docSlug: string = "SLUG_NOT_SET";
 	slugs!: DOC_SLUGS;
-	constructor(docSlug:string) {
+	constructor(docSlug: string) {
 		this.generateSlugs(docSlug);
 	}
 	generateSlugs(newDocSlug: string) {

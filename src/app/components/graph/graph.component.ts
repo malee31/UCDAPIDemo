@@ -155,21 +155,21 @@ export class GraphComponent {
 
 		// Formula for linear regression:
 		const pointCount = netSeatData.length;
-		const timeSum =  netSeatData.reduce((acc, point) => {
+		const timeSum = netSeatData.reduce((acc, point) => {
 			return acc + point.x;
 		}, 0);
-		const timeSquaredSum =  netSeatData.reduce((acc, point) => {
+		const timeSquaredSum = netSeatData.reduce((acc, point) => {
 			return acc + Math.pow(point.x, 2);
 		}, 0);
-		const seatTimeProductSum =  netSeatData.reduce((acc, point) => {
+		const seatTimeProductSum = netSeatData.reduce((acc, point) => {
 			return acc + point.x * point.y;
 		}, 0);
-		const seatSum =  netSeatData.reduce((acc, point) => {
+		const seatSum = netSeatData.reduce((acc, point) => {
 			return acc + point.y;
 		}, 0);
 
 		const seatSlope = (pointCount * seatTimeProductSum - timeSum * seatSum) / (pointCount * timeSquaredSum - Math.pow(timeSum, 2));
-		const seatIntercept = (seatSum / pointCount) - (seatSlope * timeSum)/ pointCount;
+		const seatIntercept = (seatSum / pointCount) - (seatSlope * timeSum) / pointCount;
 
 		const trendLinePredict = (x: number) => Number((seatSlope * x + seatIntercept).toFixed(1));
 

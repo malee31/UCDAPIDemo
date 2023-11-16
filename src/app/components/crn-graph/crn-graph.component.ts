@@ -2,7 +2,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ApiService } from "../../api-services/api.service";
 import { APISeats } from "../../api-services/api-types";
-import { ActivatedRoute, Router, ParamMap } from "@angular/router";
+import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 
 @Component({
 	selector: "app-crn-graph",

@@ -1,6 +1,6 @@
 <app-filter-ui-layout
-	filterTitle="Course Lookup Tool"
 	[showSubtitle]="!results.length"
+	filterTitle="Course Lookup Tool"
 	subtitle="Filter by a Subject Code to begin"
 >
 	<ng-container filter-list>
@@ -10,36 +10,50 @@
 				<app-autocomplete-filter-field
 					(onSelect)="setSubjectCode($event)"
 					[options]="validSubjectCodes"
-					titleText="Subject Code"
+					[required]="true"
 					labelText="Subject Code Filter"
 					placeholder="Select Subject Code"
-					[required]="true"
+					titleText="Subject Code"
 				/>
 			</li>
 
 			<li>
 				<app-autocomplete-filter-field
 					(onSelect)="setSubjectNumber($event)"
-					[options]="validSubjectNumbers"
 					[autocompleteTextControl]="subjectCodeControl"
-					titleText="Subject Number"
+					[options]="validSubjectNumbers"
+					defaultLabel="(All)"
+					defaultOption="All"
+					initialValue="All"
 					labelText="Subject Number Filter"
 					placeholder="Select Subject Number"
-					defaultLabel="(All)"
-					initialValue="All"
-					defaultOption="All"
+					titleText="Subject Number"
 				/>
 			</li>
 		</ul>
 	</ng-container>
 
-	<p>Better UI Coming Tomorrow</p>
-	<ul class="pl-4 list-disc">
-		<li *ngFor="let course of results">
-			({{course.subject_code}} {{course.subject_number}}) {{course.course_title}} - {{course.units}}
-			<br/>
-			{{course.description}}
-		</li>
-	</ul>
+	<ng-container *ngIf="results.length">
+		<div class="my-2 py-1 animate-bounce">
+			<p class="text-lg underline">UI Improvements Are Being Worked On This Week!</p>
+			<p class="text-slate-600 text-base italic">(Please excuse the mess... I am one person ;-;)</p>
+		</div>
+		<app-course-lookup-result
+			*ngFor="let course of results"
+			[GE_credits]="course.GE_credits"
+			[course_title]="course.course_title"
+			[credit_limit]="course.credit_limit"
+			[cross_listing]="course.cross_listing"
+			[description]="course.description"
+			[enrollment_restrictions]="course.enrollment_restrictions"
+			[grade_mode]="course.grade_mode"
+			[learning_activities]="course.learning_activities"
+			[prerequisites]="course.prerequisites"
+			[repeat_credit]="course.repeat_credit"
+			[subject_code]="course.subject_code"
+			[subject_number]="course.subject_number"
+			[units]="course.units"
+		/>
+	</ng-container>
 </app-filter-ui-layout>
 

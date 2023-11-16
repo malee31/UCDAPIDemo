@@ -16,7 +16,7 @@ export class AutocompleteFilterFieldComponent implements OnInit {
 	@Input() defaultOption: string = "";
 	@Input() defaultLabel: string = "";
 	// Optionally provide form control to control the input externally
-	@Input() autocompleteTextControl: FormControl<string|null> = new FormControl("");
+	@Input() autocompleteTextControl: FormControl<string | null> = new FormControl("");
 	@Output() onChange = new EventEmitter<string>();
 	@Output() onSelect = new EventEmitter<string>();
 

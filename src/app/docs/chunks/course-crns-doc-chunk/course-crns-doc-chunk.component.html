@@ -4,8 +4,8 @@
 >
 	<app-doc-header
 		[anchorId]="slugs.title"
-		title="CRN API"
 		description="Retrieve the CRNs of a quarter's courses as JSON"
+		title="CRN API"
 	/>
 
 	<hr class="mb-4"/>
@@ -20,16 +20,16 @@
 	>
 		<app-doc-params-table>
 			<app-doc-params-table-row
-				paramType="url"
-				param=":subject_code"
 				[required]=true
 				description="The subject code to receive CRNs for like ECS"
+				param=":subject_code"
+				paramType="url"
 			/>
 			<app-doc-params-table-row
-				paramType="query"
-				param="?term"
-				description="Selects a term associated with the CRNs. The same CRN may be associated with multiple terms. Defaults to most latest term if omitted"
 				default="(empty)"
+				description="Selects a term associated with the CRNs. The same CRN may be associated with multiple terms. Defaults to most latest term if omitted"
+				param="?term"
+				paramType="query"
 			/>
 		</app-doc-params-table>
 	</app-doc-params>
