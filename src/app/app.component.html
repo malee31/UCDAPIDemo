@@ -1,7 +1,7 @@
 <div class="h-full overflow-y-auto">
-	<app-navbar (showOverlayEvent)="showOverlay = true"></app-navbar>
-	<app-sidebar [(showOverlay)]="showOverlay"></app-sidebar>
+	<app-navbar (showOverlayEvent)="showOverlay = true"/>
+	<app-sidebar [(showOverlay)]="showOverlay"/>
 	<main class="min-h-[calc(100vh-4rem)] flex flex-col">
-		<router-outlet></router-outlet>
+		<router-outlet/>
 	</main>
 </div>

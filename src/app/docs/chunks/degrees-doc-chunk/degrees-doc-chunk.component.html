@@ -6,14 +6,14 @@
 		[anchorId]="slugs.title"
 		title="Degrees API"
 		description="Retrieve a list of degrees as JSON. Not all degrees are perfectly parsed"
-	></app-doc-header>
+	/>
 
 	<hr class="mb-4"/>
 
 	<app-doc-meta
 		[anchorId]="slugs.details"
 		endpoint="/v1/degrees"
-	></app-doc-meta>
+	/>
 
 	<app-doc-params
 		[anchorId]="slugs.params"
@@ -24,7 +24,7 @@
 				param="?type"
 				description="Filter by a specific degree type (See Degree Types API for obtaining a list of types)"
 				default="(empty)"
-			></app-doc-params-table-row>
+			/>
 		</app-doc-params-table>
 	</app-doc-params>
 

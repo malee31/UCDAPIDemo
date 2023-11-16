@@ -6,14 +6,14 @@
 		[anchorId]="slugs.title"
 		title="Seat History API"
 		description="Retrieve the seat history of one or more courses over time as JSON"
-	></app-doc-header>
+	/>
 
 	<hr class="mb-4"/>
 
 	<app-doc-meta
 		[anchorId]="slugs.details"
 		endpoint="/v1/seats/history/:crn"
-	></app-doc-meta>
+	/>
 
 	<app-doc-params
 		[anchorId]="slugs.params"
@@ -24,19 +24,19 @@
 				param=":crn"
 				[required]=true
 				description="The CRN of the course to fetch seat data from"
-			></app-doc-params-table-row>
+			/>
 			<app-doc-params-table-row
 				paramType="query"
 				param="?optimized"
 				description="When set to 0, all points in between two unchanging seat counts are included. Otherwise, only changes and the points before them are included. Note: Optimization is not always up-to-date"
 				default="1"
-			></app-doc-params-table-row>
+			/>
 			<app-doc-params-table-row
 				paramType="query"
 				param="?term"
 				description="Selects a term associated with the CRN. The same CRN may be associated with multiple terms. Defaults to most latest term if omitted"
 				default="(empty)"
-			></app-doc-params-table-row>
+			/>
 		</app-doc-params-table>
 	</app-doc-params>
 
