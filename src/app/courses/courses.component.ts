@@ -3,6 +3,8 @@ import { SUBJECT_CODE_LIST } from "../../temp/subjectCodes";
 import { FormControl } from "@angular/forms";
 import { APICourses } from "../api-services/api-types";
 import { ApiService } from "../api-services/api.service";
+import json2csv from "../../utils/json2csv";
+import downloadToFile from "../../utils/downloadString";
 
 @Component({
 	selector: 'app-courses',
@@ -56,5 +58,18 @@ export class CoursesComponent {
 					.map(res => res.subject_number)
 					.filter((x, index, arr) => arr.indexOf(x) === index);
 			})
+	}
+
+	downloadResults(convertToCSV: boolean = false) {
+		let exportBlob: Blob;
+		if(convertToCSV) {
+			exportBlob = new Blob([json2csv(this.results)], { type: "text/csv" });
+		} else {
+			exportBlob = new Blob([JSON.stringify(this.results)], { type: "application/json" });
+		}
+		const exportDataUrl: string = window.URL.createObjectURL(exportBlob);
+		const exportFileName = "Course_Search_Results";
+
+		downloadToFile(exportDataUrl, exportFileName);
 	}
 }

@@ -25,6 +25,22 @@
 			<p class="text-lg underline">UI Improvements Are Being Worked On This Week!</p>
 			<p class="text-slate-600 text-base italic">(Please excuse the mess... I am one person ;-;)</p>
 		</div>
+		<h2 class="text-base text-slate-500">{{results.length}} results found:</h2>
+		<div class="flex flex-row gap-1.5">
+			<button
+				(click)="downloadResults()"
+				class="inline-block w-fit border px-4 py-1.5 my-2 rounded bg-slate-50"
+			>
+				Download JSON
+			</button>
+			<button
+				(click)="downloadResults(true)"
+				class="inline-block w-fit border px-4 py-1.5 my-2 rounded bg-slate-50"
+			>
+				Download CSV
+			</button>
+		</div>
+
 		<app-degree-lookup-result
 			*ngFor="let degree of results"
 			[degree_type]="degree.degree_type"

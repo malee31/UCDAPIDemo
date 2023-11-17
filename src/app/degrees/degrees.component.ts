@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from "../api-services/api.service";
 import { APIDegrees } from "../api-services/api-types";
+import json2csv from "../../utils/json2csv";
+import downloadToFile from "../../utils/downloadString";
 
 @Component({
 	selector: 'app-degrees',
@@ -36,5 +38,21 @@ export class DegreesComponent implements OnInit {
 			.then(degrees => {
 				this.results = degrees
 			})
+	}
+
+	downloadResults(convertToCSV: boolean = false) {
+		let exportBlob: Blob;
+		if(convertToCSV) {
+			exportBlob = new Blob([json2csv(this.results)], { type: "text/csv" });
+		} else {
+			exportBlob = new Blob([JSON.stringify(this.results)], { type: "application/json" });
+		}
+		const exportDataUrl: string = window.URL.createObjectURL(exportBlob);
+		let exportFileName = "Degree_Search_Results";
+		if(this.filters.degreeType) {
+			exportFileName += `_${this.filters.degreeType.replace(/\s+/g, "_")}`;
+		}
+
+		downloadToFile(exportDataUrl, exportFileName);
 	}
 }

@@ -4,6 +4,7 @@ import { Plugin } from "chart.js/dist/types";
 import { BaseChartDirective } from "ng2-charts";
 import * as moment from "moment";
 import { APISeats } from "../../api-services/api-types";
+import downloadToFile from "../../../utils/downloadString";
 
 const DEFAULT_POINT_COUNT: number = 50;
 const tooltipPlugin: Plugin = {
@@ -237,10 +238,7 @@ export class GraphComponent {
 		const chartDataUrl: string = this.chartToDataURL();
 
 		// Start a download
-		const downloadLink = document.createElement("a");
-		downloadLink.href = chartDataUrl;
-		downloadLink.download = "CRN_Seat_Chart.png";
-		downloadLink.click();
+		downloadToFile(chartDataUrl, "CRN_Seat_Chart.png");
 	}
 
 	copyChart() {
