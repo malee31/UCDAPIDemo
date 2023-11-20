@@ -21,9 +21,11 @@
 		</button>
 		<button
 			(click)="copyChart()"
+			[disabled]="!copyChartSupported"
 			class="inline-block border px-2 py-1 rounded bg-slate-50"
+			[ngClass]="{'cursor-not-allowed': !copyChartSupported}"
 		>
-			Copy Chart
+			Copy Chart <span *ngIf="!copyChartSupported">(Not Supported by Browser)</span>
 		</button>
 	</div>
 

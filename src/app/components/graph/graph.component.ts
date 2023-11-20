@@ -47,6 +47,7 @@ export class GraphComponent {
 	pointIndexRange!: [number, number];
 	datePointRangeLimits!: [string, string];
 	datePointRangeLabels!: [string, string];
+	copyChartSupported: boolean = Boolean(window["ClipboardItem"]);
 
 	generatedData: ChartConfiguration['data'] | undefined;
 
@@ -247,7 +248,13 @@ export class GraphComponent {
 		// Copy to clipboard
 		fetch(chartDataUrl)
 			.then(res => res.blob())
-			.then(blob => navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]))
+			.then(blob => {
+				if(!window["ClipboardItem"]) {
+					alert("Your browser does not support copying as image");
+					return;
+				}
+				navigator.clipboard.write([new ClipboardItem({ "image/png": blob })])
+			})
 			.catch(err => alert(`Copy failed. Download instead.\n\nError: ${err}`))
 	}
 }
