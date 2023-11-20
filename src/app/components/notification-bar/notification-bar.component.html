@@ -1,0 +1,20 @@
+<div class="max-w-[50%] w-[256px] fixed bottom-4 right-2 z-40 flex flex-col-reverse items-stretch">
+	<div
+		*ngFor="let notification of displayedNotifications"
+		class="relative w-full mt-2 px-2 py-1 bg-white rounded-md border border-slate-200 shadow"
+	>
+		<button
+			class="w-6 h-6 rounded hover:bg-red-500 border border-slate-200 absolute top-1 right-1 flex items-center justify-center transition-colors"
+			(click)="dismissNotification(notification.id)"
+		>
+			<img
+				alt="Close"
+				class="w-full h-full object-contain"
+				src="assets/x-icon.svg"
+			/>
+		</button>
+		<p class="py-2">
+			{{notification.message}}
+		</p>
+	</div>
+</div>

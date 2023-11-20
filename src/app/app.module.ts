@@ -13,8 +13,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
-import { ConstantsService } from "./config/constants.service";
-import { ApiService } from "./api-services/api.service";
+import { ConstantsService } from "./services/config/constants.service";
+import { ApiService } from "./services/api-services/api.service";
 
 import { HomeComponent } from "./home/home.component";
 import { LogsComponent } from "./logs/logs.component";
@@ -61,6 +61,7 @@ import { AutocompleteFilterFieldComponent } from './components/search/filter-ui-
 import { CrnLookupResultComponent } from './components/search/result-items/crn-lookup-result/crn-lookup-result.component';
 import { CourseLookupResultComponent } from './components/search/result-items/course-lookup-result/course-lookup-result.component';
 import { DegreeLookupResultComponent } from './components/search/result-items/degree-lookup-result/degree-lookup-result.component';
+import { NotificationBarComponent } from './components/notification-bar/notification-bar.component';
 
 @NgModule({
 	declarations: [
@@ -110,6 +111,7 @@ import { DegreeLookupResultComponent } from './components/search/result-items/de
 		AutocompleteFilterFieldComponent,
 		CourseLookupResultComponent,
 		DegreeLookupResultComponent,
+  NotificationBarComponent,
 	],
 	imports: [
 		BrowserModule,

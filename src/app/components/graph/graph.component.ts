@@ -3,8 +3,9 @@ import { Chart, ChartConfiguration } from "chart.js";
 import { Plugin } from "chart.js/dist/types";
 import { BaseChartDirective } from "ng2-charts";
 import * as moment from "moment";
-import { APISeats } from "../../api-services/api-types";
+import { APISeats } from "../../services/api-services/api-types";
 import downloadToFile from "../../../utils/downloadString";
+import { NotificationsService } from "../../services/notification-services/notifications.service";
 
 const DEFAULT_POINT_COUNT: number = 50;
 const tooltipPlugin: Plugin = {
@@ -79,7 +80,7 @@ export class GraphComponent {
 		}
 	};
 
-	constructor() {
+	constructor(private notifications: NotificationsService) {
 		Chart.register(tooltipPlugin);
 	}
 
@@ -248,13 +249,17 @@ export class GraphComponent {
 		// Copy to clipboard
 		fetch(chartDataUrl)
 			.then(res => res.blob())
-			.then(blob => {
+			.then(async blob => {
 				if(!window["ClipboardItem"]) {
 					alert("Your browser does not support copying as image");
 					return;
 				}
-				navigator.clipboard.write([new ClipboardItem({ "image/png": blob })])
+				await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+				this.notifications.addNotification("notice", "Copied to Clipboard!");
 			})
-			.catch(err => alert(`Copy failed. Download instead.\n\nError: ${err}`))
+			.catch(err => {
+				alert(`Copy failed. Download instead.\n\nError: ${err}`);
+				this.notifications.addNotification("error", `Copy failed. Download instead.\n\nError: ${err}`);
+			})
 	}
 }

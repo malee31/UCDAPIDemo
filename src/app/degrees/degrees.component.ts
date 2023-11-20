@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from "../api-services/api.service";
-import { APIDegrees } from "../api-services/api-types";
+import { ApiService } from "../services/api-services/api.service";
+import { APIDegrees } from "../services/api-services/api-types";
 import json2csv from "../../utils/json2csv";
 import downloadToFile from "../../utils/downloadString";
 

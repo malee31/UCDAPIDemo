@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ApiService } from "../../api-services/api.service";
-import { APICrn } from "../../api-services/api-types";
+import { ApiService } from "../../services/api-services/api.service";
+import { APICrn } from "../../services/api-services/api-types";
 
 @Component({
 	selector: 'app-course-name-graph',

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { ApiService } from "../api-services/api.service";
-import { APICrn } from "../api-services/api-types";
+import { ApiService } from "../services/api-services/api.service";
+import { APICrn } from "../services/api-services/api-types";
 
 import { SUBJECT_CODE_LIST, TERMS_LIST } from "../../temp/subjectCodes";
 

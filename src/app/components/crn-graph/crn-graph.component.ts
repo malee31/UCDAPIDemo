@@ -1,7 +1,7 @@
 // A wrapper around graph.component.ts that independently loads in the data given a CRN
 import { Component, Input, OnInit } from "@angular/core";
-import { ApiService } from "../../api-services/api.service";
-import { APISeats } from "../../api-services/api-types";
+import { ApiService } from "../../services/api-services/api.service";
+import { APISeats } from "../../services/api-services/api-types";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 
 @Component({

@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { MatTableModule } from "@angular/material/table";
 import { LogDatePipe } from "./LogDate.pipe";
-import { ApiService } from "../api-services/api.service";
-import { APILog } from "../api-services/api-types";
+import { ApiService } from "../services/api-services/api.service";
+import { APILog } from "../services/api-services/api-types";
 
 @Component({
 	selector: "app-logs",

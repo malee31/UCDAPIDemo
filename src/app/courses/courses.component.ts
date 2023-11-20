@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { SUBJECT_CODE_LIST } from "../../temp/subjectCodes";
 import { FormControl } from "@angular/forms";
-import { APICourses } from "../api-services/api-types";
-import { ApiService } from "../api-services/api.service";
+import { APICourses } from "../services/api-services/api-types";
+import { ApiService } from "../services/api-services/api.service";
 import json2csv from "../../utils/json2csv";
 import downloadToFile from "../../utils/downloadString";
 
