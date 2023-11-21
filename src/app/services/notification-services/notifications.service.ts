@@ -28,10 +28,13 @@ export class NotificationsService {
 		});
 	}
 
-	removeNotification = (notificationId: string): void => {
+	removeNotification = (notificationId: string, ignoreNonexistent: boolean = false): void => {
 		const notificationIndex = this.notifications.findIndex(notification => notification.id === notificationId);
 		if(notificationIndex === -1) {
-			throw new RangeError(`No notification found with the id [${notificationId}]`);
+			if(!ignoreNonexistent) {
+				throw new RangeError(`No notification found with the id [${notificationId}]`);
+			}
+			return;
 		}
 		this.notifications.splice(notificationIndex, 1);
 	}

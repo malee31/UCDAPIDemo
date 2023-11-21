@@ -111,7 +111,7 @@ import { NotificationBarComponent } from './components/notification-bar/notifica
 		AutocompleteFilterFieldComponent,
 		CourseLookupResultComponent,
 		DegreeLookupResultComponent,
-  NotificationBarComponent,
+		NotificationBarComponent,
 	],
 	imports: [
 		BrowserModule,

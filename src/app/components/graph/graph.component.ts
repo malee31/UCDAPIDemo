@@ -258,7 +258,6 @@ export class GraphComponent {
 				this.notifications.addNotification("notice", "Copied to Clipboard!");
 			})
 			.catch(err => {
-				alert(`Copy failed. Download instead.\n\nError: ${err}`);
 				this.notifications.addNotification("error", `Copy failed. Download instead.\n\nError: ${err}`);
 			})
 	}

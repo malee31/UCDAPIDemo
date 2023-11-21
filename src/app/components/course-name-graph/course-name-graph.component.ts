@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from "../../services/api-services/api.service";
 import { APICrn } from "../../services/api-services/api-types";
+import { NotificationsService } from "../../services/notification-services/notifications.service";
 
 @Component({
 	selector: 'app-course-name-graph',
@@ -15,7 +16,7 @@ export class CourseNameGraphComponent implements OnInit {
 
 	courses: APICrn[] = [];
 
-	constructor(private api: ApiService) {}
+	constructor(private api: ApiService, private notification: NotificationsService) {}
 
 	ngOnInit(): void {
 		this.api.fetchCRNs(this.term, this.subject_code, this.subject_number)
@@ -23,7 +24,7 @@ export class CourseNameGraphComponent implements OnInit {
 				this.courses = courses;
 			})
 			.catch(err => {
-				alert(`Unable to find courses: ${err}`);
+				this.notification.addNotification("error", `Unable to find courses: ${err}`);
 			});
 	}
 }

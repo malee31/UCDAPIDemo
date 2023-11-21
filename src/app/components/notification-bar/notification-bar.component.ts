@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { NotificationsService, Notification } from "../../services/notification-services/notifications.service";
 
 @Component({
@@ -8,11 +8,21 @@ import { NotificationsService, Notification } from "../../services/notification-
 })
 export class NotificationBarComponent {
 	displayedNotifications: Notification[] = [];
+	dismissFadeNotificationsIds: string[] = []
 	constructor(private notifications: NotificationsService) {
 		this.displayedNotifications = notifications.notifications;
 	}
 
 	dismissNotification(notificationId: string) {
-		this.notifications.removeNotification(notificationId);
+		if(this.dismissFadeNotificationsIds.includes(notificationId)) return;
+
+		this.dismissFadeNotificationsIds.push(notificationId);
+
+		setTimeout(() => {
+			// Delayed notification deletion
+			this.notifications.removeNotification(notificationId);
+			const dismissIdIndex = this.dismissFadeNotificationsIds.findIndex(id => id === notificationId);
+			this.dismissFadeNotificationsIds.splice(dismissIdIndex, 1);
+		}, 1000);
 	}
 }
