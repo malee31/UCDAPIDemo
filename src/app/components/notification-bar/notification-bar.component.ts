@@ -10,16 +10,21 @@ export class NotificationBarComponent {
 	displayedNotifications: Notification[] = [];
 	dismissFadeNotificationsIds: string[] = []
 	constructor(private notifications: NotificationsService) {
-		this.displayedNotifications = notifications.notifications;
+		notifications.getNotifications().subscribe(newNotifications => {
+			console.log("NOTIFY!");
+			console.log(newNotifications)
+			this.displayedNotifications = newNotifications;
+		})
 	}
 
 	dismissNotification(notificationId: string) {
+		// Avoid duplicate timeouts for deletion
 		if(this.dismissFadeNotificationsIds.includes(notificationId)) return;
 
 		this.dismissFadeNotificationsIds.push(notificationId);
 
 		setTimeout(() => {
-			// Delayed notification deletion
+			// Deferred notification deletion to let animation finish
 			this.notifications.removeNotification(notificationId);
 			const dismissIdIndex = this.dismissFadeNotificationsIds.findIndex(id => id === notificationId);
 			this.dismissFadeNotificationsIds.splice(dismissIdIndex, 1);

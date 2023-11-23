@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from "rxjs";
 
 export type NotificationType = "default" | "notice" | "warning" | "error";
 export type Notification = {
@@ -11,31 +12,43 @@ export type Notification = {
 	providedIn: "root"
 })
 export class NotificationsService {
-	notifications: Notification[] = [];
-
 	constructor() {}
+
+	notificationsSubj: BehaviorSubject<Notification[]> = new BehaviorSubject<Notification[]>([]);
+	getNotifications() {
+		return this.notificationsSubj.asObservable();
+	}
 
 	addNotification = (type: NotificationType, message: string): void => {
 		const notificationId = Date.now().toString();
-		if(this.notifications.find(notification => notification.id === notificationId)) {
+		const notificationArr = this.notificationsSubj.getValue();
+		if(notificationArr.find(notification => notification.id === notificationId)) {
 			throw new TypeError(`Two notifications should never have the same id. The offending id is [${notificationId}]`);
 		}
 
-		this.notifications.push({
+		const newNotification: Notification = {
 			id: notificationId,
 			type: type,
 			message: message
-		});
+		};
+
+		this.notificationsSubj.next([
+			...notificationArr,
+			newNotification
+		]);
 	}
 
 	removeNotification = (notificationId: string, ignoreNonexistent: boolean = false): void => {
-		const notificationIndex = this.notifications.findIndex(notification => notification.id === notificationId);
+		const notificationArrCopy = [...this.notificationsSubj.getValue()];
+		const notificationIndex = notificationArrCopy.findIndex(notification => notification.id === notificationId);
 		if(notificationIndex === -1) {
 			if(!ignoreNonexistent) {
 				throw new RangeError(`No notification found with the id [${notificationId}]`);
 			}
 			return;
 		}
-		this.notifications.splice(notificationIndex, 1);
+
+		notificationArrCopy.splice(notificationIndex, 1);
+		this.notificationsSubj.next(notificationArrCopy);
 	}
 }
