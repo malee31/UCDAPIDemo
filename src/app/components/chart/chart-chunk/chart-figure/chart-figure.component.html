@@ -1,0 +1,32 @@
+<div class="relative w-full">
+	<!-- Div must exist with relative for Chart.js to resize properly -->
+	<div class="relative w-full px-2 sm:px-0 overflow-x-auto">
+		<div class="w-full min-w-[580px] h-[70vw] md:h-[50vw] max-h-[calc(90vh-4rem)] overflow-hidden relative">
+			<canvas
+				#chartSource
+				[data]="generatedData"
+				[options]="generatedOptions"
+				baseChart
+				class="chart w-full"
+				type="line"
+			></canvas>
+		</div>
+	</div>
+
+	<div class="absolute top-2 right-2 sm:right-4">
+		<button
+			(click)="downloadChart()"
+			class="inline-block border px-2 py-1 mr-1 rounded bg-slate-50"
+		>
+			Download Chart
+		</button>
+		<button
+			(click)="copyChart()"
+			[disabled]="!detectsClipboardSupport"
+			class="inline-block border px-2 py-1 rounded bg-slate-50"
+			[ngClass]="{'cursor-not-allowed': !detectsClipboardSupport}"
+		>
+			Copy Chart <span *ngIf="!detectsClipboardSupport">(Not Supported by Browser)</span>
+		</button>
+	</div>
+</div>

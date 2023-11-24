@@ -6,6 +6,5 @@ import { Component, Input } from "@angular/core";
 	styleUrls: ["./chart.component.scss"]
 })
 export class ChartComponent {
-	@Input({ required: true })
-	public crn: string = "";
+	@Input({ required: true }) crn: string = "";
 }

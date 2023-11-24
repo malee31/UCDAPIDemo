@@ -1,14 +1,5 @@
-<p *ngIf="loading">Loading...</p>
-<p *ngIf="failed">Failed to load data for CRN #{{crn}}...</p>
-<div
-	*ngIf="!loading && !failed"
-	class="w-full"
->
-	<app-graph
-		[crnData]="crnData"
-	/>
-	<label class="px-2">
-		<span>Hide Unchanged Points? &nbsp;</span>
-		<input (click)="toggleOptimized()" [checked]="optimized" type="checkbox">
-	</label>
-</div>
+<app-chart-chunk
+	[crn]="crn"
+	[defaultOptimized]="optimized"
+	[term]="term"
+/>

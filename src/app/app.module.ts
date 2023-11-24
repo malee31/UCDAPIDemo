@@ -22,7 +22,6 @@ import { ChartComponent } from "./chart/chart.component";
 import { HTTP404Component } from "./http404/http404.component";
 import { ChartSearchComponent } from "./chart-search/chartSearch.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
-import { GraphComponent } from "./components/graph/graph.component";
 import { CrnGraphComponent } from "./components/crn-graph/crn-graph.component";
 import { CourseNameGraphComponent } from "./components/course-name-graph/course-name-graph.component";
 import { MultiChartComponent } from "./multichart/multi-chart.component";
@@ -63,6 +62,8 @@ import { CourseLookupResultComponent } from './components/search/result-items/co
 import { DegreeLookupResultComponent } from './components/search/result-items/degree-lookup-result/degree-lookup-result.component';
 import { NotificationBarComponent } from './components/notification-bar/notification-bar.component';
 import { NotificationEntryComponent } from './components/notification-bar/notification-entry/notification-entry.component';
+import { ChartChunkComponent } from './components/chart/chart-chunk/chart-chunk.component';
+import { ChartFigureComponent } from './components/chart/chart-chunk/chart-figure/chart-figure.component';
 
 @NgModule({
 	declarations: [
@@ -71,7 +72,6 @@ import { NotificationEntryComponent } from './components/notification-bar/notifi
 		ChartComponent,
 		HTTP404Component,
 		NavbarComponent,
-		GraphComponent,
 		CrnGraphComponent,
 		ChartSearchComponent,
 		CourseNameGraphComponent,
@@ -114,6 +114,8 @@ import { NotificationEntryComponent } from './components/notification-bar/notifi
 		DegreeLookupResultComponent,
 		NotificationBarComponent,
 		NotificationEntryComponent,
+		ChartChunkComponent,
+		ChartFigureComponent,
 	],
 	imports: [
 		BrowserModule,
