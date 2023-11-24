@@ -1,0 +1,27 @@
+<div
+	class="w-full flex flex-col-reverse"
+	[ngClass]="{'notification-disappear-animation': isFading}"
+>
+	<div
+		class="notification-appear-animation w-full flex flex-col-reverse"
+	>
+		<div
+			class="relative w-full mt-2 px-2 py-1 bg-white rounded-md border border-slate-200 shadow overflow-hidden countdown-fuse"
+			[ngClass]="{'animation-fade': isFading}"
+		>
+			<button
+				class="w-6 h-6 rounded border border-transparent hover:border-slate-200 absolute top-1 right-1 flex items-center justify-center transition-colors"
+				(click)="dismiss()"
+			>
+				<img
+					alt="Close"
+					class="w-full h-full object-contain"
+					src="assets/x-icon.svg"
+				/>
+			</button>
+			<p class="py-2">
+				{{notification.message}}
+			</p>
+		</div>
+	</div>
+</div>

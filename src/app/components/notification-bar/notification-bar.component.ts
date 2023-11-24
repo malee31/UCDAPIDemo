@@ -1,20 +1,27 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { NotificationsService, Notification } from "../../services/notification-services/notifications.service";
+import { Subscription } from "rxjs";
 
 @Component({
 	selector: 'app-notification-bar',
 	templateUrl: './notification-bar.component.html',
 	styleUrls: ['./notification-bar.component.scss']
 })
-export class NotificationBarComponent {
+export class NotificationBarComponent implements OnInit, OnDestroy {
+	notificationSub!: Subscription;
 	displayedNotifications: Notification[] = [];
-	dismissFadeNotificationsIds: string[] = []
-	constructor(private notifications: NotificationsService) {
-		notifications.getNotifications().subscribe(newNotifications => {
-			console.log("NOTIFY!");
-			console.log(newNotifications)
-			this.displayedNotifications = newNotifications;
-		})
+	dismissFadeNotificationsIds: string[] = [];
+	constructor(private notifications: NotificationsService) {}
+
+	ngOnInit() {
+		this.notificationSub = this.notifications.getNotifications()
+			.subscribe(newNotifications => {
+				this.displayedNotifications = newNotifications;
+			});
+	}
+
+	ngOnDestroy() {
+		this.notificationSub.unsubscribe();
 	}
 
 	dismissNotification(notificationId: string) {

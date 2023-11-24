@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 
 export type NotificationType = "default" | "notice" | "warning" | "error";
 export type Notification = {
 	id: string,
 	type: NotificationType,
 	message: string
-}
+};
 
 @Injectable({
 	providedIn: "root"
@@ -14,8 +14,9 @@ export type Notification = {
 export class NotificationsService {
 	constructor() {}
 
-	notificationsSubj: BehaviorSubject<Notification[]> = new BehaviorSubject<Notification[]>([]);
-	getNotifications() {
+	// Force all components to use the methods to add notifications
+	private notificationsSubj: BehaviorSubject<Notification[]> = new BehaviorSubject<Notification[]>([]);
+	getNotifications(): Observable<Notification[]> {
 		return this.notificationsSubj.asObservable();
 	}
 

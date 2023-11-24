@@ -62,6 +62,7 @@ import { CrnLookupResultComponent } from './components/search/result-items/crn-l
 import { CourseLookupResultComponent } from './components/search/result-items/course-lookup-result/course-lookup-result.component';
 import { DegreeLookupResultComponent } from './components/search/result-items/degree-lookup-result/degree-lookup-result.component';
 import { NotificationBarComponent } from './components/notification-bar/notification-bar.component';
+import { NotificationEntryComponent } from './components/notification-bar/notification-entry/notification-entry.component';
 
 @NgModule({
 	declarations: [
@@ -112,6 +113,7 @@ import { NotificationBarComponent } from './components/notification-bar/notifica
 		CourseLookupResultComponent,
 		DegreeLookupResultComponent,
 		NotificationBarComponent,
+		NotificationEntryComponent,
 	],
 	imports: [
 		BrowserModule,
