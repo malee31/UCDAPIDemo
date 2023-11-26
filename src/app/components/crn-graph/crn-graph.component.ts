@@ -2,7 +2,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ApiService } from "../../services/api-services/api.service";
 import { APISeats } from "../../services/api-services/api-types";
-import { ActivatedRoute, ParamMap, Router } from "@angular/router";
+import { ActivatedRoute, ParamMap } from "@angular/router";
 
 @Component({
 	selector: "app-crn-graph",
@@ -18,7 +18,7 @@ export class CrnGraphComponent implements OnInit {
 	public optimized: boolean = false;
 	@Input({ required: true }) crn: string = "";
 
-	constructor(private api: ApiService, private router: Router, private route: ActivatedRoute) {}
+	constructor(private api: ApiService, private route: ActivatedRoute) {}
 
 	ngOnInit(): void {
 		if(this.crn.length !== 5) {
@@ -41,14 +41,6 @@ export class CrnGraphComponent implements OnInit {
 				.finally(() => {
 					this.loading = false;
 				});
-		});
-	}
-
-	async toggleOptimized() {
-		await this.router.navigate([], {
-			relativeTo: this.route,
-			queryParams: { optimized: this.optimized ? "0" : "1" },
-			queryParamsHandling: "merge"
 		});
 	}
 }
