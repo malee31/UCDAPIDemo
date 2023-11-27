@@ -27,6 +27,13 @@ export class ApiService {
 		return coursesResponse.crns;
 	}
 
+	fetchCurrentSeatsByCRN = async (term: string, crn: string): Promise<APISeats> => {
+		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/seats/${crn}?term=${term}`);
+		if(apiRes.status !== 200) throw new RangeError(`Seats by CRN responded with HTTP ${apiRes.status}`);
+		const coursesResponse: { ok: boolean, seats: APISeats } = await apiRes.json();
+		return coursesResponse.seats;
+	}
+
 	fetchSeatHistoryByCRN = async (term: string, crn: string, optimized: boolean = false): Promise<APISeats[]> => {
 		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/seats/history/${crn}?optimized=${Number(optimized)}&term=${term}`);
 		if(apiRes.status !== 200) throw new RangeError(`Seats by CRN responded with HTTP ${apiRes.status}`);

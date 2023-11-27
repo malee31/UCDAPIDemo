@@ -49,19 +49,50 @@
 
 	<ng-container>
 		<ng-container *ngIf="results.length !== 0">
-			<div class="flex flex-col">
-				<h2 class="text-base text-slate-500">{{results.length}} results found:</h2>
-
-				<!-- Results -->
-				<app-crn-lookup-result
-					*ngFor="let option of results"
-					[crn]="option.crn"
-					[subject_code]="option.subject_code"
-					[subject_number]="option.subject_number"
-					[term]="appliedFilters.term"
-				/>
-
+			<div class="my-2 py-1 animate-bounce">
+				<p class="text-lg underline">UI Improvements Are Being Worked On This Week!</p>
+				<p class="text-slate-600 text-base italic">(Please excuse the mess... I am one person ;-;)</p>
 			</div>
+			<h2 class="text-base text-slate-500">{{results.length}} results found:</h2>
+			<div class="my-1 flex flex-row flex-wrap items-center gap-1.5">
+				<button
+					class="inline-block w-fit border px-4 py-1.5 rounded bg-slate-50"
+					(click)="downloadCRNResults()"
+					[disabled]="downloadSeatCount && !seatsLoaded"
+				>
+					Download JSON
+				</button>
+				<button
+					class="inline-block w-fit border px-4 py-1.5 rounded bg-slate-50"
+					(click)="downloadCRNResults(true)"
+					[disabled]="downloadSeatCount && !seatsLoaded"
+				>
+					Download CSV
+				</button>
+				<label class="inline-block w-fit pl-2 pr-4 py-1 bg-slate-50">
+					<input
+						class="mr-2"
+						type="checkbox"
+						[checked]="downloadSeatCount"
+						(click)="setDownloadSeatCount($event)"
+					/>
+					<span>
+						Include current seat count in download?
+						<span *ngIf="downloadSeatCount && !seatsLoaded" class="inline-block align-middle">
+							<mat-spinner [diameter]="16"/>
+						</span>
+					</span>
+				</label>
+			</div>
+
+			<app-crn-lookup-result
+				*ngFor="let option of results"
+				[crn]="option.crn"
+				[subject_code]="option.subject_code"
+				[subject_number]="option.subject_number"
+				[term]="appliedFilters.term"
+				[currentSeats]="seatMap[option.crn] || null"
+			/>
 		</ng-container>
 	</ng-container>
 </app-filter-ui-layout>

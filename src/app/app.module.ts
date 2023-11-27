@@ -64,6 +64,7 @@ import { NotificationBarComponent } from './components/notification-bar/notifica
 import { NotificationEntryComponent } from './components/notification-bar/notification-entry/notification-entry.component';
 import { ChartChunkComponent } from './components/chart/chart-chunk/chart-chunk.component';
 import { ChartFigureComponent } from './components/chart/chart-chunk/chart-figure/chart-figure.component';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
 	declarations: [
@@ -130,6 +131,7 @@ import { ChartFigureComponent } from './components/chart/chart-chunk/chart-figur
 		MatAutocompleteModule,
 		ReactiveFormsModule,
 		AsyncPipe,
+		MatProgressSpinnerModule,
 	],
 	providers: [ConstantsService, ApiService],
 	bootstrap: [AppComponent]
