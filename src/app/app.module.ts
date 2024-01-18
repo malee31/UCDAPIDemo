@@ -65,6 +65,7 @@ import { NotificationEntryComponent } from './components/notification-bar/notifi
 import { ChartChunkComponent } from './components/chart/chart-chunk/chart-chunk.component';
 import { ChartFigureComponent } from './components/chart/chart-chunk/chart-figure/chart-figure.component';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { CourseCrnMetadataDocChunkComponent } from './docs/chunks/course-crn-metadata-doc-chunk/course-crn-metadata-doc-chunk.component';
 
 @NgModule({
 	declarations: [
@@ -117,6 +118,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 		NotificationEntryComponent,
 		ChartChunkComponent,
 		ChartFigureComponent,
+		CourseCrnMetadataDocChunkComponent,
 	],
 	imports: [
 		BrowserModule,

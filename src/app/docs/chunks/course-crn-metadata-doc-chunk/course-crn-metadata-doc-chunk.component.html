@@ -4,15 +4,15 @@
 >
 	<app-doc-header
 		[anchorId]="slugs.title"
-		description="Retrieve information about courses as JSON"
-		title="Course API"
+		description="Retrieve the details about a specific CRN in a quarter as JSON. Schema currently experimental and may change"
+		title="CRN Metadata API (Unstable)"
 	/>
 
 	<hr class="mb-4"/>
 
 	<app-doc-meta
 		[anchorId]="slugs.details"
-		endpoint="/v1/courses/details/:subject_code"
+		endpoint="/v1/crns/:crn"
 	/>
 
 	<app-doc-params
@@ -21,16 +21,22 @@
 		<app-doc-params-table>
 			<app-doc-params-table-row
 				[required]=true
-				description="The subject code to receive course details for like ECS"
-				param=":subject_code"
+				description="The CRN to receive metadata for like 20001"
+				param=":crn"
 				paramType="url"
+			/>
+			<app-doc-params-table-row
+				default="(empty)"
+				description="Selects a term associated with the CRNs. The same CRN may be associated with multiple terms. Defaults to most latest term if omitted"
+				param="?term"
+				paramType="query"
 			/>
 		</app-doc-params-table>
 	</app-doc-params>
 
 	<app-doc-response
 		[anchorId]="slugs.response"
-		description="Responds with a JSON array of course information for a given subject code"
+		description="Responds with a JSON object with metadata about the given CRN"
 	>
 		<app-doc-code-block [code]="exampleResponse">
 			{{exampleResponse}}
@@ -50,7 +56,7 @@
 			<tbody>
 				<tr>
 					<td>no_results</td>
-					<td>No results were found for the subject code provided. May imply that the subject code does not exist</td>
+					<td>No results were found for the term and crn provided. May imply that the crn does not exist or it exists in a different term</td>
 				</tr>
 			</tbody>
 		</table>
@@ -68,8 +74,8 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>invalid_subject_code</td>
-					<td>The subject code is in an invalid format</td>
+					<td>invalid_crn</td>
+					<td>The CRN is in an invalid format</td>
 				</tr>
 			</tbody>
 		</table>
