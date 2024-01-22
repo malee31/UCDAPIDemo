@@ -6,6 +6,12 @@
 		Insufficient data (Number of Entries: {{chartCRNData.length}})
 	</p>
 
+	<h1
+		*ngIf="!loading && chartCRNMetadata !== null"
+		class="text-xl font-medium px-2"
+	>
+		Chart for {{chartCRNMetadata.subject_code}} {{chartCRNMetadata.subject_number}} (Term: {{chartCRNMetadata.term}})
+	</h1>
 	<ng-container *ngIf="chartCRNData.length">
 		<app-chart-figure
 			[datasets]="chartDatasets"

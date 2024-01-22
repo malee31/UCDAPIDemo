@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { APICourses, APICrn, APIDegrees, APILog, APISeats } from "./api-types";
+import { APICourses, APICrn, APICrnMetadata, APIDegrees, APILog, APISeats } from "./api-types";
 import { ConstantsService } from "../config/constants.service";
 
 @Injectable({
@@ -60,5 +60,12 @@ export class ApiService {
 		if(apiRes.status !== 200) throw new RangeError(`Courses API responded with HTTP ${apiRes.status}`);
 		const coursesResponse: { ok: boolean, courses: APICourses[] } = await apiRes.json();
 		return coursesResponse.courses;
+	}
+
+	fetchCRNMetadata = async (term: string, crn: string): Promise<APICrnMetadata> => {
+		const apiRes = await fetch(`${this.CONSTANTS.SERVER_URL}/v1/crns/${crn}?term=${term}`);
+		if(apiRes.status !== 200) throw new RangeError(`CRN Metadata API responded with HTTP ${apiRes.status}`);
+		const coursesResponse: { ok: boolean, metadata: APICrnMetadata } = await apiRes.json();
+		return coursesResponse.metadata;
 	}
 }

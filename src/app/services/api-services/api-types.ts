@@ -42,3 +42,10 @@ export interface APICourses {
 	cross_listing: string,
 	repeat_credit: string
 }
+
+export interface APICrnMetadata {
+	subject_code: string,
+	subject_number: string,
+	term: string,
+	reserved: boolean | null
+}

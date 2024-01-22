@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { APISeats } from "../../../services/api-services/api-types";
+import { APICrnMetadata, APISeats } from "../../../services/api-services/api-types";
 import { ApiService } from "../../../services/api-services/api.service";
 import { ChartConfiguration } from "chart.js";
 
@@ -23,6 +23,7 @@ export class ChartChunkComponent implements OnInit, OnChanges {
 	loading: boolean = false;
 	failed: boolean = false;
 	chartCRNData: APISeats[] = [];
+	chartCRNMetadata: APICrnMetadata | null = null;
 	chartDatasets: ChartConfiguration["data"]["datasets"] = [];
 
 	// Graph and filter settings
@@ -109,7 +110,10 @@ export class ChartChunkComponent implements OnInit, OnChanges {
 	async reloadData() {
 		this.loading = true;
 		try {
-			this.chartCRNData = await this.api.fetchSeatHistoryByCRN(this.term, this.crn, this.optimized);
+			[this.chartCRNData, this.chartCRNMetadata] = await Promise.all([
+				this.api.fetchSeatHistoryByCRN(this.term, this.crn, this.optimized),
+				this.api.fetchCRNMetadata(this.term, this.crn)
+			]);
 		} catch(err) {
 			this.failed = true;
 			console.warn("Failed to load data:");

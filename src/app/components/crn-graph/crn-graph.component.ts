@@ -1,7 +1,7 @@
 // A wrapper around graph.component.ts that independently loads in the data given a CRN
 import { Component, Input, OnInit } from "@angular/core";
 import { ApiService } from "../../services/api-services/api.service";
-import { APISeats } from "../../services/api-services/api-types";
+import { APICrnMetadata, APISeats } from "../../services/api-services/api-types";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 
 @Component({
@@ -14,6 +14,7 @@ export class CrnGraphComponent implements OnInit {
 	public loading: boolean = true;
 	public failed: boolean = false;
 	public crnData: APISeats[] = [];
+	public crnMetadata: APICrnMetadata | null = null;
 	public term: string = "";
 	public optimized: boolean = false;
 	@Input({ required: true }) crn: string = "";
@@ -30,14 +31,22 @@ export class CrnGraphComponent implements OnInit {
 			this.optimized = optimizedParam === "true" || optimizedParam === "1";
 			this.term = params.get("term") || "";
 
-			this.api.fetchSeatHistoryByCRN(this.term, this.crn, this.optimized)
-				.then((seats: APISeats[]) => {
-					this.crnData = seats;
-				})
-				.catch(err => {
-					this.failed = true;
-					console.error(err);
-				})
+			Promise.all([
+				this.api.fetchCRNMetadata(this.term, this.crn)
+					.then((metadata: APICrnMetadata) => this.crnMetadata = metadata)
+					.catch(err => {
+						this.failed = true;
+						console.error(err);
+					}),
+				this.api.fetchSeatHistoryByCRN(this.term, this.crn, this.optimized)
+					.then((seats: APISeats[]) => {
+						this.crnData = seats;
+					})
+					.catch(err => {
+						this.failed = true;
+						console.error(err);
+					})
+			])
 				.finally(() => {
 					this.loading = false;
 				});
