@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "UCDAPIDemo:build:production"
+              "buildTarget": "UCDAPIDemo:build:production"
             },
             "development": {
-              "browserTarget": "UCDAPIDemo:build:development"
+              "buildTarget": "UCDAPIDemo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "UCDAPIDemo:build"
+            "buildTarget": "UCDAPIDemo:build"
           }
         },
         "test": {
