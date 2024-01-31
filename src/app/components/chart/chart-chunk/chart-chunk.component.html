@@ -1,17 +1,17 @@
 <section class="w-full">
 	<!-- Error and Progress messages -->
 	<p class="px-4" *ngIf="loading">Refreshing Data</p>
-	<p class="px-4" *ngIf="failed">Failed to Load CRN {{crn}}</p>
-	<p class="px-4" *ngIf="!loading && !failed && chartCRNData.length <= 1">
-		Insufficient data (Number of Entries: {{chartCRNData.length}})
-	</p>
-
 	<h1
 		*ngIf="!loading && chartCRNMetadata !== null"
 		class="text-xl font-medium px-2"
 	>
-		Chart for {{chartCRNMetadata.subject_code}} {{chartCRNMetadata.subject_number}} (Term: {{chartCRNMetadata.term}})
+		Chart for {{ chartCRNMetadata.subject_code }} {{ chartCRNMetadata.subject_number }} (Term: {{ chartCRNMetadata.term }})
 	</h1>
+	<p class="px-4" *ngIf="failed">Failed to Load CRN {{ crn }} Data</p>
+	<p class="px-4" *ngIf="!loading && !failed && chartCRNData.length <= 1">
+		Insufficient data (Number of Entries: {{ chartCRNData.length }})
+	</p>
+
 	<ng-container *ngIf="chartCRNData.length">
 		<app-chart-figure
 			[datasets]="chartDatasets"
@@ -19,7 +19,7 @@
 
 		<!-- Chart Filters and Settings -->
 		<div class="w-full px-2 sm:px-6 py-2">
-			<h2 class="text-lg font-medium underline">Settings for CRN #{{crn}}</h2>
+			<h2 class="text-lg font-medium underline">Settings for CRN #{{ crn }}</h2>
 			<label class="block w-full">
 				<input
 					(click)="toggleOptimized()"
@@ -38,7 +38,6 @@
 			</label>
 			<div class="w-full mt-1 px-2 border-l-2">
 				<h3 class="font-medium underline">Time Range Adjustment</h3>
-				<p>Looking for the time range adjustment filters? They're being worked on again so check back later!</p>
 				<label class="block w-full">
 					<input
 						(click)="toggleRangeFilter()"

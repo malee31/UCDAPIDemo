@@ -83,26 +83,27 @@ export class SeatsComponent {
 				.map(res => res.subject_number)
 				.filter((x, index, arr) => arr.indexOf(x) === index);
 
-			const currentSeats = await Promise.all(courses.map(async (res: APICrn): Promise<APISeats | null> => {
-				const crn = res.crn;
-
-				try {
-					return await this.api.fetchCurrentSeatsByCRN(this.appliedFilters.term, crn);
-				} catch(err: any) {
-					this.notifications.addNotification("error", err.toString());
-					console.error(err);
-
-					return null;
-				}
-			}));
-
-			this.seatMap = currentSeats.reduce((acc: SeatMap, cur: APISeats | null) => {
-				if(!cur) return acc;
-
-				acc[(cur as APISeats).crn] = cur;
-				return acc;
-			}, {});
-			this.seatsLoaded = true;
+			// TODO: Debug dropped frames and get around rate limit
+			// const currentSeats = await Promise.all(courses.map(async (res: APICrn): Promise<APISeats | null> => {
+			// 	const crn = res.crn;
+			//
+			// 	try {
+			// 		return await this.api.fetchCurrentSeatsByCRN(this.appliedFilters.term, crn);
+			// 	} catch(err: any) {
+			// 		this.notifications.addNotification("error", err.toString());
+			// 		console.error(err);
+			//
+			// 		return null;
+			// 	}
+			// }));
+			//
+			// this.seatMap = currentSeats.reduce((acc: SeatMap, cur: APISeats | null) => {
+			// 	if(!cur) return acc;
+			//
+			// 	acc[(cur as APISeats).crn] = cur;
+			// 	return acc;
+			// }, {});
+			// this.seatsLoaded = true;
 
 		} catch(err: any) {
 			this.notifications.addNotification("error", err.toString());
