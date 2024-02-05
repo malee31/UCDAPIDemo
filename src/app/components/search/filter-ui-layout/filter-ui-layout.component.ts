@@ -10,7 +10,7 @@ export class FilterUiLayoutComponent {
 	// Mobile-specific settings
 	mobileShowFilters: boolean = false;
 	@Input({ required: true }) filterTitle: string = "";
-	@Input() showSubtitle: boolean = false;
+	@Input() showSearchPrompt: boolean = false;
 	@Input() subtitle: string = "Insert Subtitle Here";
 	toggleMobileFilters(): void {
 		this.mobileShowFilters = !this.mobileShowFilters;

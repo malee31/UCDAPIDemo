@@ -8,6 +8,7 @@ import json2csv from "../../utils/json2csv";
 import downloadToFile from "../../utils/downloadString";
 import { NotificationsService } from "../services/notification-services/notifications.service";
 
+const DISPLAY_SEATS_ENABLED = false;
 type SeatMap = { [key: APICrn["crn"] | APISeats["crn"] | string]: APISeats };
 
 @Component({
@@ -84,27 +85,28 @@ export class SeatsComponent {
 				.filter((x, index, arr) => arr.indexOf(x) === index);
 
 			// TODO: Debug dropped frames and get around rate limit
-			// const currentSeats = await Promise.all(courses.map(async (res: APICrn): Promise<APISeats | null> => {
-			// 	const crn = res.crn;
-			//
-			// 	try {
-			// 		return await this.api.fetchCurrentSeatsByCRN(this.appliedFilters.term, crn);
-			// 	} catch(err: any) {
-			// 		this.notifications.addNotification("error", err.toString());
-			// 		console.error(err);
-			//
-			// 		return null;
-			// 	}
-			// }));
-			//
-			// this.seatMap = currentSeats.reduce((acc: SeatMap, cur: APISeats | null) => {
-			// 	if(!cur) return acc;
-			//
-			// 	acc[(cur as APISeats).crn] = cur;
-			// 	return acc;
-			// }, {});
-			// this.seatsLoaded = true;
+			if(DISPLAY_SEATS_ENABLED) {
+				const currentSeats = await Promise.all(courses.map(async (res: APICrn): Promise<APISeats | null> => {
+					const crn = res.crn;
 
+					try {
+						return await this.api.fetchCurrentSeatsByCRN(this.appliedFilters.term, crn);
+					} catch(err: any) {
+						this.notifications.addNotification("error", err.toString());
+						console.error(err);
+
+						return null;
+					}
+				}));
+
+				this.seatMap = currentSeats.reduce((acc: SeatMap, cur: APISeats | null) => {
+					if(!cur) return acc;
+
+					acc[(cur as APISeats).crn] = cur;
+					return acc;
+				}, {});
+				this.seatsLoaded = true;
+			}
 		} catch(err: any) {
 			this.notifications.addNotification("error", err.toString());
 			console.error(err);

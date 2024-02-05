@@ -24,8 +24,16 @@
 		<h1 class="text-2xl">
 			{{filterTitle}}
 		</h1>
-		<div *ngIf="showSubtitle">
-			<h2 class="text-sm text-slate-500">{{subtitle}}</h2>
+		<div
+			*ngIf="showSearchPrompt"
+			class="w-full flex-grow flex flex-col justify-center items-center pb-20"
+		>
+			<img
+				alt="Observatory Graphic"
+				class="w-[50%] max-w-[360px] h-fit object-contain mb-1"
+				src="assets/observatory.svg"
+			/>
+			<p class="text-xl">{{subtitle}}</p>
 		</div>
 
 		<div class="block py-2 sm:hidden">
