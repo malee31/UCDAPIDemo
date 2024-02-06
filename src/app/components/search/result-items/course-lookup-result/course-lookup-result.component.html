@@ -1,17 +1,17 @@
 <div class="w-full max-w-[920px] mb-2 px-4 pt-2 pb-4 bg-white border border-slate-50 rounded-lg shadow hover:shadow-md transition-[box-shadow]">
-	<h2 class="text-xl">{{subject_code}} {{subject_number}} - {{course_title}}</h2>
+	<h2 class="text-xl">{{ subject_code }} {{ subject_number }} - {{ course_title }}</h2>
 	<h3 class="text-base text-slate-600 [&>*]:mr-2">
-		<span class="inline-block">Units: {{units}}</span>
-		<span class="inline-block">Grading: {{grade_mode}}</span>
-		<span class="inline-block">GE: {{GE_credits || "N/A"}}</span>
-		<span class="inline-block">Activities: {{learning_activities}}</span>
+		<span class="inline-block">Units: {{ units }}</span>
+		<span class="inline-block">Grading: {{ grade_mode }}</span>
+		<span class="inline-block">GE: {{ GE_credits || "N/A" }}</span>
+		<span class="inline-block">Activities: {{ learning_activities }}</span>
 	</h3>
 	<div class="text-slate-400 leading-tight text-xs [&>*]:mr-2">
-		<span class="inline-block">Restrictions: {{enrollment_restrictions || "N/A"}}</span>
-		<span class="inline-block">Credit Limit: {{credit_limit || "N/A"}}</span>
-		<span class="inline-block">Repeat Credit: {{repeat_credit || "?"}}</span>
-		<span class="inline-block">Cross-listings: {{cross_listing || "N/A"}}</span>
+		<span class="inline-block">Restrictions: {{ enrollment_restrictions || "N/A" }}</span>
+		<span class="inline-block">Credit Limit: {{ credit_limit || "N/A" }}</span>
+		<span class="inline-block">Repeat Credit: {{ repeat_credit || "?" }}</span>
+		<span class="inline-block">Cross-listings: {{ cross_listing || "N/A" }}</span>
 	</div>
-	<p class="underline mb-2">Prerequisites: <span>{{prerequisites || "None"}}</span></p>
-	<p>{{description || "(Description Missing)"}}</p>
+	<p class="underline mb-2">Prerequisites: <span>{{ prerequisites || "None" }}</span></p>
+	<p>{{ description || "(Description Missing)" }}</p>
 </div>

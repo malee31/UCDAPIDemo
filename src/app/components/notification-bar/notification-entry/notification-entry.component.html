@@ -1,17 +1,17 @@
 <div
-	class="w-full flex flex-col-reverse"
 	[ngClass]="{'notification-disappear-animation': isFading}"
+	class="w-full flex flex-col-reverse"
 >
 	<div
 		class="notification-appear-animation w-full flex flex-col-reverse"
 	>
 		<div
-			class="relative w-full mt-2 px-2 py-1 bg-white rounded-md border border-slate-200 shadow overflow-hidden countdown-fuse"
 			[ngClass]="{'animation-fade': isFading}"
+			class="relative w-full mt-2 px-2 py-1 bg-white rounded-md border border-slate-200 shadow overflow-hidden countdown-fuse"
 		>
 			<button
-				class="w-6 h-6 rounded border border-transparent hover:border-slate-200 absolute top-1 right-1 flex items-center justify-center transition-colors"
 				(click)="dismiss()"
+				class="w-6 h-6 rounded border border-transparent hover:border-slate-200 absolute top-1 right-1 flex items-center justify-center transition-colors"
 			>
 				<img
 					alt="Close"
@@ -20,7 +20,7 @@
 				/>
 			</button>
 			<p class="py-2">
-				{{notification.message}}
+				{{ notification.message }}
 			</p>
 		</div>
 	</div>

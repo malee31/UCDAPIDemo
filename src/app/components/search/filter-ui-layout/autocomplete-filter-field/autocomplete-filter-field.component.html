@@ -1,9 +1,9 @@
 <div>
-	<h3 class="text-base">{{titleText}} <span *ngIf="required" class="text-red-500">*</span></h3>
+	<h3 class="text-base">{{ titleText }} <span *ngIf="required" class="text-red-500">*</span></h3>
 	<div>
 
 		<mat-form-field class="w-full">
-			<mat-label>{{labelText}}</mat-label>
+			<mat-label>{{ labelText }}</mat-label>
 			<input
 				#autocompleteInput
 				(focus)="resetAutocompleteTextInput()"
@@ -23,13 +23,13 @@
 					*ngIf="defaultOption"
 					[value]="defaultOption"
 				>
-					{{defaultLabel || defaultOption}}
+					{{ defaultLabel || defaultOption }}
 				</mat-option>
 				<mat-option
 					*ngFor="let autoOption of filteredOptions"
 					[value]="autoOption"
 				>
-					{{autoOption}}
+					{{ autoOption }}
 				</mat-option>
 			</mat-autocomplete>
 		</mat-form-field>

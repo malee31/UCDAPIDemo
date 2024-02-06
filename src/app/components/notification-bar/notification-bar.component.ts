@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { NotificationsService, Notification } from "../../services/notification-services/notifications.service";
+import { Notification, NotificationsService } from "../../services/notification-services/notifications.service";
 import { Subscription } from "rxjs";
 
 @Component({

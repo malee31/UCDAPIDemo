@@ -1,14 +1,14 @@
 <section class="w-full">
 	<!-- Error and Progress messages -->
-	<p class="px-4" *ngIf="loading">Refreshing Data</p>
+	<p *ngIf="loading" class="px-4">Refreshing Data</p>
 	<h1
 		*ngIf="!loading && chartCRNMetadata !== null"
 		class="text-xl font-medium px-2"
 	>
 		Chart for {{ chartCRNMetadata.subject_code }} {{ chartCRNMetadata.subject_number }} (Term: {{ chartCRNMetadata.term }})
 	</h1>
-	<p class="px-4" *ngIf="failed">Failed to Load CRN {{ crn }} Data</p>
-	<p class="px-4" *ngIf="!loading && !failed && chartCRNData.length <= 1">
+	<p *ngIf="failed" class="px-4">Failed to Load CRN {{ crn }} Data</p>
+	<p *ngIf="!loading && !failed && chartCRNData.length <= 1" class="px-4">
 		Insufficient data (Number of Entries: {{ chartCRNData.length }})
 	</p>
 
@@ -55,29 +55,29 @@
 					<span class="inline-block pl-2">Show up to latest point? (Disables end time)</span>
 				</label>
 				<label
-					class="block w-full mt-1"
 					[ngClass]="{'text-gray-300': !rangeFilterEnabled}"
+					class="block w-full mt-1"
 				>
 					<span class="inline-block w-[92px] pr-2">Start Time</span>
 					<input
-						class="px-1 py-0.5"
-						[disabled]="!rangeFilterEnabled"
 						(change)="setStartRange($event)"
+						[disabled]="!rangeFilterEnabled"
 						[value]="startTimestamp"
+						class="px-1 py-0.5"
 						type="datetime-local"
 					/>
 				</label>
 				<label
-					class="block w-full mt-1"
 					[ngClass]="{'text-gray-300': !rangeFilterEnabled || rangeToPresent}"
+					class="block w-full mt-1"
 				>
 					<span class="inline-block w-[92px] pr-2">End Time</span>
 					<input
-						class="px-1 py-0.5"
-						[disabled]="!rangeFilterEnabled || rangeToPresent"
 						(change)="setEndRange($event)"
+						[disabled]="!rangeFilterEnabled || rangeToPresent"
 						[min]="startTimestamp"
 						[value]="endTimestamp"
+						class="px-1 py-0.5"
 						type="datetime-local"
 					/>
 				</label>

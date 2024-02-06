@@ -1,7 +1,7 @@
 <ng-container
 	*ngFor="let course of courses"
 >
-	<h2>{{course.subject_code}} {{course.subject_number}} - CRN #{{course.crn}}</h2>
+	<h2>{{ course.subject_code }} {{ course.subject_number }} - CRN #{{ course.crn }}</h2>
 	<app-crn-graph
 		[crn]="course.crn"
 	/>

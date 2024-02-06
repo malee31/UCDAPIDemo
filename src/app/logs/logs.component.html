@@ -11,19 +11,19 @@
 		<tbody>
 			<ng-container matColumnDef="timestamp">
 				<th *matHeaderCellDef mat-header-cell>Time</th>
-				<td *matCellDef="let log" class="log-table-column-0" mat-cell> {{log.timestamp | logdate}} </td>
+				<td *matCellDef="let log" class="log-table-column-0" mat-cell> {{ log.timestamp | logdate }}</td>
 			</ng-container>
 			<ng-container matColumnDef="log_type">
 				<th *matHeaderCellDef mat-header-cell>Type</th>
-				<td *matCellDef="let log" class="log-table-column-0" mat-cell> {{log.log_type}} </td>
+				<td *matCellDef="let log" class="log-table-column-0" mat-cell> {{ log.log_type }}</td>
 			</ng-container>
 			<ng-container matColumnDef="message">
 				<th *matHeaderCellDef mat-header-cell>Message</th>
-				<td *matCellDef="let log" mat-cell> {{log.message}} </td>
+				<td *matCellDef="let log" mat-cell> {{ log.message }}</td>
 			</ng-container>
 			<ng-container matColumnDef="related_data">
 				<th *matHeaderCellDef mat-header-cell>Extra Data</th>
-				<td *matCellDef="let log" mat-cell> {{log.related_data}} </td>
+				<td *matCellDef="let log" mat-cell> {{ log.related_data }}</td>
 			</ng-container>
 			<!--		<tr *ngFor="let log of logs">-->
 			<!--			<td  class="log-table-column-0">{{log.timestamp | logdate }}</td>-->

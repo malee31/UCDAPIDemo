@@ -1,6 +1,6 @@
 <div class="w-full max-w-[920px] mb-2 px-4 py-2 bg-white border border-slate-50 rounded-lg shadow hover:shadow-md transition-[box-shadow]">
 	<div class="w-full">
-		<h2 class="inline text-xl">{{subject_code}} {{subject_number}}</h2>
+		<h2 class="inline text-xl">{{ subject_code }} {{ subject_number }}</h2>
 		<span
 			*ngIf="currentSeats"
 			class="float-right"
@@ -10,43 +10,43 @@
 				class="border-dotted border-b border-slate-600 cursor-pointer"
 				data-tooltip-style="light"
 				data-tooltip-target="seats-available-tooltip"
-			>{{currentSeats.seats_available}}</span>
+			>{{ currentSeats.seats_available }}</span>
 			/
 			<span
 				class="border-dotted border-b border-slate-600 cursor-pointer"
 				data-tooltip-style="light"
 				data-tooltip-target="seats-reserved-tooltip"
-			>{{currentSeats.seats_reserved}}</span>
+			>{{ currentSeats.seats_reserved }}</span>
 			/
 			<span
 				class="border-dotted border-b border-slate-600 cursor-pointer"
 				data-tooltip-style="light"
 				data-tooltip-target="seats-waitlist-tooltip"
-			>{{currentSeats.waitlist}}</span>
+			>{{ currentSeats.waitlist }}</span>
 		</span>
 
-		<div id="seats-available-tooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
+		<div class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip" id="seats-available-tooltip" role="tooltip">
 			Available Seats
 			<div class="tooltip-arrow" data-popper-arrow></div>
 		</div>
-		<div id="seats-reserved-tooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
+		<div class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip" id="seats-reserved-tooltip" role="tooltip">
 			Reserved Seats
 			<div class="tooltip-arrow" data-popper-arrow></div>
 		</div>
-		<div id="seats-waitlist-tooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
+		<div class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip" id="seats-waitlist-tooltip" role="tooltip">
 			Waitlist
 			<div class="tooltip-arrow" data-popper-arrow></div>
 		</div>
 	</div>
 	<h3 class="text-base text-slate-600">
-		<span class="inline-block mr-2">Term: {{term || "(Default)"}}</span>
-		<span class="inline-block">CRN: {{crn}}</span>
+		<span class="inline-block mr-2">Term: {{ term || "(Default)" }}</span>
+		<span class="inline-block">CRN: {{ crn }}</span>
 	</h3>
 	<a
 		[queryParams]="{optimized: 1, term: term}"
 		class="block text-blue-500"
 		routerLink="/chart/crn/{{crn}}"
 	>
-		View Chart for {{crn}} - {{subject_code}} {{subject_number}}
+		View Chart for {{ crn }} - {{ subject_code }} {{ subject_number }}
 	</a>
 </div>

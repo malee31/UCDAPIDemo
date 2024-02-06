@@ -12,10 +12,9 @@ export type Notification = {
 	providedIn: "root"
 })
 export class NotificationsService {
-	constructor() {}
-
 	// Force all components to use the methods to add notifications
 	private notificationsSubj: BehaviorSubject<Notification[]> = new BehaviorSubject<Notification[]>([]);
+	constructor() {}
 	getNotifications(): Observable<Notification[]> {
 		return this.notificationsSubj.asObservable();
 	}

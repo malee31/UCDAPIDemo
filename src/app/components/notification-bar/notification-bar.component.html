@@ -1,8 +1,8 @@
 <div class="max-w-[50%] w-[256px] fixed bottom-4 right-2 z-40 flex flex-col-reverse items-stretch">
 	<app-notification-entry
-		*ngFor="let notification of displayedNotifications"
-		[notification]="notification"
-		[isFading]="dismissFadeNotificationsIds.includes(notification.id)"
 		(onDismiss)="dismissNotification(notification.id)"
+		*ngFor="let notification of displayedNotifications"
+		[isFading]="dismissFadeNotificationsIds.includes(notification.id)"
+		[notification]="notification"
 	/>
 </div>

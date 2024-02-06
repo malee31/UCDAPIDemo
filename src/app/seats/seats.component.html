@@ -53,28 +53,28 @@
 				<p class="text-lg underline">UI Improvements Are Being Worked On!</p>
 				<p class="text-slate-600 text-base italic">(Please excuse the mess... I am one person ;-;)</p>
 			</div>
-			<h2 class="text-base text-slate-500">{{results.length}} results found:</h2>
+			<h2 class="text-base text-slate-500">{{ results.length }} results found:</h2>
 			<div class="my-1 flex flex-row flex-wrap items-center gap-1.5">
 				<button
-					class="inline-block w-fit border px-4 py-1.5 rounded bg-slate-50"
 					(click)="downloadCRNResults()"
 					[disabled]="downloadSeatCount && !seatsLoaded"
+					class="inline-block w-fit border px-4 py-1.5 rounded bg-slate-50"
 				>
 					Download JSON
 				</button>
 				<button
-					class="inline-block w-fit border px-4 py-1.5 rounded bg-slate-50"
 					(click)="downloadCRNResults(true)"
 					[disabled]="downloadSeatCount && !seatsLoaded"
+					class="inline-block w-fit border px-4 py-1.5 rounded bg-slate-50"
 				>
 					Download CSV
 				</button>
 				<label class="inline-block w-fit pl-2 pr-4 py-1 bg-slate-50">
 					<input
+						(click)="setDownloadSeatCount($event)"
+						[checked]="downloadSeatCount"
 						class="mr-2"
 						type="checkbox"
-						[checked]="downloadSeatCount"
-						(click)="setDownloadSeatCount($event)"
 					/>
 					<span>
 						Include current seat count in download?
@@ -88,10 +88,10 @@
 			<app-crn-lookup-result
 				*ngFor="let option of results"
 				[crn]="option.crn"
+				[currentSeats]="seatMap[option.crn] || null"
 				[subject_code]="option.subject_code"
 				[subject_number]="option.subject_number"
 				[term]="appliedFilters.term"
-				[currentSeats]="seatMap[option.crn] || null"
 			/>
 		</ng-container>
 	</ng-container>

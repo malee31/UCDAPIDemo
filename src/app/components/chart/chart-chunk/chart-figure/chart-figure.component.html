@@ -23,8 +23,8 @@
 		<button
 			(click)="copyChart()"
 			[disabled]="!detectsClipboardSupport"
-			class="inline-block border px-2 py-1 rounded bg-slate-50"
 			[ngClass]="{'cursor-not-allowed': !detectsClipboardSupport}"
+			class="inline-block border px-2 py-1 rounded bg-slate-50"
 		>
 			Copy Chart <span *ngIf="!detectsClipboardSupport">(Not Supported by Browser)</span>
 		</button>
