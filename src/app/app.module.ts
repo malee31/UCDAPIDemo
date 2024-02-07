@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { AsyncPipe, CommonModule } from "@angular/common";
+import { AsyncPipe, CommonModule, NgOptimizedImage } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -134,6 +134,7 @@ import { CourseCrnMetadataDocChunkComponent } from './docs/chunks/course-crn-met
 		ReactiveFormsModule,
 		AsyncPipe,
 		MatProgressSpinnerModule,
+		NgOptimizedImage,
 	],
 	providers: [ConstantsService, ApiService],
 	bootstrap: [AppComponent]
