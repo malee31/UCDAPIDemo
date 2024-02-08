@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, isDevMode } from "@angular/core";
 import { AsyncPipe, CommonModule, NgOptimizedImage } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -66,6 +66,7 @@ import { ChartChunkComponent } from './components/chart/chart-chunk/chart-chunk.
 import { ChartFigureComponent } from './components/chart/chart-chunk/chart-figure/chart-figure.component';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { CourseCrnMetadataDocChunkComponent } from './docs/chunks/course-crn-metadata-doc-chunk/course-crn-metadata-doc-chunk.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
 	declarations: [
@@ -135,6 +136,12 @@ import { CourseCrnMetadataDocChunkComponent } from './docs/chunks/course-crn-met
 		AsyncPipe,
 		MatProgressSpinnerModule,
 		NgOptimizedImage,
+  ServiceWorkerModule.register('ngsw-worker.js', {
+    enabled: !isDevMode(),
+    // Register the ServiceWorker as soon as the application is stable
+    // or after 30 seconds (whichever comes first).
+    registrationStrategy: 'registerWhenStable:30000'
+  }),
 	],
 	providers: [ConstantsService, ApiService],
 	bootstrap: [AppComponent]
