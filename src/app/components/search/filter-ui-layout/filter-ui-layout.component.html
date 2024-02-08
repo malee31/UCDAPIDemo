@@ -6,21 +6,21 @@
 	>
 		<h2 class="text-xl">
 			Filter by
-			<button
-				(click)="toggleMobileFilters()"
-				class="sm:hidden text-base float-right px-2 py-1 bg-slate-200 rounded"
-			>
-				Show Results &gt;
-			</button>
 		</h2>
 		<hr class="my-2 border-t-2"/>
 
 		<!-- Filter Options -->
 		<ng-content select="[filter-list]"/>
+		<button
+			(click)="toggleMobileFilters()"
+			class="absolute right-8 bottom-6 sm:hidden text-base px-4 py-2 bg-slate-200 rounded-full"
+		>
+			Results &gt;
+		</button>
 	</aside>
 
 	<!-- Results -->
-	<section class="flex-grow flex flex-col px-4 py-2 overflow-y-auto bg-slate-50">
+	<section class="relative flex-grow flex flex-col px-4 pt-2 pb-20 overflow-y-auto bg-slate-50 sm:pb-2">
 		<h1 class="text-2xl">
 			{{ filterTitle }}
 		</h1>
@@ -36,12 +36,12 @@
 			<p class="text-xl">{{ subtitle }}</p>
 		</div>
 
-		<div class="block py-2 sm:hidden">
+		<div class="fixed right-8 bottom-6 sm:hidden">
 			<button
 				(click)="toggleMobileFilters()"
-				class="px-4 py-2 bg-slate-200 rounded"
+				class="px-4 py-2 bg-slate-200 rounded-full shadow-md hover:shadow-lg"
 			>
-				Open Filters
+				Filters
 			</button>
 		</div>
 
