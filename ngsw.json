@@ -1,0 +1,101 @@
+{
+  "configVersion": 1,
+  "timestamp": 1707433173885,
+  "index": "/UCDAPIDemo/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/UCDAPIDemo/favicon.ico",
+        "/UCDAPIDemo/index.html",
+        "/UCDAPIDemo/main.e11c3e7c87fb494a.js",
+        "/UCDAPIDemo/manifest.webmanifest",
+        "/UCDAPIDemo/polyfills.36a1e3ab7d02ebaf.js",
+        "/UCDAPIDemo/runtime.de4ec7654cf60e30.js",
+        "/UCDAPIDemo/scripts.a865ef9e7b38e161.js",
+        "/UCDAPIDemo/styles.835775b9d350bf27.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/UCDAPIDemo/assets/API-Splash.png",
+        "/UCDAPIDemo/assets/anchor-link.svg",
+        "/UCDAPIDemo/assets/course.svg",
+        "/UCDAPIDemo/assets/degrees.svg",
+        "/UCDAPIDemo/assets/exclamation.svg",
+        "/UCDAPIDemo/assets/home-icon.svg",
+        "/UCDAPIDemo/assets/icons/icon-128x128.png",
+        "/UCDAPIDemo/assets/icons/icon-144x144.png",
+        "/UCDAPIDemo/assets/icons/icon-152x152.png",
+        "/UCDAPIDemo/assets/icons/icon-192x192.png",
+        "/UCDAPIDemo/assets/icons/icon-384x384.png",
+        "/UCDAPIDemo/assets/icons/icon-512x512.png",
+        "/UCDAPIDemo/assets/mockup.png",
+        "/UCDAPIDemo/assets/observatory.svg",
+        "/UCDAPIDemo/assets/open-in-new-window.svg",
+        "/UCDAPIDemo/assets/seats.svg",
+        "/UCDAPIDemo/assets/x-icon.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/UCDAPIDemo/assets/API-Splash.png": "f751c84ced02aea3874775dc1c2dc72e64ae52be",
+    "/UCDAPIDemo/assets/anchor-link.svg": "fdf6efecbedc7a8b76d5a0853f30f960b2e012ea",
+    "/UCDAPIDemo/assets/course.svg": "92d8e56b40aaf09bb09a0729157243c70f5961c3",
+    "/UCDAPIDemo/assets/degrees.svg": "bd5981e59acecae8b5893b5d814a73ceeee92c60",
+    "/UCDAPIDemo/assets/exclamation.svg": "c7ec1d0dc4d6eadc4d85a17550a1309f56983a9d",
+    "/UCDAPIDemo/assets/home-icon.svg": "3d653aaa79d911ea91ced85c9913cebba3f4f418",
+    "/UCDAPIDemo/assets/icons/icon-128x128.png": "36919a51c0b779b944e98c48b9d26bf5756c92ac",
+    "/UCDAPIDemo/assets/icons/icon-144x144.png": "29811cefd354eec53ac89acde70d451d9ae3e055",
+    "/UCDAPIDemo/assets/icons/icon-152x152.png": "c02d32607a042bea8d0b99fdc6f9542d9faf0924",
+    "/UCDAPIDemo/assets/icons/icon-192x192.png": "5ae07ff181f19cc3d8931c8082b8a856dd568f14",
+    "/UCDAPIDemo/assets/icons/icon-384x384.png": "6bc17e9a89a6893e5ee4b7868403ef6c9ef630e9",
+    "/UCDAPIDemo/assets/icons/icon-512x512.png": "c99f896099766b93d5c15e38acb56c26b3d3fe2f",
+    "/UCDAPIDemo/assets/mockup.png": "085fbe83febe15c5225b398e84c8846971d063fc",
+    "/UCDAPIDemo/assets/observatory.svg": "44c3caf38d6205fb30d094bacd901debcee6e8d5",
+    "/UCDAPIDemo/assets/open-in-new-window.svg": "b691bd7dc2c83350ee231d0aea4d62dbd5444ba9",
+    "/UCDAPIDemo/assets/seats.svg": "943012aba9393a149f9b76d6105f14c0cf3033b0",
+    "/UCDAPIDemo/assets/x-icon.svg": "25c7bbea0d945d48c126352bff4865966d254375",
+    "/UCDAPIDemo/favicon.ico": "9bb8b275fa7165f209579fbbe126aade28357cf2",
+    "/UCDAPIDemo/index.html": "f2d46a344600c7acd29ed1bc8f174888bbef09cd",
+    "/UCDAPIDemo/main.e11c3e7c87fb494a.js": "716581409592a5433abab8c648ed815d4eee3a17",
+    "/UCDAPIDemo/manifest.webmanifest": "c665e9dc44a93bb1ec4783e2e0f6cf990df504c7",
+    "/UCDAPIDemo/polyfills.36a1e3ab7d02ebaf.js": "0064670cc34182652e46156be0a348d8aef7dc87",
+    "/UCDAPIDemo/runtime.de4ec7654cf60e30.js": "92c8a3734e8979eaec8f82b88f004b1cd35e37d7",
+    "/UCDAPIDemo/scripts.a865ef9e7b38e161.js": "2540ffbd32950ffe51a128da49a253f07760af19",
+    "/UCDAPIDemo/styles.835775b9d350bf27.css": "622c1380b11cc9b78873f2cef9e4dd15e647e7d6"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
