@@ -41,6 +41,25 @@ $UCDAPIDemo-theme: mat.define-light-theme((
 @tailwind components;
 @tailwind utilities;
 
+// Add PWA safe padding classes
+@layer utilities {
+	.pt-safe {
+		padding-top: env(safe-area-inset-top);
+	}
+
+	.pb-safe {
+		padding-bottom: env(safe-area-inset-bottom);
+	}
+
+	.min-h-main-full {
+		min-height: calc(100vh - 4rem - env(safe-area-inset-top, 0));
+	}
+
+	.h-main-full {
+		height: calc(100vh - 4rem - env(safe-area-inset-top, 0));
+	}
+}
+
 html {
 	height: 100%;
 }

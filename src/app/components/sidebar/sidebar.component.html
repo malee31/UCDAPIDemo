@@ -8,10 +8,10 @@
 </div>
 <aside
 	aria-label="Sidenav"
-	class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full z-50"
+	class="fixed top-0 left-0 z-50 w-64 h-screen pt-safe transition-transform -translate-x-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700"
 	id="sidebar"
 >
-	<div class="overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+	<div class="relative overflow-y-auto py-5 px-3 h-full">
 		<app-close-sidebar-button (onHide)="hideSidebar()"/>
 
 		<ul class="space-y-2 pt-6">
