@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>UC Davis API Demo</title>
 		<base href="/">
-		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<meta content="width=device-width; initial-scale=1; viewport-fit=cover" name="viewport">
 		<meta content="The web demo for the Unofficial UC Davis API. Search courses, visualize seat trends, and download the results!" name="description">
 		<meta content="UC Davis, Courses, Degrees, CRNs, Seats, Tracker, Graph, API" name="keywords">
 		<meta content="/assets/API-Splash.png" property="og:image">
@@ -16,9 +16,15 @@
 		<link href="https://fonts.gstatic.com" rel="preconnect">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#1976d2">
-</head>
+
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+
+		<!-- possible content values: default, black or black-translucent -->
+		<link rel="manifest" href="manifest.webmanifest">
+		<meta name="apple-mobile-web-app-status-bar-style" content="default">
+		<meta name="theme-color" content="#1976d2">
+	</head>
 	<body class="mat-typography">
 		<noscript>
 			<div class="w-full px-4 py-2 bg-amber-300">
