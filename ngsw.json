@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1707595520219,
+  "timestamp": 1707769916142,
   "index": "/UCDAPIDemo/index.html",
   "assetGroups": [
     {
@@ -13,12 +13,12 @@
       "urls": [
         "/UCDAPIDemo/favicon.ico",
         "/UCDAPIDemo/index.html",
-        "/UCDAPIDemo/main.f7f3b023493863cd.js",
+        "/UCDAPIDemo/main.3073da6ef55a69c1.js",
         "/UCDAPIDemo/manifest.webmanifest",
         "/UCDAPIDemo/polyfills.36a1e3ab7d02ebaf.js",
         "/UCDAPIDemo/runtime.de4ec7654cf60e30.js",
         "/UCDAPIDemo/scripts.a865ef9e7b38e161.js",
-        "/UCDAPIDemo/styles.794cd4c3ea79313b.css"
+        "/UCDAPIDemo/styles.0d3d6a415ceaab64.css"
       ],
       "patterns": []
     },
@@ -45,6 +45,7 @@
         "/UCDAPIDemo/assets/mockup.png",
         "/UCDAPIDemo/assets/observatory.svg",
         "/UCDAPIDemo/assets/open-in-new-window.svg",
+        "/UCDAPIDemo/assets/search-icon.svg",
         "/UCDAPIDemo/assets/seats.svg",
         "/UCDAPIDemo/assets/x-icon.svg"
       ],
@@ -68,16 +69,17 @@
     "/UCDAPIDemo/assets/mockup.png": "085fbe83febe15c5225b398e84c8846971d063fc",
     "/UCDAPIDemo/assets/observatory.svg": "44c3caf38d6205fb30d094bacd901debcee6e8d5",
     "/UCDAPIDemo/assets/open-in-new-window.svg": "b691bd7dc2c83350ee231d0aea4d62dbd5444ba9",
+    "/UCDAPIDemo/assets/search-icon.svg": "bae16b6f0f9d2a1c577a0d3e43a5f51b5aee4683",
     "/UCDAPIDemo/assets/seats.svg": "943012aba9393a149f9b76d6105f14c0cf3033b0",
     "/UCDAPIDemo/assets/x-icon.svg": "25c7bbea0d945d48c126352bff4865966d254375",
     "/UCDAPIDemo/favicon.ico": "9bb8b275fa7165f209579fbbe126aade28357cf2",
-    "/UCDAPIDemo/index.html": "7c480488c474890b5caf017e721002fc88c19dd8",
-    "/UCDAPIDemo/main.f7f3b023493863cd.js": "de9d5fe05934088f106a6527ac8f6c74ed20c563",
+    "/UCDAPIDemo/index.html": "b56e202e22c7315c8a4908d0aebffb81cb546e76",
+    "/UCDAPIDemo/main.3073da6ef55a69c1.js": "63a85740ca9640638af069a861c7d8f2c58ac488",
     "/UCDAPIDemo/manifest.webmanifest": "b057eadf3624290059ff4edc93b21ed3ee782862",
     "/UCDAPIDemo/polyfills.36a1e3ab7d02ebaf.js": "0064670cc34182652e46156be0a348d8aef7dc87",
     "/UCDAPIDemo/runtime.de4ec7654cf60e30.js": "92c8a3734e8979eaec8f82b88f004b1cd35e37d7",
     "/UCDAPIDemo/scripts.a865ef9e7b38e161.js": "2540ffbd32950ffe51a128da49a253f07760af19",
-    "/UCDAPIDemo/styles.794cd4c3ea79313b.css": "8ba80db0e03fa0cb9e17fbfd2acf44d66b31ff5a"
+    "/UCDAPIDemo/styles.0d3d6a415ceaab64.css": "d4a7cf0d3ee2653005725059d2da8f028576022e"
   },
   "navigationUrls": [
     {
