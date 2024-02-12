@@ -67,7 +67,8 @@ export class ChartSearchComponent {
 				this.results = this.allResults;
 				this.validSubjectNumbers = courses
 					.map(res => res.subject_number)
-					.filter((x, index, arr) => arr.indexOf(x) === index);
+					.filter((x, index, arr) => arr.indexOf(x) === index)
+					.sort();
 			})
 			.catch(alert);
 	}
