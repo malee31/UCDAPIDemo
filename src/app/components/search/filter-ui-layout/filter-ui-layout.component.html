@@ -11,12 +11,6 @@
 
 		<!-- Filter Options -->
 		<ng-content select="[filter-list]"/>
-		<button
-			(click)="toggleMobileFilters()"
-			class="absolute right-8 bottom-6 sm:hidden text-base px-4 py-2 bg-slate-200 rounded-full"
-		>
-			Results &gt;
-		</button>
 	</aside>
 
 	<!-- Results -->
@@ -36,15 +30,18 @@
 			<p class="text-xl">{{ subtitle }}</p>
 		</div>
 
-		<div class="fixed right-8 bottom-6 sm:hidden">
-			<button
-				(click)="toggleMobileFilters()"
-				class="px-4 py-2 bg-slate-200 rounded-full shadow-md hover:shadow-lg"
-			>
-				Filters
-			</button>
-		</div>
-
 		<ng-content/>
 	</section>
+	<div class="fixed pb-safe right-8 bottom-6 sm:hidden z-40">
+		<button
+			(click)="toggleMobileFilters()"
+			class="p-4 bg-slate-200 rounded-full shadow-md hover:shadow-lg"
+		>
+			<img
+				class="w-6 h-6"
+				alt="Filters"
+				src="assets/search-icon.svg"
+			/>
+		</button>
+	</div>
 </div>

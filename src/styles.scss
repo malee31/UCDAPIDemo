@@ -51,12 +51,15 @@ $UCDAPIDemo-theme: mat.define-light-theme((
 		padding-bottom: env(safe-area-inset-bottom);
 	}
 
+	// Duplicated properties to use dvh for modern browsers
 	.min-h-main-full {
 		min-height: calc(100vh - 4rem - env(safe-area-inset-top, 0));
+		min-height: calc(100dvh - 4rem - env(safe-area-inset-top, 0));
 	}
 
 	.h-main-full {
 		height: calc(100vh - 4rem - env(safe-area-inset-top, 0));
+		height: calc(100dvh - 4rem - env(safe-area-inset-top, 0));
 	}
 }
 
