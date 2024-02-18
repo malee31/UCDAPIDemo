@@ -38,15 +38,36 @@
 			<div class="tooltip-arrow" data-popper-arrow></div>
 		</div>
 	</div>
-	<h3 class="text-base text-slate-600">
+	<h3 class="pb-2 text-base text-slate-600">
 		<span class="inline-block mr-2">Term: {{ term || "(Default)" }}</span>
 		<span class="inline-block">CRN: {{ crn }}</span>
 	</h3>
-	<a
-		[queryParams]="{optimized: 1, term: term}"
-		class="block text-blue-500"
-		routerLink="/chart/crn/{{crn}}"
-	>
-		View Chart for {{ crn }} - {{ subject_code }} {{ subject_number }}
-	</a>
+
+	<div class="w-full flex flex-row flex-wrap items-stretch gap-1">
+		<a
+			[queryParams]="{optimized: 1, term: term}"
+			class="block w-full md:w-fit max-w-[360px] pl-0.5 pr-2 py-0.5 text-blue-500 border-2 rounded border-slate-100"
+			routerLink="/chart/crn/{{crn}}"
+		>
+			<img
+				class="inline-block w-6 h-6 p-1"
+				alt="Chart"
+				src="assets/timeline.svg"
+			/>
+			View CRN {{ crn }} Chart
+		</a>
+
+		<a
+			[queryParams]="{optimized: 1, term: term}"
+			class="block w-full md:w-fit max-w-[360px] pl-0.5 pr-2 py-0.5 text-blue-500 border-2 rounded border-slate-100"
+			routerLink="/chart/name/{{subject_code}}/{{subject_number}}"
+		>
+			<img
+				class="inline-block w-6 h-6 p-1"
+				alt="Chart"
+				src="assets/timeline.svg"
+			/>
+			View All {{ subject_code }} {{ subject_number }} Charts
+		</a>
+	</div>
 </div>
