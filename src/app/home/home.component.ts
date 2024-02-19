@@ -6,5 +6,12 @@ import { Component } from "@angular/core";
 	styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent {
+	scrollToAbout(e: Event) {
+		e.preventDefault();
+		const about = document.getElementById("about");
 
+		if(about) {
+			about.scrollIntoView();
+		}
+	}
 }
