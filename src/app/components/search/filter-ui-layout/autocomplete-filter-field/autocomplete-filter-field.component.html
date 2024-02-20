@@ -17,7 +17,7 @@
 			<mat-autocomplete
 				#autocomplete="matAutocomplete"
 				(optionSelected)="selectValue($event.option.value)"
-				requireSelection
+				[requireSelection]="true"
 			>
 				<mat-option
 					*ngIf="defaultOption"

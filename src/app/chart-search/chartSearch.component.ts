@@ -25,8 +25,8 @@ export class ChartSearchComponent implements OnInit {
 		subjectNumber: ""
 	};
 
-	subjectNumberControl: FormControl<string | null> = new FormControl("All");
 	subjectCodeControl: FormControl<string | null> = new FormControl("");
+	subjectNumberControl: FormControl<string | null> = new FormControl("All");
 
 	// Results directly from the API
 	allResults: APICrn[] = [];
@@ -111,8 +111,12 @@ export class ChartSearchComponent implements OnInit {
 			this.appliedFilters.subjectCode = value["subjectCode"] ?? "";
 			this.appliedFilters.subjectNumber = value["subjectNumber"] ?? "";
 
-			this.subjectCodeControl.setValue(value["subjectCode"] ?? "");
-			this.subjectNumberControl.setValue(value["subjectNumber"] ?? "");
+			if(this.appliedFilters.subjectCode) {
+				this.subjectCodeControl.setValue(this.appliedFilters.subjectCode);
+			}
+			if(this.appliedFilters.subjectNumber) {
+				this.subjectCodeControl.setValue(this.appliedFilters.subjectNumber);
+			}
 
 			this.searchCRN();
 		})
