@@ -23,6 +23,7 @@
 			<li>
 				<app-autocomplete-filter-field
 					(onSelect)="setSubjectCode($event)"
+					[autocompleteTextControl]="subjectCodeControl"
 					[options]="validSubjectCodes"
 					[required]="true"
 					labelText="Subject Code Filter"
@@ -34,7 +35,7 @@
 			<li>
 				<app-autocomplete-filter-field
 					(onSelect)="setSubjectNumber($event)"
-					[autocompleteTextControl]="subjectCodeControl"
+					[autocompleteTextControl]="subjectNumberControl"
 					[options]="validSubjectNumbers"
 					defaultLabel="(All)"
 					defaultOption="All"

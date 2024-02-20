@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormControl } from "@angular/forms";
 
 @Component({
@@ -6,7 +6,7 @@ import { FormControl } from "@angular/forms";
 	templateUrl: './autocomplete-filter-field.component.html',
 	styleUrls: ['./autocomplete-filter-field.component.scss']
 })
-export class AutocompleteFilterFieldComponent implements OnInit {
+export class AutocompleteFilterFieldComponent {
 	@Input({ required: true }) titleText: string = "";
 	@Input({ required: true }) labelText: string = "";
 	@Input({ required: true }) placeholder: string = "";
@@ -22,12 +22,7 @@ export class AutocompleteFilterFieldComponent implements OnInit {
 
 	@ViewChild("autocompleteInput") autocompleteInput!: ElementRef<HTMLInputElement>;
 	filteredOptions: Object[] = []
-	autocompleteFilter = (opt: string, inputVal: string) => opt.toLowerCase().includes(inputVal)
-
-	ngOnInit(): void {
-		this.resetAutocompleteTextInput();
-		this.autocompleteTextControl.reset(this.initialValue);
-	}
+	autocompleteFilter = (opt: string, inputVal: string) => opt.toLowerCase().includes(inputVal);
 	resetAutocompleteTextInput() {
 		this.filteredOptions = this.options;
 	}
