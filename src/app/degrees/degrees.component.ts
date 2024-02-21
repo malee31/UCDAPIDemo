@@ -45,7 +45,7 @@ export class DegreesComponent implements OnInit {
 		if(convertToCSV) {
 			exportBlob = new Blob([json2csv(this.results)], { type: "text/csv" });
 		} else {
-			exportBlob = new Blob([JSON.stringify(this.results)], { type: "application/json" });
+			exportBlob = new Blob([JSON.stringify(this.results, null, "\t")], { type: "application/json" });
 		}
 		const exportDataUrl: string = window.URL.createObjectURL(exportBlob);
 		let exportFileName = "Degree_Search_Results";

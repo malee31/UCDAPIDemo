@@ -137,7 +137,7 @@ export class SeatsComponent {
 				return result;
 			}))], { type: "text/csv" });
 		} else {
-			exportBlob = new Blob([JSON.stringify(exportResult, )], { type: "application/json" });
+			exportBlob = new Blob([JSON.stringify(exportResult, null, "\t")], { type: "application/json" });
 		}
 		const exportDataUrl: string = window.URL.createObjectURL(exportBlob);
 		let exportFileName = `CRN_Search_Results_${this.appliedFilters.term}_${this.appliedFilters.subjectCode}`;
