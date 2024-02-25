@@ -1,0 +1,41 @@
+<div
+	id="apps-dropdown"
+	class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600"
+>
+	<div class="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+		Features
+	</div>
+	<div class="grid grid-cols-3 gap-4 p-4">
+		<app-features-link
+			label="Seat Trends"
+			routerLink="/chart"
+		>
+			<svg
+				aria-hidden="true"
+				class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
+				fill="currentColor"
+				viewBox="0 0 20 20"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
+				<path clip-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" fill-rule="evenodd"></path>
+			</svg>
+		</app-features-link>
+
+		<app-features-link
+			label="Seat API"
+			routerLink="/docs/seats"
+		>
+			<svg
+				aria-hidden="true"
+				class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
+				fill="currentColor"
+				viewBox="0 0 20 20"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
+				<path clip-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" fill-rule="evenodd"></path>
+			</svg>
+		</app-features-link>
+	</div>
+</div>

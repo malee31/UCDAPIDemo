@@ -1,3 +1,4 @@
+<script src="navbar.component.ts"></script>
 <div class="sticky top-0 w-full pt-safe">
 	<div class="w-full h-16">
 		<!-- Spacer for Navbar -->
@@ -120,7 +121,11 @@
 						</a>
 					</div>
 					<!-- Apps -->
-					<button class="p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" data-dropdown-toggle="apps-dropdown" type="button">
+					<button
+						class="p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+						data-dropdown-toggle="apps-dropdown"
+						type="button"
+					>
 						<span class="sr-only">Features</span>
 						<!-- Icon -->
 						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -128,27 +133,7 @@
 						</svg>
 					</button>
 					<!-- Dropdown menu -->
-					<div class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600" id="apps-dropdown">
-						<div class="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-							Features
-						</div>
-						<div class="grid grid-cols-3 gap-4 p-4">
-							<a class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group" routerLink="/chart">
-								<svg aria-hidden="true" class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-									<path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
-									<path clip-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" fill-rule="evenodd"></path>
-								</svg>
-								<div class="text-sm text-gray-900 dark:text-white">Seat Trends</div>
-							</a>
-							<a class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group" routerLink="/docs/seats">
-								<svg aria-hidden="true" class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-									<path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
-									<path clip-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" fill-rule="evenodd"></path>
-								</svg>
-								<div class="text-sm text-gray-900 dark:text-white">Seat API</div>
-							</a>
-						</div>
-					</div>
+					<app-features/>
 				</div>
 			</div>
 		</nav>

@@ -67,6 +67,7 @@ import { ChartFigureComponent } from './components/chart/chart-chunk/chart-figur
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { CourseCrnMetadataDocChunkComponent } from './docs/chunks/course-crn-metadata-doc-chunk/course-crn-metadata-doc-chunk.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { FeaturesComponent } from "./components/flowbite/features/features.component";
 
 @NgModule({
 	declarations: [
@@ -142,6 +143,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 			// or after 30 seconds (whichever comes first).
 			registrationStrategy: 'registerWhenStable:30000'
 		}),
+		FeaturesComponent,
 	],
 	providers: [ConstantsService, ApiService],
 	bootstrap: [AppComponent]
