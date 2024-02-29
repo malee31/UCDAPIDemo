@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from "@angular/core";
+import { isDevMode, NgModule } from "@angular/core";
 import { AsyncPipe, CommonModule, NgOptimizedImage } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";

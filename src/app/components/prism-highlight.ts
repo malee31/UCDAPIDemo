@@ -15,7 +15,7 @@ import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard";
 			<span>Example</span>
 		</div>
 		<!--	MUST be one-lined due to the quirks of <pre>	-->
-		<pre class="whitespace-pre-wrap"><code class="language-{{language}}" #content>{{code}}</code></pre>
+		<pre class="whitespace-pre-wrap"><code class="language-{{language}}" #content>{{ code }}</code></pre>
 	`
 })
 export class PrismComponent implements AfterViewInit {
