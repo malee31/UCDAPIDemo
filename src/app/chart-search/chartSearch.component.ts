@@ -115,7 +115,7 @@ export class ChartSearchComponent implements OnInit {
 				this.subjectCodeControl.setValue(this.appliedFilters.subjectCode);
 			}
 			if(this.appliedFilters.subjectNumber) {
-				this.subjectCodeControl.setValue(this.appliedFilters.subjectNumber);
+				this.subjectNumberControl.setValue(this.appliedFilters.subjectNumber);
 			}
 
 			this.searchCRN();
