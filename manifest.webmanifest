@@ -3,9 +3,9 @@
   "short_name": "UCDAPI Demo",
   "theme_color": "#c0bcbc",
   "background_color": "#fafafa",
-  "display": "fullscreen",
+  "display": "standalone",
   "scope": "./",
-  "start_url": "./?fullscreen=true",
+  "start_url": "./",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",

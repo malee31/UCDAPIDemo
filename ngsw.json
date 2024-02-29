@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1709238059704,
+  "timestamp": 1709238103874,
   "index": "/UCDAPIDemo/index.html",
   "assetGroups": [
     {
@@ -77,7 +77,7 @@
     "/UCDAPIDemo/favicon.ico": "9bb8b275fa7165f209579fbbe126aade28357cf2",
     "/UCDAPIDemo/index.html": "0f57853a1e2fca224df253e062ebd0c6a922a1e2",
     "/UCDAPIDemo/main.7ebe3eb3d37e4dea.js": "aa49dc15091e289c5fbc6d153500ca11d7f3b662",
-    "/UCDAPIDemo/manifest.webmanifest": "4cf35aff445e989980750e4d154936aaad0a7bb8",
+    "/UCDAPIDemo/manifest.webmanifest": "0ba9e965a9a9f46c50b6c79b208da747efd8c504",
     "/UCDAPIDemo/polyfills.86b04d15a66a0822.js": "69f97168d32d05c4c81b66cddb80bfdc117c737c",
     "/UCDAPIDemo/runtime.e0e7eb231b44a537.js": "525c61663f269e87887a3f4aea8274d2df3510d5",
     "/UCDAPIDemo/scripts.a865ef9e7b38e161.js": "2540ffbd32950ffe51a128da49a253f07760af19",
