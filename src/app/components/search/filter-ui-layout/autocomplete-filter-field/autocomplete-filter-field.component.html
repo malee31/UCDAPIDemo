@@ -8,6 +8,7 @@
 				#autocompleteInput
 				(focus)="resetAutocompleteTextInput()"
 				(input)="handleInput($event)"
+				(keydown.enter)="handleEnter($event)"
 				[formControl]="autocompleteTextControl"
 				[matAutocomplete]="autocomplete"
 				[placeholder]="placeholder"

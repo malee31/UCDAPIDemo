@@ -13,8 +13,26 @@
 		<ng-content select="[filter-list]"/>
 	</aside>
 
+	<div
+		class="fixed pb-safe right-8 bottom-6 sm:hidden z-40"
+		tabindex="1"
+	>
+		<button
+			(click)="toggleMobileFilters()"
+			class="p-4 bg-slate-200 rounded-full shadow-md hover:shadow-lg"
+		>
+			<img
+				alt="Filters"
+				class="w-6 h-6"
+				src="assets/search-icon.svg"
+			/>
+		</button>
+	</div>
+
 	<!-- Results -->
-	<section class="relative flex-grow flex flex-col px-4 pt-2 pb-20 overflow-y-auto bg-slate-50 sm:pb-2">
+	<section
+		class="relative flex-grow flex flex-col px-4 pt-2 pb-20 overflow-y-auto bg-slate-50 sm:pb-2"
+	>
 		<h1 class="text-2xl">
 			{{ filterTitle }}
 		</h1>
@@ -32,16 +50,4 @@
 
 		<ng-content/>
 	</section>
-	<div class="fixed pb-safe right-8 bottom-6 sm:hidden z-40">
-		<button
-			(click)="toggleMobileFilters()"
-			class="p-4 bg-slate-200 rounded-full shadow-md hover:shadow-lg"
-		>
-			<img
-				alt="Filters"
-				class="w-6 h-6"
-				src="assets/search-icon.svg"
-			/>
-		</button>
-	</div>
 </div>

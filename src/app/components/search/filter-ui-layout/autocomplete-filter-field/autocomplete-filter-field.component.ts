@@ -40,6 +40,11 @@ export class AutocompleteFilterFieldComponent implements OnInit {
 		// this.onChange.emit(inputVal);
 	}
 
+	handleEnter(e: Event): void {
+		const inputElem: HTMLInputElement = (e.currentTarget as HTMLInputElement);
+		inputElem.blur();
+	}
+
 	selectValue(val: string) {
 		this.onChange.emit(val);
 		this.onSelect.emit(val);
