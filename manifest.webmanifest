@@ -1,8 +1,8 @@
 {
   "name": "UCDavis API Demo",
   "short_name": "UCDAPI Demo",
-  "theme_color": "#c0bcbc",
-  "background_color": "#fafafa",
+  "theme_color": "#F1F5F9",
+  "background_color": "#F1F5F9",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
