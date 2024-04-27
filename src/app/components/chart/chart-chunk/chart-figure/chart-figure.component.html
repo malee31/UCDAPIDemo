@@ -13,20 +13,32 @@
 		</div>
 	</div>
 
-	<div class="absolute top-2 right-2 sm:right-4">
+	<div class="absolute top-2 right-2 sm:right-4 flex flex-row gap-1">
 		<button
 			(click)="downloadChart()"
-			class="inline-block border px-2 py-1 mr-1 rounded bg-slate-50"
+			class="inline-block border p-2 rounded bg-slate-50"
+			title="Download"
 		>
-			Download Chart
+			<img
+				ngSrc="assets/download.svg"
+				alt="Download Chart"
+				width="16"
+				height="16"
+			/>
 		</button>
 		<button
 			(click)="copyChart()"
 			[disabled]="!detectsClipboardSupport"
 			[ngClass]="{'cursor-not-allowed': !detectsClipboardSupport}"
-			class="inline-block border px-2 py-1 rounded bg-slate-50"
+			class="inline-block border p-2 rounded bg-slate-50"
+			[title]="detectsClipboardSupport ? 'Copy' : 'Copy not supported by browser'"
 		>
-			Copy Chart <span *ngIf="!detectsClipboardSupport">(Not Supported by Browser)</span>
+			<img
+				ngSrc="assets/copy.svg"
+				alt="Copy Chart"
+				width="16"
+				height="16"
+			/>
 		</button>
 	</div>
 </div>
