@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1709533633491,
+  "timestamp": 1714264631264,
   "index": "/UCDAPIDemo/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/UCDAPIDemo/favicon.ico",
         "/UCDAPIDemo/index.html",
-        "/UCDAPIDemo/main.31a9c452eb03810f.js",
+        "/UCDAPIDemo/main.6cf793ed909a2265.js",
         "/UCDAPIDemo/manifest.webmanifest",
         "/UCDAPIDemo/polyfills.86b04d15a66a0822.js",
         "/UCDAPIDemo/runtime.e0e7eb231b44a537.js",
@@ -32,8 +32,10 @@
       "urls": [
         "/UCDAPIDemo/assets/API-Splash.png",
         "/UCDAPIDemo/assets/anchor-link.svg",
+        "/UCDAPIDemo/assets/copy.svg",
         "/UCDAPIDemo/assets/course.svg",
         "/UCDAPIDemo/assets/degrees.svg",
+        "/UCDAPIDemo/assets/download.svg",
         "/UCDAPIDemo/assets/exclamation.svg",
         "/UCDAPIDemo/assets/home-icon.svg",
         "/UCDAPIDemo/assets/icons/icon-128x128.png",
@@ -57,8 +59,10 @@
   "hashTable": {
     "/UCDAPIDemo/assets/API-Splash.png": "f751c84ced02aea3874775dc1c2dc72e64ae52be",
     "/UCDAPIDemo/assets/anchor-link.svg": "fdf6efecbedc7a8b76d5a0853f30f960b2e012ea",
+    "/UCDAPIDemo/assets/copy.svg": "adbca124a31dbedb8a89778985dda2ec3b32cc26",
     "/UCDAPIDemo/assets/course.svg": "92d8e56b40aaf09bb09a0729157243c70f5961c3",
     "/UCDAPIDemo/assets/degrees.svg": "bd5981e59acecae8b5893b5d814a73ceeee92c60",
+    "/UCDAPIDemo/assets/download.svg": "7114098aba57f277cae81e8add59c9248c4a9032",
     "/UCDAPIDemo/assets/exclamation.svg": "c7ec1d0dc4d6eadc4d85a17550a1309f56983a9d",
     "/UCDAPIDemo/assets/home-icon.svg": "3d653aaa79d911ea91ced85c9913cebba3f4f418",
     "/UCDAPIDemo/assets/icons/icon-128x128.png": "36919a51c0b779b944e98c48b9d26bf5756c92ac",
@@ -75,8 +79,8 @@
     "/UCDAPIDemo/assets/timeline.svg": "9b2e44c53e036d09b74292273d6fabc84c27d3a7",
     "/UCDAPIDemo/assets/x-icon.svg": "25c7bbea0d945d48c126352bff4865966d254375",
     "/UCDAPIDemo/favicon.ico": "9bb8b275fa7165f209579fbbe126aade28357cf2",
-    "/UCDAPIDemo/index.html": "385b3b266939bb63a2f7c7e8eb848167a73f56e8",
-    "/UCDAPIDemo/main.31a9c452eb03810f.js": "adf0ab9a97b24887110908e74e60e078275814d3",
+    "/UCDAPIDemo/index.html": "138d4d323712d8a1d982e8d7f1e8e796230acfbb",
+    "/UCDAPIDemo/main.6cf793ed909a2265.js": "0cb9594264290de3de136acc7378d4030829011c",
     "/UCDAPIDemo/manifest.webmanifest": "69f16582c0f5b1e096a6042724729c8dfe25c981",
     "/UCDAPIDemo/polyfills.86b04d15a66a0822.js": "69f97168d32d05c4c81b66cddb80bfdc117c737c",
     "/UCDAPIDemo/runtime.e0e7eb231b44a537.js": "525c61663f269e87887a3f4aea8274d2df3510d5",
