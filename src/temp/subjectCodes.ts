@@ -162,6 +162,7 @@ export const SUBJECT_CODE_LIST: string[] = [
 ];
 
 export const TERMS_LIST = [
+	"202410",
 	"202403",
 	"202401",
 	"202310"
